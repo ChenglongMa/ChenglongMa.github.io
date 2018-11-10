@@ -325,7 +325,7 @@
                 
               
 
-              <time title="Created: 2018-11-10 11:10:00 / Modified: 11:25:27" itemprop="dateCreated datePublished" datetime="2018-11-10T11:10:00+11:00">2018-11-10</time>
+              <time title="Created: 2018-11-10 11:10:00 / Modified: 11:32:10" itemprop="dateCreated datePublished" datetime="2018-11-10T11:10:00+11:00">2018-11-10</time>
             
 
             
@@ -442,7 +442,7 @@
 <li>static instance and getter</li>
 <li>在class diagram或sequence diagram中类名右上角标注1</li>
 </ol>
-<p><img src="F:/Jercy/Modelling/DesignPatterns/assets/1541753510666.png" alt="1541753510666"></p>
+<p><img src="/2018/11/10/设计模式总结/MyBlog/capsM.github.io.tool/source/_posts/设计模式总结/1541753510666.png" alt="1541753510666"></p>
 <p><strong>思考：</strong></p>
 <ol>
 <li>如果<code>getInstance()</code>方法替换为以下代码行不行；</li>
@@ -458,7 +458,7 @@
 <li><p>使用哪种策略的判断条件不尽相同，自定义</p>
 <ol>
 <li><p>即，Lecture Note中将 Context Object <code>Sale</code>作为参数传入<code>ISalePricingStrategy</code>中不是<strong>唯一/必须</strong>的</p>
-<p><img src="F:/Jercy/Modelling/DesignPatterns/assets/1541754654574.png" alt="1541754654574"></p>
+<p><img src="/2018/11/10/设计模式总结/MyBlog/capsM.github.io.tool/source/_posts/设计模式总结/1541754654574.png" alt="1541754654574"></p>
 </li>
 </ol>
 </li>
@@ -475,7 +475,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 如果要求写代码</span></span><br><span class="line"><span class="comment"> * 注意 interface 用 implements //第三人称</span></span><br><span class="line"><span class="comment"> *      abstract class 用 extends //第三人称</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CompositeBestForCustomerPricingStrategy</span> <span class="keyword">extends</span> <span class="title">CompositePricingStrategy</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Money <span class="title">getTotal</span><span class="params">(SaleContext saleContext)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">double</span> lowestTotal = Double.MAX_VALUE;</span><br><span class="line">        <span class="keyword">for</span> (ISalePricingStrategy strategy : pricingStrategies) &#123;</span><br><span class="line">            <span class="keyword">double</span> total = strategy.getTotal(saleContext).yuan;</span><br><span class="line">            lowestTotal = Math.min(total, lowestTotal);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Money(lowestTotal);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CompositeBestForStorePricingStrategy</span> <span class="keyword">extends</span> <span class="title">CompositePricingStrategy</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Money <span class="title">getTotal</span><span class="params">(SaleContext saleContext)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//<span class="doctag">TODO:</span> do sth...</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="关键词：-2"><a href="#关键词：-2" class="headerlink" title="关键词："></a>关键词：</h3><p><em>group or composition</em></p>
-<h3 id="总结-4"><a href="#总结-4" class="headerlink" title="总结"></a>总结</h3><p><img src="F:/Jercy/Modelling/DesignPatterns/assets/1541760163905.png" alt="1541760163905"></p>
+<h3 id="总结-4"><a href="#总结-4" class="headerlink" title="总结"></a>总结</h3><p><img src="/2018/11/10/设计模式总结/MyBlog/capsM.github.io.tool/source/_posts/设计模式总结/1541760163905.png" alt="1541760163905"></p>
 <p><strong>要点：</strong></p>
 <ol>
 <li><code>CompositePricingStrategy</code> 可以是具体类，也可以是抽象类 (abstract class)</li>
