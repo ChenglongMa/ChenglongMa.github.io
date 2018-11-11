@@ -402,209 +402,17 @@
 
       
         
-          
-            <h2>前言</h2>
+          <h2 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h2>
 <p>本文旨在帮助复习<strong>设计模式</strong>相关概念，只包含简略要点，非详细介绍。</p>
-<p>&lt;!-- more --&gt;</p>
-<h2>设计模式类型</h2>
-<h3>创建型 Creational Patterns (5):</h3>
-<p>​	<em>abstract the object instantiation process.</em></p>
-<ol>
-<li><strong>工厂方法模式 factory</strong></li>
-<li>抽象工厂 abstractFactory</li>
-<li><strong>单例模式 singleton</strong></li>
-<li>建造者模式 builder</li>
-<li>原型模式 prototype</li>
-</ol>
-<h3>结构型 Structural Patterns (7):</h3>
-<p>​	<em>describe how classes and objects can be combined to form larger structures.</em></p>
-<ol>
-<li>桥接模式bridge</li>
-<li><strong>适配器模式adapter</strong></li>
-<li>装饰器模式decorator</li>
-<li><strong>组合模式composite</strong></li>
-<li>享元模式flyweight</li>
-<li><strong>外观模式facade</strong></li>
-<li>代理模式proxy</li>
-</ol>
-<h3>行为型 Behavioural Patterns (11):</h3>
-<p>​	<em>are most specifically concerned with communication between objects.</em></p>
-<ol>
-<li>
-<p>模板方法模式template</p>
-</li>
-<li>
-<p><strong>策略模式strategy</strong></p>
-<p><em>两个类之间:</em></p>
-</li>
-<li>
-<p><strong>观察者模式observer</strong></p>
-</li>
-<li>
-<p>迭代子模式iterator（容器与容器遍历）</p>
-</li>
-<li>
-<p>责任链模式chain of responsibility（责任链模式）（串的替换---可以使用链式操作）</p>
-</li>
-<li>
-<p>命令模式command</p>
-<p><em>类的状态：</em></p>
-</li>
-<li>
-<p>备忘录模式memento</p>
-</li>
-<li>
-<p>状态模式state</p>
-<p><em>通过中间类：</em></p>
-</li>
-<li>
-<p>访问者模式visitor</p>
-</li>
-<li>
-<p>中介模式mediator</p>
-</li>
-<li>
-<p>解释器模式interpreter</p>
-</li>
-</ol>
-<h2>Adapter 适配器模式</h2>
-<h3>类图：</h3>
-<p><img src="/2018/11/10/设计模式总结/adapter.png" alt="Adapter Pattern Diagram"></p>
-<h3>代码示例：</h3>
-<p>原有程序代码：</p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Context</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 这里只是提供一种应用场景，</span></span><br><span class="line">        <span class="comment">// 并非必须要 switch 或者 for loop</span></span><br><span class="line">        oldTest();</span><br><span class="line">        newTest();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Adapter 版调用方式</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">newTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        IShapeAdapter[] shapes = &#123;</span><br><span class="line">                <span class="keyword">new</span> ILineAdapter(),</span><br><span class="line">                <span class="keyword">new</span> IRectangleAdapter(),</span><br><span class="line">                <span class="keyword">new</span> IWeatherMapAdapter()</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="comment">// A begin and end point from a graphical editor</span></span><br><span class="line">        Point p1 = <span class="keyword">new</span> Point(<span class="number">10</span>, <span class="number">20</span>);</span><br><span class="line">        Point p2 = <span class="keyword">new</span> Point(<span class="number">30</span>, <span class="number">60</span>);</span><br><span class="line">        <span class="keyword">for</span> (IShapeAdapter shape : shapes) &#123;</span><br><span class="line">            <span class="comment">// 统一了调用方法签名</span></span><br><span class="line">            shape.draw(p1, p2);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 原版调用方式</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">oldTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Object[] shapes = &#123;<span class="keyword">new</span> LineGraphic(), <span class="keyword">new</span> RectangleGraphic()&#125;;</span><br><span class="line">        <span class="comment">// A begin and end point from a graphical editor</span></span><br><span class="line">        Point p1 = <span class="keyword">new</span> Point(<span class="number">10</span>, <span class="number">20</span>);</span><br><span class="line">        Point p2 = <span class="keyword">new</span> Point(<span class="number">30</span>, <span class="number">60</span>);</span><br><span class="line">        <span class="keyword">for</span> (Object shape : shapes)</span><br><span class="line">            <span class="keyword">if</span> (shape.getClass().getName().equals(<span class="string">"Line"</span>))</span><br><span class="line">                ((LineGraphic) shape).drawLine(p1, p2);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (shape.getClass().getName().equals(<span class="string">"Rectangle"</span>))</span><br><span class="line">                ((RectangleGraphic) shape).drawRect(</span><br><span class="line">                        <span class="keyword">new</span> Point(Math.min(p1.x, p2.x), Math.min(p1.y, p2.y)),</span><br><span class="line">                        Math.abs(p2.x - p1.x), Math.abs(p2.y - p1.y)</span><br><span class="line">                );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">LineGraphic</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">drawLine</span><span class="params">(Point p1, Point p2)</span> </span>&#123;</span><br><span class="line">            <span class="comment">// Stub for testing replacing real library call</span></span><br><span class="line">            System.out.println(<span class="string">"line from "</span> + p1 + <span class="string">" to "</span> + p2);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">RectangleGraphic</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">drawRect</span><span class="params">(Point p, <span class="keyword">int</span> width, <span class="keyword">int</span> height)</span> </span>&#123;</span><br><span class="line">            <span class="comment">// Stub for testing replacing real library call</span></span><br><span class="line">            System.out.println(<span class="string">"rectangle at "</span> + p + <span class="string">" with width "</span> + width</span><br><span class="line">                    + <span class="string">" and height "</span> + height);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">WeatherMapGraphic</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">drawCurrent</span><span class="params">(<span class="keyword">int</span> length, Point p)</span> </span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"WeatherMapGraphic drawCurrent was called"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>以下为新增类</p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Adapter 接口</span></span><br><span class="line"><span class="comment">// 1. 统一方法签名</span></span><br><span class="line"><span class="comment">// 2. 为可能的新增功能提供接口规范</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IShapeAdapter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">draw</span><span class="params">(Point p1, Point p2)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>各个Adapter中存在参数类型转换以适应新接口</p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ILineAdapter</span> <span class="keyword">implements</span> <span class="title">IShapeAdapter</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Context.LineGraphic adaptee = <span class="keyword">new</span> Context.LineGraphic();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">(Point p1, Point p2)</span> </span>&#123;</span><br><span class="line">        adaptee.drawLine(p1, p2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IRectangleAdapter</span> <span class="keyword">implements</span> <span class="title">IShapeAdapter</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Context.RectangleGraphic adaptee = <span class="keyword">new</span> Context.RectangleGraphic();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">(Point p1, Point p2)</span> </span>&#123;</span><br><span class="line">        adaptee.drawRect(<span class="keyword">new</span> Point(Math.min(p1.x, p2.x), Math.min(p1.y, p2.y)),</span><br><span class="line">                Math.abs(p2.x - p1.x), Math.abs(p2.y - p1.y));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IWeatherMapAdapter</span> <span class="keyword">implements</span> <span class="title">IShapeAdapter</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Context.WeatherMapGraphic adaptee = <span class="keyword">new</span> Context.WeatherMapGraphic();</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">(Point p1, Point p2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> length = Math.abs(p2.x - p1.x);</span><br><span class="line">        Point p = <span class="keyword">new</span> Point(Math.min(p1.x, p2.x), Math.min(p1.y, p2.y));</span><br><span class="line">        adaptee.drawCurrent(length, p);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3>关键词:</h3>
-<p><em>incompatible, different interfaces, different methods (method signature)</em></p>
-<h3>总结</h3>
-<p>当出现以上关键词或者在Class Diagram里各个<strong>相似</strong>的类，方法名或方法签名（<em>签名包括方法名和参数列表</em>）不同时，应该使用Adapter pattern。</p>
-<h2>Factory (not GoF) 简单工厂模式</h2>
-<h3>代码示例：</h3>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IShape</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Circle</span> <span class="keyword">implements</span> <span class="title">IShape</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Inside Circle::draw() method."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span> <span class="keyword">implements</span> <span class="title">IShape</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Inside Rectangle::draw() method."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Square</span> <span class="keyword">implements</span> <span class="title">IShape</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Inside Square::draw() method."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShapeFactory</span> </span>&#123;</span><br><span class="line">    <span class="comment">//使用 getShape 方法获取形状类型的对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> IShape <span class="title">getShape</span><span class="params">(String shapeType)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (shapeType == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (shapeType.equalsIgnoreCase(<span class="string">"CIRCLE"</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> Circle();</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (shapeType.equalsIgnoreCase(<span class="string">"RECTANGLE"</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> Rectangle();</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (shapeType.equalsIgnoreCase(<span class="string">"SQUARE"</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> Square();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Context</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ShapeFactory shapeFactory = <span class="keyword">new</span> ShapeFactory();</span><br><span class="line">        <span class="comment">//获取 Circle 的对象，并调用它的 draw 方法</span></span><br><span class="line">        IShape shape1 = shapeFactory.getShape(<span class="string">"CIRCLE"</span>);</span><br><span class="line">        <span class="comment">//调用 Circle 的 draw 方法</span></span><br><span class="line">        shape1.draw();</span><br><span class="line">        <span class="comment">//获取 Rectangle 的对象，并调用它的 draw 方法</span></span><br><span class="line">        IShape shape2 = shapeFactory.getShape(<span class="string">"RECTANGLE"</span>);</span><br><span class="line">        <span class="comment">//调用 Rectangle 的 draw 方法</span></span><br><span class="line">        shape2.draw();</span><br><span class="line">        <span class="comment">//获取 Square 的对象，并调用它的 draw 方法</span></span><br><span class="line">        IShape shape3 = shapeFactory.getShape(<span class="string">"SQUARE"</span>);</span><br><span class="line">        <span class="comment">//调用 Square 的 draw 方法</span></span><br><span class="line">        shape3.draw();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>Output:</p>
-<p>Inside Circle::draw() method.
-Inside Rectangle::draw() method.
-Inside Square::draw() method.</p>
-</blockquote>
-<h3>关键词：</h3>
-<p><em>complex creation logic, separate the creation responsibilities for better cohesion</em></p>
-<h3>总结</h3>
-<ol>
-<li>简单工厂模式(Simple Factory) 是对GoF中工厂模式的简化，二者不是同一模式</li>
-<li>工厂模式隐藏了创建细节，特别是<strong>复杂的创建</strong>过程</li>
-</ol>
-<h2>Singleton (单例模式)</h2>
-<h3>类图：</h3>
-<p><img src="/2018/11/10/设计模式总结/singleton.png" alt="Singleton Pattern Diagram"></p>
-<h3>代码示例：</h3>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 以 &#123;<span class="doctag">@link</span> ShapeFactory&#125; 为例</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonShapeFactory</span> <span class="keyword">extends</span> <span class="title">ShapeFactory</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * NOTE：</span></span><br><span class="line"><span class="comment">     * 该变量为 private static</span></span><br><span class="line"><span class="comment">     * 用于内部实例化该类</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> SingletonShapeFactory instance = <span class="keyword">new</span> SingletonShapeFactory();</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * NOTE：</span></span><br><span class="line"><span class="comment">     * 构造函数访问符一定为 private</span></span><br><span class="line"><span class="comment">     * 目的是阻止外界访问，阻止外界实例化</span></span><br><span class="line"><span class="comment">     * 这样该类在整个程序中只有一个实例化过的对象</span></span><br><span class="line"><span class="comment">     * 即 instance</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">SingletonShapeFactory</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// do sth...</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 提供 static 方法，为外界提供访问入口</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 唯一的 instance</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingletonShapeFactory <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 单例模式的变种之一</span></span><br><span class="line"><span class="comment">     * 1. Lazy initialization</span></span><br><span class="line"><span class="comment">     * instance初始值为 null</span></span><br><span class="line"><span class="comment">     * 即 instance 只在需要时被实例化</span></span><br><span class="line"><span class="comment">     * 2. 使用 synchronized 修饰</span></span><br><span class="line"><span class="comment">     * 防止多线程并发访问时造成实例化多个 instance</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> SingletonShapeFactory <span class="title">getInstance2</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>)</span><br><span class="line">            instance = <span class="keyword">new</span> SingletonShapeFactory();</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3>关键词：</h3>
-<p><em>one instance of a class is allowed, Objects need a global and single point of access</em></p>
-<h3>总结</h3>
-<p><strong>要点：</strong></p>
-<ol>
-<li>private constructor</li>
-<li>static instance and getter</li>
-<li>在class diagram或sequence diagram中类名右上角标注1</li>
-</ol>
-<p><img src="/2018/11/10/设计模式总结/1541753510666.png" alt="1541753510666"></p>
-<p><strong>思考：</strong></p>
-<ol>
-<li>如果<code>getInstance()</code>方法替换为以下代码行不行；</li>
-</ol>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingletonShapeFactory <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 同样保证了外界无法 new 另外的对象</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> SingletonShapeFactory();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<ol>
-<li>
-<p>Why not aren’t all Singleton service methods <code>static</code>?</p>
-<p><code>static</code> 方法不能被<code>Override</code>，不是虚方法，所以无法实现多态(not polymorphic)</p>
-</li>
-</ol>
-<h2>Strategy (策略模式)</h2>
-<h3>类图：</h3>
-<p><img src="/2018/11/10/设计模式总结/1541821696843.png" alt="Strategy Pattern Diagram"></p>
-<h3>总结</h3>
-<p><strong>要点：</strong></p>
-<ol>
-<li>
-<p>使用哪种策略的判断条件不尽相同，自定义</p>
-<ol>
-<li>
-<p>即，Lecture Note中将 Context Object <code>Sale</code>作为参数传入<code>ISalePricingStrategy</code>中不是<strong>唯一/必须</strong>的</p>
-<p><img src="/2018/11/10/设计模式总结/1541754654574.png" alt="1541754654574"></p>
-</li>
-</ol>
-</li>
-<li>
-<p>执行策略模式的方法一般是将策略接口作为参数传入，例如：</p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">executeStrategy</span><span class="params">(IStrategy stragtegy, <span class="keyword">int</span> num1, <span class="keyword">int</span> num2,...)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> strategy.doOperation(num1, num2,...);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-</li>
-<li>
-<p>策略模式视不同情况执行不同策略，而不是 <em>同时</em> 执行 <em>所有</em> 策略，所以不一定要有 if...else...或switch...case...</p>
-</li>
-</ol>
-<h2>Composite (组合模式)</h2>
-<h3>类图：</h3>
-<p><img src="/2018/11/10/设计模式总结/1541823472361.png" alt="Composite Pattern Diagram"></p>
-<h3>代码示例：</h3>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Pricing Strategy 接口</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ISalePricingStrategy</span> </span>&#123;</span><br><span class="line">    <span class="function">Money <span class="title">getTotal</span><span class="params">(SaleContext saleContext)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 普通策略</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AbsoluteDiscountOverThresholdPricingStrategy</span> <span class="keyword">implements</span> <span class="title">ISalePricingStrategy</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Money discount, threshold;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AbsoluteDiscountOverThresholdPricingStrategy</span><span class="params">(Money discount, Money threshold)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.discount = discount;</span><br><span class="line">        <span class="keyword">this</span>.threshold = threshold;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Money <span class="title">getTotal</span><span class="params">(SaleContext saleContext)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Money(discount.yuan * <span class="number">0.01</span> + threshold.yuan);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 普通策略</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PercentageDiscountPricingStrategy</span> <span class="keyword">implements</span> <span class="title">ISalePricingStrategy</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">double</span> percentage;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PercentageDiscountPricingStrategy</span><span class="params">(<span class="keyword">double</span> percentage)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.percentage = percentage;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Money <span class="title">getTotal</span><span class="params">(SaleContext saleContext)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Money(saleContext.getPreDiscountTotal() * percentage);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 策略模式 + 组合模式 (abstract class)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">CompositePricingStrategy</span> <span class="keyword">implements</span> <span class="title">ISalePricingStrategy</span> </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> List&lt;ISalePricingStrategy&gt; pricingStrategies = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(ISalePricingStrategy strategy)</span> </span>&#123;</span><br><span class="line">        pricingStrategies.add(strategy);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> Money <span class="title">getTotal</span><span class="params">(SaleContext saleContext)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 如果要求写代码</span></span><br><span class="line"><span class="comment"> * 注意 interface 用 implements //第三人称</span></span><br><span class="line"><span class="comment"> *      abstract class 用 extends //第三人称</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CompositeBestForCustomerPricingStrategy</span> <span class="keyword">extends</span> <span class="title">CompositePricingStrategy</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Money <span class="title">getTotal</span><span class="params">(SaleContext saleContext)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">double</span> lowestTotal = Double.MAX_VALUE;</span><br><span class="line">        <span class="keyword">for</span> (ISalePricingStrategy strategy : pricingStrategies) &#123;</span><br><span class="line">            <span class="keyword">double</span> total = strategy.getTotal(saleContext).yuan;</span><br><span class="line">            lowestTotal = Math.min(total, lowestTotal);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Money(lowestTotal);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CompositeBestForStorePricingStrategy</span> <span class="keyword">extends</span> <span class="title">CompositePricingStrategy</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Money <span class="title">getTotal</span><span class="params">(SaleContext saleContext)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//<span class="doctag">TODO:</span> do sth...</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3>关键词：</h3>
-<p><em>group or composition</em></p>
-<h3>总结</h3>
-<p><img src="/2018/11/10/设计模式总结/1541760163905.png" alt="1541760163905"></p>
-<p><strong>要点：</strong></p>
-<ol>
-<li><code>CompositePricingStrategy</code> 可以是具体类，也可以是抽象类 (abstract class)</li>
-<li><code>Composite</code> class可以包含任意实现 <code>Component</code> 接口的类，包括自己</li>
-<li>在 <code>Composite</code> 的 <code>operation()</code> 中可以 <code>for...each</code> 执行所有子类 <code>operation()</code>，也可以筛选特定执行
-<ol>
-<li>在 <code>Composite</code> + <code>Strategy</code> 的模式中，谨防将 <code>CompositeStrategy</code> 写成 <code>Context</code> ，区别在于 <code>CompositeStrategy</code> 可组合<strong>部分</strong>也可以组合<strong>全部</strong>策略，而 <code>Context</code> 必须<strong>适用全部</strong>策略</li>
-</ol>
-</li>
-</ol>
-<h2>Façade (外观模式)</h2>
-<h3>类图：</h3>
-<p><img src="https://design-patterns.readthedocs.io/zh_CN/latest/_images/Facade.jpg" alt="Facade Pattern Diagram"></p>
-<h3>代码示例：</h3>
-<p><strong>Subsystem代码：</strong></p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CPU</span> </span>&#123;   </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startup</span><span class="params">()</span></span>&#123;  </span><br><span class="line">        System.out.println(<span class="string">"cpu startup!"</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">shutdown</span><span class="params">()</span></span>&#123;  </span><br><span class="line">        System.out.println(<span class="string">"cpu shutdown!"</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Memory</span> </span>&#123;    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startup</span><span class="params">()</span></span>&#123;  </span><br><span class="line">        System.out.println(<span class="string">"memory startup!"</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">turnoff</span><span class="params">()</span></span>&#123;  </span><br><span class="line">        System.out.println(<span class="string">"memory shutdown!"</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125; </span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Disk</span> </span>&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startup</span><span class="params">()</span></span>&#123;  </span><br><span class="line">        System.out.println(<span class="string">"disk startup!"</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">poweroff</span><span class="params">()</span></span>&#123;  </span><br><span class="line">        System.out.println(<span class="string">"disk shutdown!"</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Facade 代码：</strong></p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Computer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> CPU cpu;</span><br><span class="line">    <span class="keyword">private</span> Memory memory;</span><br><span class="line">    <span class="keyword">private</span> Disk disk;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Computer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        cpu = <span class="keyword">new</span> CPU();</span><br><span class="line">        memory = <span class="keyword">new</span> Memory();</span><br><span class="line">        disk = <span class="keyword">new</span> Disk();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startup</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"start the computer!"</span>);</span><br><span class="line">        cpu.startup();</span><br><span class="line">        memory.startup();</span><br><span class="line">        disk.startup();</span><br><span class="line">        System.out.println(<span class="string">"start computer finished!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">shutdown</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"begin to close the computer!"</span>);</span><br><span class="line">        cpu.shutdown();</span><br><span class="line">        memory.turnoff();</span><br><span class="line">        disk.poweroff();</span><br><span class="line">        System.out.println(<span class="string">"computer closed!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3>关键词：</h3>
-<p><em>common, unified interface, subsystem</em></p>
-<h3>总结</h3>
-<p>要点：</p>
-<ol>
-<li>
-<p>接口不是必需，因为不能要求subsystem中方法签名都必须相同</p>
-<p>如：<code>shutdown()</code> / <code>turnoff()</code> / <code>poweroff()</code></p>
-</li>
-<li>
-<p>该模式应用于将复杂的系统执行简化、隐藏细节</p>
-</li>
-</ol>
-<h2>Observer (aka Publish-Subscribe) (观察者模式)</h2>
-<h3>类图：</h3>
-<p><img src="/2018/11/10/设计模式总结/1541824090370.png" alt="Observer Pattern Diagram"></p>
-<h3>关键词：</h3>
-<p><em>subscriber or listener</em></p>
-<h3>总结</h3>
-<p>f<em>r</em>e<em>e</em>s<strong>t</strong>y<em>l</em>e</p>
-
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/11/10/设计模式总结/" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+         
+          <!--/noindex-->
         
       
     </div>
@@ -771,8 +579,7 @@ Inside Square::draw() method.</p>
 
       
         
-          
-            <h2>前言</h2>
+          <h2 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h2>
 <p>本文主要阐述以下观点：</p>
 <ol>
 <li>值类型与引用类型的定义与区别；</li>
@@ -781,82 +588,15 @@ Inside Square::draw() method.</p>
 <li>String类为什么是不可变的；</li>
 <li>怎样声明不可变对象（包括变量和类）；</li>
 </ol>
-<p>&lt;!-- more --&gt;</p>
-<h2>是什么？</h2>
-<p>在了解不可变对象（Immutable Objects）及可变对象（Mutable Objects）之前，我们需要知道内存中两种数据类型：值类型（value types）和引用类型（reference types）——</p>
-<p><strong>值类型</strong>数据存放在**栈（stack）**内，其值代表数据本身，存储在栈中分配的内存空间。</p>
-<p><strong>引用类型</strong>数据存放在<strong>堆（heap）<strong>内，其值代表的是所指向的</strong>地址</strong>，<strong>指向</strong>所要存储的值而不直接存储。</p>
-<p>例如：假设Person是一种<strong>值</strong>类型，House是一种<strong>引用</strong>类型，有以下变量：</p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Person 老王 = <span class="keyword">new</span> Person(); <span class="comment">//Person 是值类型</span></span><br><span class="line">Person 小王 = 老王；			<span class="comment">//小王是老王“克隆”出来的，一模一样；</span></span><br><span class="line">House 老王的家 = <span class="keyword">new</span> House();<span class="comment">//House 是引用类型</span></span><br><span class="line">House 小王的家 = 老王的家；	 <span class="comment">//小王和老王住在同一个家里；</span></span><br></pre></td></tr></table></figure></p>
-<p>那么基于此，假如有一天老王因某事败露而被打残，小王的安危并不会受此影响，即使他们有相同的样貌，因为他们是相互独立的个体；而老王家里置办了新的电视或惨遭洗劫，“小王的家”自然也会接受相同的改变，因为他们家的地址指向了同一条街道的同一个房间。</p>
-<p>在Java中，只有基本类型（Primitive Data Types）（即<code>byte</code>, <code>short</code>, <code>int</code>, <code>long</code>, <code>float</code>, <code>double</code>, <code>char</code>, <code>boolean</code>）是值类型，其他的数据类型都是引用类型，包括<code>String</code>，即对象（<code>Objects</code>）.</p>
-<p>而引用类型又分为不可变对象（Immutable Objects）和可变对象（Mutable Objects），可变对象即为上述提到的普通引用类型数据，如果两个变量指向同一地址时，其中一个的值改变了另一个值也同样改变，下面详细说一下对不可变对象的理解。</p>
-<h3>Immutable Objects</h3>
-<blockquote>
-<p>An object is considered <em>immutable</em> if its state cannot change after it is constructed.<a href="https://docs.oracle.com/javase/tutorial/essential/concurrency/immutable.html" target="_blank" rel="noopener">^1</a></p>
-</blockquote>
-<p>即：不可变对象在构造（声明并且初始化后）之后，其<strong>状态</strong>不可再改变。其中<code>String</code>类和基本类型的Wrapper Class （<code>Integer</code>, <code>Double</code>, etc.）属于典型的不可变类。这里需要注意：&lt;u&gt;状态不可变&lt;/u&gt;是指对象实例的<strong>值</strong>不可变而不是指向该实例的<strong>引用</strong>的不可变，例如：</p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String king= <span class="string">"John Snow"</span>;</span><br><span class="line">king = <span class="string">"others"</span>;</span><br></pre></td></tr></table></figure></p>
-<p>上述所示好像<code>String</code> 的值发生了改变，<s>说好的String 一生不变到白头，它却偷偷焗了油</s>；其实，此处的不可变是指&quot;John Snow&quot;这个内存中的值没有发生变化，只是<code>king</code>不再<strong>指向</strong>它了，而换成了&quot;others&quot;，那么&quot;John Snow&quot;去哪儿了？~~长城之外还是龙妈闺房？~~很可惜，都不是，他被留在了内存里，等待GC（Garbage Collection，垃圾收集，垃圾回收）来回收他。</p>
-<p>那这样做有什么好处？白白制造出了内存垃圾，king到头来还是易主了？</p>
-<h2>为什么？</h2>
-<p>首先，我们知道<code>String</code>是不可变类，而<code>StringBuilder</code>是可变的，所以先看代码：</p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">    String John = <span class="string">"John"</span>;</span><br><span class="line">    StringBuilder John2 = <span class="keyword">new</span> StringBuilder(<span class="string">"John"</span>);</span><br><span class="line">    System.out.println(<span class="string">"What's your name?\t"</span> + John);</span><br><span class="line">    System.out.println(<span class="string">"Your full name please.\t"</span> + getFullName(John));</span><br><span class="line">    System.out.println(<span class="string">"What's your first name?\t"</span> + John);</span><br><span class="line">    System.out.println();</span><br><span class="line">    System.out.println(<span class="string">"What's your name?\t"</span> + John2);</span><br><span class="line">    System.out.println(<span class="string">"Your full name please.\t"</span> + getFullName(John2));</span><br><span class="line">    System.out.println(<span class="string">"What's your first name?\t"</span> + John2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">getFullName</span><span class="params">(String fstName)</span> </span>&#123;</span><br><span class="line">    fstName += <span class="string">" Snow"</span>;</span><br><span class="line">    <span class="keyword">return</span> fstName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> StringBuilder <span class="title">getFullName</span><span class="params">(StringBuilder fstName)</span> </span>&#123;</span><br><span class="line">    fstName.append(<span class="string">" Snow"</span>);</span><br><span class="line">    <span class="keyword">return</span> fstName;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>执行结果如下：</p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// What's your name?	John</span></span><br><span class="line"><span class="comment">// Your full name please.	John Snow</span></span><br><span class="line"><span class="comment">// What's your first name?	John			//Value has NOT changed.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// What's your name?	John</span></span><br><span class="line"><span class="comment">// Your full name please.	John Snow</span></span><br><span class="line"><span class="comment">// What's your first name?	John Snow		//Value has changed.</span></span><br></pre></td></tr></table></figure></p>
-<p>上述所示，可变类<code>StringBuilder</code>的值改变了，而这常常不是程序员想要或主动要做的，所以不可变类的一大优点是保证了<strong>线程安全，不会出现同步问题和隐私泄漏（Privacy Leaks）</strong>。当然，这种隐患还可以通过保护性拷贝（Defensive Copy）或深度复制（Deep Copy）来规避，不可变类同样可靠，但代码简单。</p>
-<p>除此之外，不可变类还<strong>提高了拷贝的效率</strong>，因为复制时不再需要复制该对象的值，只需要复制其地址（指针）即可，而这只需要很小的内存空间，同时，对其他引用该对象的变量不造成影响。<a href="http://zhiheng.me/124#comment-195" target="_blank" rel="noopener">^2</a></p>
-<p>由开始时&quot;John Snow&quot;被“雪藏”的例子可以看出，过多的不可变类会造成很多内存垃圾，一定程度上增加了程序的运行成本，但也有不同看法认为：</p>
-<blockquote>
-<p>程序员往往不愿使用不可变对象，因为他们担心创建一个新的对象要比更新对象的成本要高。实际上这种开销常常被过分高估，而且使用不可变对象所带来的一些效率提升也抵消了这种开销。例如：使用不可变对象降低了垃圾回收所产生的额外开销，也减少了用来确保使用可变对象不出现并发错误的一些额外代码。<a href="https://waylau.gitbooks.io/essential-java/docs/concurrency-Immutable%20Objects.html#" target="_blank" rel="noopener">^3</a></p>
-</blockquote>
-<p>所以一般更多地建议在代码中合理运用不可变类。</p>
-<h2>怎么做？</h2>
-<p>局部变量、成员变量和类都可以声明为不可变对象。局部变量、成品变量操作较为简单，归为一类，不可变类单说。</p>
-<h3>不可变变量</h3>
-<p>形式：</p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(vis) <span class="keyword">final</span> type <span class="keyword">var</span> = value;</span><br></pre></td></tr></table></figure></p>
-<p>例如：</p>
-<p>局部变量：<code>final String king = &quot;John Snow&quot;;</code></p>
-<p>成员变量：<code>private final String king = &quot;John Snow&quot;;</code></p>
-<p>特殊地，常量以以下形式声明：</p>
-<p><code>public static final String KING = &quot;John Snow&quot;;</code></p>
-<p>特别需要注意数组（Array）等类型的不可变性：</p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> String[] week = <span class="keyword">new</span> String[]&#123;<span class="string">"Sunday"</span>, <span class="string">"Monday"</span>, <span class="string">"Tuesday"</span>, <span class="string">"Wednesday"</span>...&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Week = new String[]&#123;"Sunday", "Sunday", "Sunday", "Sunday"...&#125;;    //invalid</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; week.length; i++) &#123;</span><br><span class="line">	week[i] = <span class="string">"Sunday"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">System.out.println(Arrays.toString(week));</span><br></pre></td></tr></table></figure></p>
-<p>执行结果如下：</p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//[Sunday, Sunday, Sunday, Sunday, Sunday, Sunday, Sunday]</span></span><br></pre></td></tr></table></figure></p>
-<p>上述代码中，将数组变量week置为不可变，那么当我们要将一周的每一天都赋值为星期天时，它如约提示&quot;Cannot assign a value to final variable&quot; 让我们断了念想，但转身一个for 循环就实现了，在使用中要注意这种情况。</p>
-<h3>不可变类</h3>
-<p>不可变类的声明要麻烦很多，不单单是声明为&quot;final&quot;就可以的，而且，&quot;final&quot;在不可变类中的作用是<strong>使该类不可被继承</strong>，而和使之不可变没有必然联系。主要步骤如下：</p>
-<ol>
-<li>保证所有成员变量必须私有（<code>private</code>），并且用<code>final</code>修饰</li>
-<li>不提供改变成员变量的方法，包括<code>setter</code></li>
-<li>通过构造器初始化所有成员，进行深拷贝(deep copy)，特别是对非基本类型的成员，即引用类型</li>
-<li>类添加<code>final</code>修饰符，保证类不被继承</li>
-</ol>
-<p>看一下Java自己源代码中不可变类（<code>String</code>）是如何定义的：</p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">String</span></span></span><br><span class="line"><span class="class">    <span class="keyword">implements</span> <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span>, <span class="title">Comparable</span>&lt;<span class="title">String</span>&gt;, <span class="title">CharSequence</span> </span>&#123;</span><br><span class="line">    <span class="comment">/** The value is used for character storage. */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">char</span> value[];</span><br><span class="line">    <span class="comment">/** Cache the hash code for the string */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> hash; <span class="comment">// Default to 0</span></span><br><span class="line">    ...</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
-<ol>
-<li>
-<p><code>String</code> 类中基本符合以上声明的主要步骤；</p>
-</li>
-<li>
-<p>可以看到<code>String</code>其实是用<code>char[]</code>存储数据的，但它是<code>final</code> 并且<code>private</code>的，所以避免了像<code>week</code>数组那样被改写的风险；</p>
-</li>
-<li>
-<p>有个hash变量没有<code>final</code>，这里利用了其他的机制来保证其不可变，这里不做解释，可以参考：</p>
-<p><a href="https://www.zhihu.com/question/20618891/answer/15653033" target="_blank" rel="noopener">如何理解String类型值的不可变？ - Halty的回答 - 知乎</a></p>
-</li>
-</ol>
-<p>Java中同样有没有将类声明为<code>final</code>的不可变类（<code>BigDecimal</code>和<code>BigInteger</code>），如下代码：</p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BigDecimal</span> <span class="keyword">extends</span> <span class="title">Number</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">BigDecimal</span>&gt; </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * The unscaled value of this BigDecimal, as returned by &#123;<span class="doctag">@link</span></span></span><br><span class="line"><span class="comment">     * #unscaledValue&#125;.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@serial</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@see</span> #unscaledValue</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> BigInteger intVal;</span><br></pre></td></tr></table></figure></p>
-<p>但同样采取了其他机制来保证其不可变性。</p>
-<h2>总结</h2>
-<p>本文简单介绍了Immutable Objects（不可变对象）和Mutable Objects（可变对象）的一些特点，合理运用不可变对象会使代码整洁而高效，特别是在事件、多线程等数据安全性要求高的情景下，在实践中可以摸索出适合自己的代码风格。</p>
-<hr>
-<h2>参考文献</h2>
-
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/11/10/Immutable和Mutable-Objects-in-Java/" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+         
+          <!--/noindex-->
         
       
     </div>
@@ -1023,107 +763,16 @@ Inside Square::draw() method.</p>
 
       
         
+          <p>​	作为面向对象语言，JAVA同样具有封装、继承和多态的基本特征，其中抽象类和接口很好地体现了这一点，因为结构相似但又有实际的不同，所以这里放在一起说。</p>
+          <!--noindex-->
           
-            <p>​	作为面向对象语言，JAVA同样具有封装、继承和多态的基本特征，其中抽象类和接口很好地体现了这一点，因为结构相似但又有实际的不同，所以这里放在一起说。</p>
-<p>&lt;!-- more --&gt;</p>
-<p>​	假如我们要写一个Zoo的project，有多种动物的类Dog, Cat, Parrot等，它们都有eat()的方法，我们会自然想到建造一个Animal的类作为父类存放这些动物共有的方法及属性，如下：</p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">(String food)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"I am eating "</span> + food);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">----------------------------------------------------</span><br><span class="line">  应用时：</span><br><span class="line">  Animal Snoopy=<span class="keyword">new</span> Dog();</span><br><span class="line">  Snoopy.eat(<span class="string">"Cookies"</span>);</span><br></pre></td></tr></table></figure></p>
-<p>我们发现即使不用抽象类也可以很好地完成任务，那么<strong>为什么要用抽象类而不用普通类呢？</strong></p>
-<p>先从<strong>抽象方法</strong>讲起：</p>
-<hr>
-<h2>抽象方法</h2>
-<p>抽象方法指用“abstract” 修饰的方法，该方法只有声明，没有实现的方法体，它的具体实现交给子类来确定，可以看出抽象方法是生而为“继承”的，例如在Animal中只指定eat()方法，具体怎么吃让小狗小猫去决定：</p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">(String food)</span></span>;</span><br></pre></td></tr></table></figure></p>
-<p>使用抽象方法有三点要求：</p>
-<ul>
-<li>如果一个类包含抽象方法，那么该类<strong>必须</strong>是抽象类。</li>
-<li>任何子类<strong>必须</strong>重写父类的抽象方法，<strong>或者声明自身为抽象类</strong>。</li>
-<li><strong>构造方法及静态方法</strong>（类方法，用static修饰）不能声明为抽象方法。</li>
-</ul>
-<p>那么问题的答案很明了了，当Animal中有抽象方法时，那么使用普通类就不行了，必须使用抽象类，那么<strong>类里没有抽象方法，可不可以声明为抽象类呢？有何作用？</strong></p>
-<hr>
-<h2>抽象类</h2>
-<p>抽象类是对**对象（类）**的抽象，和抽象方法一样，声明抽象类时只需要使用修饰符“abstract” 就可以：</p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">(String food)</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<ol>
-<li>
-<p>抽象方法必须包含在抽象类里，但<strong>抽象类里不一定要有抽象方法</strong></p>
-<p>先回答前一个小问题，没有抽象方法，类一样可以声明为抽象类，和普通类除了修饰符其余写法一样</p>
-</li>
-<li>
-<p>抽象类只能被继承，不可以实例化</p>
-<p>很好理解，抽象类作为抽象出来的“模具”存在，自然不能“实例化”，只有抽象类的<strong>非抽象子类</strong>可以创建对象。第二个小问题答案也就有了，没有抽象方法的抽象类的作用是：<strong>强制子类去继承该类，并强制不允许被实例化</strong>。基于此，人们通常在设计阶段决定要不要设计抽象类。</p>
-</li>
-<li>
-<p>抽象类可以有无数子类，但一个子类<strong>只能继承一个抽象类</strong></p>
-<p>这个和普通类相同，子类只允许有一个父类。<em>注意区分接口：子类可以实现多个接口。</em></p>
-</li>
-<li>
-<p>抽象类可以继承别的抽象类，可以实现别的接口</p>
-</li>
-<li>
-<p>抽象类可以有构造函数，只是是为子类提供的</p>
-<p>抽象类内构造函数是要求子函数必须实现的，所以在子类的构造函数中<strong>必须</strong>加一句</p>
-<p><code>super();</code></p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Dog</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">(String food)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//do something</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>​</p>
-</li>
-</ol>
-<p>我们了解到还有一种不能实例化也没有方法具体实现的机制，接口，那和抽象类有什么区别？</p>
-<hr>
-<h2>接口</h2>
-<p>接口是对对象行为的抽象，通常以interface来声明，是抽象方法的集合。<strong>接口并不是类</strong>，编写接口的方式和类很相似，但是它们属于不同的概念。类描述对象的属性和方法。接口则包含类要实现的方法。</p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Movable</span> </span>&#123;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">/*public static final*/</span> String name = <span class="keyword">null</span>; <span class="comment">//这里省略public static final，因为接口里变量</span></span><br><span class="line">  											<span class="comment">//默认都是常量，而且不能private</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/*public abstract*/</span> <span class="function"><span class="keyword">void</span> <span class="title">walk</span><span class="params">()</span></span>; <span class="comment">//这里省略public abstract，因为接口里方法默认都是抽象的，符合</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;					   <span class="comment">//抽象方法的一切特点</span></span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<ol>
-<li>
-<p>如上图所示，接口内只能声明public常量和抽象方法</p>
-<p>public static final 和 public abstract 可以省略</p>
-</li>
-<li>
-<p>接口内没有<strong>构造函数</strong></p>
-<p>因为接口<strong>不能实例化</strong>，而且接口不是类，只是一类动作的集合，所以不存在“<strong>构造</strong>”的概念</p>
-</li>
-<li>
-<p>接口不是被类<strong>继承</strong>(extends)了，而是要被类<strong>实现</strong>(implements)。</p>
-<p>准确地说，接口不是类，所以不能被继承，它是方法的集合，可以被实现。（用法相似，称呼不同）</p>
-</li>
-<li>
-<p>子类可以实现<strong>多</strong>个接口</p>
-<p>这一点是与其他类最明显的差异，普通类及抽象类都只能<strong>单一继承</strong></p>
-</li>
-<li>
-<p>接口可以继承别的<strong>接口</strong>，但不能继承<strong>类</strong></p>
-<p>​</p>
-</li>
-</ol>
-<hr>
-<h2>抽象类与接口的区别</h2>
-<ol>
-<li>
-<p>&lt;u&gt;抽象类是对<strong>对象</strong>的抽象；接口是对<strong>行为</strong>的抽象&lt;/u&gt;</p>
-<p>虽然两者在使用的相似，甚至可以互换而不出现bug，但两者设计的初衷是不同的</p>
-<ol>
-<li>抽象类是<strong>一类事物</strong>，像Animal对Dog；</li>
-<li>接口是<strong>一类动作</strong>，像Move对walk()；</li>
-</ol>
-</li>
-<li>
-<p>&lt;u&gt;抽象类单一继承；接口可以多“继承”（<em>准确地应该是__实现__</em> ）&lt;/u&gt;</p>
-</li>
-<li>
-<p>抽象类可以像普通类一样声明各类字段，各类方法；接口只能声明常量和抽象方法</p>
-<ol>
-<li>抽象类可以实现包括抽象方法的其他任意方法；</li>
-<li>接口只有常量和<s>抽象方法</s>（<em>在最新的JAVA8中情况有所改变，本篇只点不讲</em>）</li>
-<li>接口内不能有构造函数而抽象类可以有；</li>
-</ol>
-</li>
-<li>
-<p>基本区别就是这些，可以在日后的实践中慢慢掌握，目前来说必须掌握的是1.2.两条。</p>
-</li>
-</ol>
-
-          
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/10/11/浅谈JAVA抽象类及接口/" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+         
+          <!--/noindex-->
         
       
     </div>
