@@ -112,18 +112,18 @@
 
 
 
-  <meta name="description" content="​    作为面向对象语言，JAVA同样具有封装、继承和多态的基本特征，其中抽象类和接口很好地体现了这一点，因为结构相似但又有实际的不同，所以这里放在一起说。">
+  <meta name="description" content="​	作为面向对象语言，JAVA同样具有封装、继承和多态的基本特征，其中抽象类和接口很好地体现了这一点，因为结构相似但又有实际的不同，所以这里放在一起说。 &amp;lt;!-- more --&amp;gt; ​	假如我们要写一个Zoo的project，有多种动物的类Dog, Cat, Parrot等，它们都有eat()的方法，我们会自然想到建造一个Animal的类作为父类存放这些动物共有的方法及属性，如下： 1">
 <meta name="keywords" content="Java,Abstract Class,Interface">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浅谈JAVA抽象类及接口">
 <meta property="og:url" content="https://capsm.github.io/2017/10/11/浅谈JAVA抽象类及接口/index.html">
 <meta property="og:site_name" content="capsM&#39;s Notebook">
-<meta property="og:description" content="​    作为面向对象语言，JAVA同样具有封装、继承和多态的基本特征，其中抽象类和接口很好地体现了这一点，因为结构相似但又有实际的不同，所以这里放在一起说。">
+<meta property="og:description" content="​	作为面向对象语言，JAVA同样具有封装、继承和多态的基本特征，其中抽象类和接口很好地体现了这一点，因为结构相似但又有实际的不同，所以这里放在一起说。 &amp;lt;!-- more --&amp;gt; ​	假如我们要写一个Zoo的project，有多种动物的类Dog, Cat, Parrot等，它们都有eat()的方法，我们会自然想到建造一个Animal的类作为父类存放这些动物共有的方法及属性，如下： 1">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-11-10T23:33:31.891Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈JAVA抽象类及接口">
-<meta name="twitter:description" content="​    作为面向对象语言，JAVA同样具有封装、继承和多态的基本特征，其中抽象类和接口很好地体现了这一点，因为结构相似但又有实际的不同，所以这里放在一起说。">
+<meta name="twitter:description" content="​	作为面向对象语言，JAVA同样具有封装、继承和多态的基本特征，其中抽象类和接口很好地体现了这一点，因为结构相似但又有实际的不同，所以这里放在一起说。 &amp;lt;!-- more --&amp;gt; ​	假如我们要写一个Zoo的project，有多种动物的类Dog, Cat, Parrot等，它们都有eat()的方法，我们会自然想到建造一个Animal的类作为父类存放这些动物共有的方法及属性，如下： 1">
 
 
 
@@ -413,15 +413,16 @@
       
 
       
-        <p>​    作为面向对象语言，JAVA同样具有封装、继承和多态的基本特征，其中抽象类和接口很好地体现了这一点，因为结构相似但又有实际的不同，所以这里放在一起说。</p>
-<a id="more"></a>
-<p>​    假如我们要写一个Zoo的project，有多种动物的类Dog, Cat, Parrot等，它们都有eat()的方法，我们会自然想到建造一个Animal的类作为父类存放这些动物共有的方法及属性，如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">(String food)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"I am eating "</span> + food);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">----------------------------------------------------</span><br><span class="line">  应用时：</span><br><span class="line">  Animal Snoopy=<span class="keyword">new</span> Dog();</span><br><span class="line">  Snoopy.eat(<span class="string">"Cookies"</span>);</span><br></pre></td></tr></table></figure>
+        <p>​	作为面向对象语言，JAVA同样具有封装、继承和多态的基本特征，其中抽象类和接口很好地体现了这一点，因为结构相似但又有实际的不同，所以这里放在一起说。</p>
+<p>&lt;!-- more --&gt;</p>
+<p>​	假如我们要写一个Zoo的project，有多种动物的类Dog, Cat, Parrot等，它们都有eat()的方法，我们会自然想到建造一个Animal的类作为父类存放这些动物共有的方法及属性，如下：</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">(String food)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"I am eating "</span> + food);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">----------------------------------------------------</span><br><span class="line">  应用时：</span><br><span class="line">  Animal Snoopy=<span class="keyword">new</span> Dog();</span><br><span class="line">  Snoopy.eat(<span class="string">"Cookies"</span>);</span><br></pre></td></tr></table></figure></p>
 <p>我们发现即使不用抽象类也可以很好地完成任务，那么<strong>为什么要用抽象类而不用普通类呢？</strong></p>
 <p>先从<strong>抽象方法</strong>讲起：</p>
 <hr>
-<h2 id="抽象方法"><a href="#抽象方法" class="headerlink" title="抽象方法"></a>抽象方法</h2><p>抽象方法指用“abstract” 修饰的方法，该方法只有声明，没有实现的方法体，它的具体实现交给子类来确定，可以看出抽象方法是生而为“继承”的，例如在Animal中只指定eat()方法，具体怎么吃让小狗小猫去决定：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">(String food)</span></span>;</span><br></pre></td></tr></table></figure>
+<h2>抽象方法</h2>
+<p>抽象方法指用“abstract” 修饰的方法，该方法只有声明，没有实现的方法体，它的具体实现交给子类来确定，可以看出抽象方法是生而为“继承”的，例如在Animal中只指定eat()方法，具体怎么吃让小狗小猫去决定：</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">(String food)</span></span>;</span><br></pre></td></tr></table></figure></p>
 <p>使用抽象方法有三点要求：</p>
 <ul>
 <li>如果一个类包含抽象方法，那么该类<strong>必须</strong>是抽象类。</li>
@@ -430,67 +431,84 @@
 </ul>
 <p>那么问题的答案很明了了，当Animal中有抽象方法时，那么使用普通类就不行了，必须使用抽象类，那么<strong>类里没有抽象方法，可不可以声明为抽象类呢？有何作用？</strong></p>
 <hr>
-<h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><p>抽象类是对<strong>对象（类）</strong>的抽象，和抽象方法一样，声明抽象类时只需要使用修饰符“abstract” 就可以：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">(String food)</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2>抽象类</h2>
+<p>抽象类是对**对象（类）**的抽象，和抽象方法一样，声明抽象类时只需要使用修饰符“abstract” 就可以：</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">(String food)</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <ol>
-<li><p>抽象方法必须包含在抽象类里，但<strong>抽象类里不一定要有抽象方法</strong></p>
+<li>
+<p>抽象方法必须包含在抽象类里，但<strong>抽象类里不一定要有抽象方法</strong></p>
 <p>先回答前一个小问题，没有抽象方法，类一样可以声明为抽象类，和普通类除了修饰符其余写法一样</p>
 </li>
-<li><p>抽象类只能被继承，不可以实例化</p>
+<li>
+<p>抽象类只能被继承，不可以实例化</p>
 <p>很好理解，抽象类作为抽象出来的“模具”存在，自然不能“实例化”，只有抽象类的<strong>非抽象子类</strong>可以创建对象。第二个小问题答案也就有了，没有抽象方法的抽象类的作用是：<strong>强制子类去继承该类，并强制不允许被实例化</strong>。基于此，人们通常在设计阶段决定要不要设计抽象类。</p>
 </li>
-<li><p>抽象类可以有无数子类，但一个子类<strong>只能继承一个抽象类</strong></p>
+<li>
+<p>抽象类可以有无数子类，但一个子类<strong>只能继承一个抽象类</strong></p>
 <p>这个和普通类相同，子类只允许有一个父类。<em>注意区分接口：子类可以实现多个接口。</em></p>
 </li>
-<li><p>抽象类可以继承别的抽象类，可以实现别的接口</p>
+<li>
+<p>抽象类可以继承别的抽象类，可以实现别的接口</p>
 </li>
-<li><p>抽象类可以有构造函数，只是是为子类提供的</p>
+<li>
+<p>抽象类可以有构造函数，只是是为子类提供的</p>
 <p>抽象类内构造函数是要求子函数必须实现的，所以在子类的构造函数中<strong>必须</strong>加一句</p>
 <p><code>super();</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Dog</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">(String food)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//do something</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Dog</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">(String food)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//do something</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>​</p>
 </li>
 </ol>
 <p>我们了解到还有一种不能实例化也没有方法具体实现的机制，接口，那和抽象类有什么区别？</p>
 <hr>
-<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p>接口是对对象行为的抽象，通常以interface来声明，是抽象方法的集合。<strong>接口并不是类</strong>，编写接口的方式和类很相似，但是它们属于不同的概念。类描述对象的属性和方法。接口则包含类要实现的方法。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Movable</span> </span>&#123;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">/*public static final*/</span> String name = <span class="keyword">null</span>; <span class="comment">//这里省略public static final，因为接口里变量</span></span><br><span class="line">  											<span class="comment">//默认都是常量，而且不能private</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/*public abstract*/</span> <span class="function"><span class="keyword">void</span> <span class="title">walk</span><span class="params">()</span></span>; <span class="comment">//这里省略public abstract，因为接口里方法默认都是抽象的，符合</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;					   <span class="comment">//抽象方法的一切特点</span></span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2>接口</h2>
+<p>接口是对对象行为的抽象，通常以interface来声明，是抽象方法的集合。<strong>接口并不是类</strong>，编写接口的方式和类很相似，但是它们属于不同的概念。类描述对象的属性和方法。接口则包含类要实现的方法。</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Movable</span> </span>&#123;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">/*public static final*/</span> String name = <span class="keyword">null</span>; <span class="comment">//这里省略public static final，因为接口里变量</span></span><br><span class="line">  											<span class="comment">//默认都是常量，而且不能private</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/*public abstract*/</span> <span class="function"><span class="keyword">void</span> <span class="title">walk</span><span class="params">()</span></span>; <span class="comment">//这里省略public abstract，因为接口里方法默认都是抽象的，符合</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;					   <span class="comment">//抽象方法的一切特点</span></span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <ol>
-<li><p>如上图所示，接口内只能声明public常量和抽象方法</p>
+<li>
+<p>如上图所示，接口内只能声明public常量和抽象方法</p>
 <p>public static final 和 public abstract 可以省略</p>
 </li>
-<li><p>接口内没有<strong>构造函数</strong></p>
+<li>
+<p>接口内没有<strong>构造函数</strong></p>
 <p>因为接口<strong>不能实例化</strong>，而且接口不是类，只是一类动作的集合，所以不存在“<strong>构造</strong>”的概念</p>
 </li>
-<li><p>接口不是被类<strong>继承</strong>(extends)了，而是要被类<strong>实现</strong>(implements)。</p>
+<li>
+<p>接口不是被类<strong>继承</strong>(extends)了，而是要被类<strong>实现</strong>(implements)。</p>
 <p>准确地说，接口不是类，所以不能被继承，它是方法的集合，可以被实现。（用法相似，称呼不同）</p>
 </li>
-<li><p>子类可以实现<strong>多</strong>个接口</p>
+<li>
+<p>子类可以实现<strong>多</strong>个接口</p>
 <p>这一点是与其他类最明显的差异，普通类及抽象类都只能<strong>单一继承</strong></p>
 </li>
-<li><p>接口可以继承别的<strong>接口</strong>，但不能继承<strong>类</strong></p>
+<li>
+<p>接口可以继承别的<strong>接口</strong>，但不能继承<strong>类</strong></p>
 <p>​</p>
 </li>
 </ol>
 <hr>
-<h2 id="抽象类与接口的区别"><a href="#抽象类与接口的区别" class="headerlink" title="抽象类与接口的区别"></a>抽象类与接口的区别</h2><ol>
-<li><p><u>抽象类是对<strong>对象</strong>的抽象；接口是对<strong>行为</strong>的抽象</u></p>
+<h2>抽象类与接口的区别</h2>
+<ol>
+<li>
+<p>&lt;u&gt;抽象类是对<strong>对象</strong>的抽象；接口是对<strong>行为</strong>的抽象&lt;/u&gt;</p>
 <p>虽然两者在使用的相似，甚至可以互换而不出现bug，但两者设计的初衷是不同的</p>
 <ol>
 <li>抽象类是<strong>一类事物</strong>，像Animal对Dog；</li>
 <li>接口是<strong>一类动作</strong>，像Move对walk()；</li>
 </ol>
 </li>
-<li><p><u>抽象类单一继承；接口可以多“继承”（<em>准确地应该是<strong>实现</strong></em> ）</u></p>
+<li>
+<p>&lt;u&gt;抽象类单一继承；接口可以多“继承”（<em>准确地应该是__实现__</em> ）&lt;/u&gt;</p>
 </li>
-<li><p>抽象类可以像普通类一样声明各类字段，各类方法；接口只能声明常量和抽象方法</p>
+<li>
+<p>抽象类可以像普通类一样声明各类字段，各类方法；接口只能声明常量和抽象方法</p>
 <ol>
 <li>抽象类可以实现包括抽象方法的其他任意方法；</li>
-<li>接口只有常量和<del>抽象方法</del>（<em>在最新的JAVA8中情况有所改变，本篇只点不讲</em>）</li>
+<li>接口只有常量和<s>抽象方法</s>（<em>在最新的JAVA8中情况有所改变，本篇只点不讲</em>）</li>
 <li>接口内不能有构造函数而抽象类可以有；</li>
 </ol>
 </li>
-<li><p>基本区别就是这些，可以在日后的实践中慢慢掌握，目前来说必须掌握的是1.2.两条。</p>
+<li>
+<p>基本区别就是这些，可以在日后的实践中慢慢掌握，目前来说必须掌握的是1.2.两条。</p>
 </li>
 </ol>
 
@@ -705,7 +723,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#抽象方法"><span class="nav-number">1.</span> <span class="nav-text">抽象方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抽象类"><span class="nav-number">2.</span> <span class="nav-text">抽象类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口"><span class="nav-number">3.</span> <span class="nav-text">接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抽象类与接口的区别"><span class="nav-number">4.</span> <span class="nav-text">抽象类与接口的区别</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">抽象方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">抽象类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">抽象类与接口的区别</span></a></li></ol></div>
             
 
           </div>
