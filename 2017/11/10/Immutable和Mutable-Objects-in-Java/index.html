@@ -114,20 +114,25 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="capsM&#39;s Notebook">
-<meta property="og:url" content="https://capsm.github.io/index.html">
+  <meta name="description" content="¶前言 本文主要阐述以下观点：  值类型与引用类型的定义与区别； 不可变对象与可变对象的定义与区别； 不可变对象的优点与缺点； String类为什么是不可变的； 怎样声明不可变对象（包括变量和类）；">
+<meta name="keywords" content="Java,Immutable,Mutable">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Immutable和Mutable Objects in Java">
+<meta property="og:url" content="https://capsm.github.io/2017/11/10/Immutable和Mutable-Objects-in-Java/index.html">
 <meta property="og:site_name" content="capsM&#39;s Notebook">
+<meta property="og:description" content="¶前言 本文主要阐述以下观点：  值类型与引用类型的定义与区别； 不可变对象与可变对象的定义与区别； 不可变对象的优点与缺点； String类为什么是不可变的； 怎样声明不可变对象（包括变量和类）；">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-11-11T02:59:13.667Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="capsM&#39;s Notebook">
+<meta name="twitter:title" content="Immutable和Mutable Objects in Java">
+<meta name="twitter:description" content="¶前言 本文主要阐述以下观点：  值类型与引用类型的定义与区别； 不可变对象与可变对象的定义与区别； 不可变对象的优点与缺点； String类为什么是不可变的； 怎样声明不可变对象（包括变量和类）；">
 
 
 
 
 
 
-  <link rel="canonical" href="https://capsm.github.io/">
+  <link rel="canonical" href="https://capsm.github.io/2017/11/10/Immutable和Mutable-Objects-in-Java/">
 
 
 
@@ -137,7 +142,7 @@
   };
 </script>
 
-  <title>capsM's Notebook</title>
+  <title>Immutable和Mutable Objects in Java | capsM's Notebook</title>
   
 
 
@@ -186,8 +191,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -224,7 +228,7 @@
         
         
           
-          <li class="menu-item menu-item-home menu-item-active">
+          <li class="menu-item menu-item-home">
     <a href="/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
   </li>
@@ -313,174 +317,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://capsm.github.io/2018/11/10/设计模式总结/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chenglong Ma">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="capsM's Notebook">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/10/设计模式总结/" itemprop="url">
-                  设计模式总结
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-11-10 11:10:00 / Modified: 20:15:32" itemprop="dateCreated datePublished" datetime="2018-11-10T11:10:00+11:00">2018-11-10</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h2>
-<p>本文旨在帮助复习<strong>设计模式</strong>相关概念，只包含简略要点，非详细介绍。</p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2018/11/10/设计模式总结/" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-         
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
 
   
 
@@ -512,11 +351,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/10/Immutable和Mutable-Objects-in-Java/" itemprop="url">
-                  Immutable和Mutable Objects in Java
-                </a>
+          <h2 class="post-title" itemprop="name headline">Immutable和Mutable Objects in Java
               
             
           </h2>
@@ -609,8 +444,7 @@
       
 
       
-        
-          <h2 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h2>
+        <h2 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h2>
 <p>本文主要阐述以下观点：</p>
 <ol>
 <li>值类型与引用类型的定义与区别；</li>
@@ -619,16 +453,92 @@
 <li>String类为什么是不可变的；</li>
 <li>怎样声明不可变对象（包括变量和类）；</li>
 </ol>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2017/11/10/Immutable和Mutable-Objects-in-Java/" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-         
-          <!--/noindex-->
-        
+<a id="more"></a>
+<h2 id="是什么？"><a class="header-anchor" href="#是什么？">¶</a>是什么？</h2>
+<p>在了解不可变对象（Immutable Objects）及可变对象（Mutable Objects）之前，我们需要知道内存中两种数据类型：值类型（value types）和引用类型（reference types）——</p>
+<p><strong>值类型</strong>数据存放在**栈（stack）**内，其值代表数据本身，存储在栈中分配的内存空间。</p>
+<p><strong>引用类型</strong>数据存放在<strong>堆（heap）<strong>内，其值代表的是所指向的</strong>地址</strong>，<strong>指向</strong>所要存储的值而不直接存储。</p>
+<p>例如：假设Person是一种<strong>值</strong>类型，House是一种<strong>引用</strong>类型，有以下变量：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Person 老王 = <span class="keyword">new</span> Person(); <span class="comment">//Person 是值类型</span></span><br><span class="line">Person 小王 = 老王；			<span class="comment">//小王是老王“克隆”出来的，一模一样；</span></span><br><span class="line">House 老王的家 = <span class="keyword">new</span> House();<span class="comment">//House 是引用类型</span></span><br><span class="line">House 小王的家 = 老王的家；	 <span class="comment">//小王和老王住在同一个家里；</span></span><br></pre></td></tr></table></figure>
+<p>那么基于此，假如有一天老王因某事败露而被打残，小王的安危并不会受此影响，即使他们有相同的样貌，因为他们是相互独立的个体；而老王家里置办了新的电视或惨遭洗劫，“小王的家”自然也会接受相同的改变，因为他们家的地址指向了同一条街道的同一个房间。</p>
+<p>在Java中，只有基本类型（Primitive Data Types）（即<code>byte</code>, <code>short</code>, <code>int</code>, <code>long</code>, <code>float</code>, <code>double</code>, <code>char</code>, <code>boolean</code>）是值类型，其他的数据类型都是引用类型，包括<code>String</code>，即对象（<code>Objects</code>）.</p>
+<p>而引用类型又分为不可变对象（Immutable Objects）和可变对象（Mutable Objects），可变对象即为上述提到的普通引用类型数据，如果两个变量指向同一地址时，其中一个的值改变了另一个值也同样改变，下面详细说一下对不可变对象的理解。</p>
+<h3 id="immutable-objects"><a class="header-anchor" href="#immutable-objects">¶</a>Immutable Objects</h3>
+<blockquote>
+<p>An object is considered <em>immutable</em> if its state cannot change after it is constructed.<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
+</blockquote>
+<p>即：不可变对象在构造（声明并且初始化后）之后，其<strong>状态</strong>不可再改变。其中<code>String</code>类和基本类型的Wrapper Class （<code>Integer</code>, <code>Double</code>, etc.）属于典型的不可变类。这里需要注意：<u>状态不可变</u>是指对象实例的<strong>值</strong>不可变而不是指向该实例的<strong>引用</strong>的不可变，例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String king= <span class="string">"John Snow"</span>;</span><br><span class="line">king = <span class="string">"others"</span>;</span><br></pre></td></tr></table></figure>
+<p>上述所示好像<code>String</code> 的值发生了改变，<s>说好的String 一生不变到白头，它却偷偷焗了油</s>；其实，此处的不可变是指&quot;John Snow&quot;这个内存中的值没有发生变化，只是<code>king</code>不再<strong>指向</strong>它了，而换成了&quot;others&quot;，那么&quot;John Snow&quot;去哪儿了？~~长城之外还是龙妈闺房？~~很可惜，都不是，他被留在了内存里，等待GC（Garbage Collection，垃圾收集，垃圾回收）来回收他。</p>
+<p>那这样做有什么好处？白白制造出了内存垃圾，king到头来还是易主了？</p>
+<h2 id="为什么？"><a class="header-anchor" href="#为什么？">¶</a>为什么？</h2>
+<p>首先，我们知道<code>String</code>是不可变类，而<code>StringBuilder</code>是可变的，所以先看代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">    String John = <span class="string">"John"</span>;</span><br><span class="line">    StringBuilder John2 = <span class="keyword">new</span> StringBuilder(<span class="string">"John"</span>);</span><br><span class="line">    System.out.println(<span class="string">"What's your name?\t"</span> + John);</span><br><span class="line">    System.out.println(<span class="string">"Your full name please.\t"</span> + getFullName(John));</span><br><span class="line">    System.out.println(<span class="string">"What's your first name?\t"</span> + John);</span><br><span class="line">    System.out.println();</span><br><span class="line">    System.out.println(<span class="string">"What's your name?\t"</span> + John2);</span><br><span class="line">    System.out.println(<span class="string">"Your full name please.\t"</span> + getFullName(John2));</span><br><span class="line">    System.out.println(<span class="string">"What's your first name?\t"</span> + John2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">getFullName</span><span class="params">(String fstName)</span> </span>&#123;</span><br><span class="line">    fstName += <span class="string">" Snow"</span>;</span><br><span class="line">    <span class="keyword">return</span> fstName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> StringBuilder <span class="title">getFullName</span><span class="params">(StringBuilder fstName)</span> </span>&#123;</span><br><span class="line">    fstName.append(<span class="string">" Snow"</span>);</span><br><span class="line">    <span class="keyword">return</span> fstName;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行结果如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// What's your name?	John</span></span><br><span class="line"><span class="comment">// Your full name please.	John Snow</span></span><br><span class="line"><span class="comment">// What's your first name?	John			//Value has NOT changed.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// What's your name?	John</span></span><br><span class="line"><span class="comment">// Your full name please.	John Snow</span></span><br><span class="line"><span class="comment">// What's your first name?	John Snow		//Value has changed.</span></span><br></pre></td></tr></table></figure>
+<p>上述所示，可变类<code>StringBuilder</code>的值改变了，而这常常不是程序员想要或主动要做的，所以不可变类的一大优点是保证了<strong>线程安全，不会出现同步问题和隐私泄漏（Privacy Leaks）</strong>。当然，这种隐患还可以通过保护性拷贝（Defensive Copy）或深度复制（Deep Copy）来规避，不可变类同样可靠，但代码简单。</p>
+<p>除此之外，不可变类还<strong>提高了拷贝的效率</strong>，因为复制时不再需要复制该对象的值，只需要复制其地址（指针）即可，而这只需要很小的内存空间，同时，对其他引用该对象的变量不造成影响。<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup></p>
+<p>由开始时&quot;John Snow&quot;被“雪藏”的例子可以看出，过多的不可变类会造成很多内存垃圾，一定程度上增加了程序的运行成本，但也有不同看法认为：</p>
+<blockquote>
+<p>程序员往往不愿使用不可变对象，因为他们担心创建一个新的对象要比更新对象的成本要高。实际上这种开销常常被过分高估，而且使用不可变对象所带来的一些效率提升也抵消了这种开销。例如：使用不可变对象降低了垃圾回收所产生的额外开销，也减少了用来确保使用可变对象不出现并发错误的一些额外代码。<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup></p>
+</blockquote>
+<p>所以一般更多地建议在代码中合理运用不可变类。</p>
+<h2 id="怎么做？"><a class="header-anchor" href="#怎么做？">¶</a>怎么做？</h2>
+<p>局部变量、成员变量和类都可以声明为不可变对象。局部变量、成品变量操作较为简单，归为一类，不可变类单说。</p>
+<h3 id="不可变变量"><a class="header-anchor" href="#不可变变量">¶</a>不可变变量</h3>
+<p>形式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(vis) <span class="keyword">final</span> type <span class="keyword">var</span> = value;</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<p>局部变量：<code>final String king = &quot;John Snow&quot;;</code></p>
+<p>成员变量：<code>private final String king = &quot;John Snow&quot;;</code></p>
+<p>特殊地，常量以以下形式声明：</p>
+<p><code>public static final String KING = &quot;John Snow&quot;;</code></p>
+<p>特别需要注意数组（Array）等类型的不可变性：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> String[] week = <span class="keyword">new</span> String[]&#123;<span class="string">"Sunday"</span>, <span class="string">"Monday"</span>, <span class="string">"Tuesday"</span>, <span class="string">"Wednesday"</span>...&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Week = new String[]&#123;"Sunday", "Sunday", "Sunday", "Sunday"...&#125;;    //invalid</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; week.length; i++) &#123;</span><br><span class="line">	week[i] = <span class="string">"Sunday"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">System.out.println(Arrays.toString(week));</span><br></pre></td></tr></table></figure>
+<p>执行结果如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//[Sunday, Sunday, Sunday, Sunday, Sunday, Sunday, Sunday]</span></span><br></pre></td></tr></table></figure>
+<p>上述代码中，将数组变量week置为不可变，那么当我们要将一周的每一天都赋值为星期天时，它如约提示&quot;Cannot assign a value to final variable&quot; 让我们断了念想，但转身一个for 循环就实现了，在使用中要注意这种情况。</p>
+<h3 id="不可变类"><a class="header-anchor" href="#不可变类">¶</a>不可变类</h3>
+<p>不可变类的声明要麻烦很多，不单单是声明为&quot;final&quot;就可以的，而且，&quot;final&quot;在不可变类中的作用是<strong>使该类不可被继承</strong>，而和使之不可变没有必然联系。主要步骤如下：</p>
+<ol>
+<li>保证所有成员变量必须私有（<code>private</code>），并且用<code>final</code>修饰</li>
+<li>不提供改变成员变量的方法，包括<code>setter</code></li>
+<li>通过构造器初始化所有成员，进行深拷贝(deep copy)，特别是对非基本类型的成员，即引用类型</li>
+<li>类添加<code>final</code>修饰符，保证类不被继承</li>
+</ol>
+<p>看一下Java自己源代码中不可变类（<code>String</code>）是如何定义的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">String</span></span></span><br><span class="line"><span class="class">    <span class="keyword">implements</span> <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span>, <span class="title">Comparable</span>&lt;<span class="title">String</span>&gt;, <span class="title">CharSequence</span> </span>&#123;</span><br><span class="line">    <span class="comment">/** The value is used for character storage. */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">char</span> value[];</span><br><span class="line">    <span class="comment">/** Cache the hash code for the string */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> hash; <span class="comment">// Default to 0</span></span><br><span class="line">    ...</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>
+<p><code>String</code> 类中基本符合以上声明的主要步骤；</p>
+</li>
+<li>
+<p>可以看到<code>String</code>其实是用<code>char[]</code>存储数据的，但它是<code>final</code> 并且<code>private</code>的，所以避免了像<code>week</code>数组那样被改写的风险；</p>
+</li>
+<li>
+<p>有个hash变量没有<code>final</code>，这里利用了其他的机制来保证其不可变，这里不做解释，可以参考：</p>
+<p><a href="https://www.zhihu.com/question/20618891/answer/15653033" target="_blank" rel="noopener">如何理解String类型值的不可变？ - Halty的回答 - 知乎</a></p>
+</li>
+</ol>
+<p>Java中同样有没有将类声明为<code>final</code>的不可变类（<code>BigDecimal</code>和<code>BigInteger</code>），如下代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BigDecimal</span> <span class="keyword">extends</span> <span class="title">Number</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">BigDecimal</span>&gt; </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * The unscaled value of this BigDecimal, as returned by &#123;<span class="doctag">@link</span></span></span><br><span class="line"><span class="comment">     * #unscaledValue&#125;.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@serial</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@see</span> #unscaledValue</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> BigInteger intVal;</span><br></pre></td></tr></table></figure>
+<p>但同样采取了其他机制来保证其不可变性。</p>
+<h2 id="总结"><a class="header-anchor" href="#总结">¶</a>总结</h2>
+<p>本文简单介绍了Immutable Objects（不可变对象）和Mutable Objects（可变对象）的一些特点，合理运用不可变对象会使代码整洁而高效，特别是在事件、多线程等数据安全性要求高的情景下，在实践中可以摸索出适合自己的代码风格。</p>
+<hr>
+<h2 id="参考文献"><a class="header-anchor" href="#参考文献">¶</a>参考文献</h2>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p><a href="https://docs.oracle.com/javase/tutorial/essential/concurrency/immutable.html" target="_blank" rel="noopener">https://docs.oracle.com/javase/tutorial/essential/concurrency/immutable.html</a> <a href="#fnref1" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p><a href="http://zhiheng.me/124#comment-195" target="_blank" rel="noopener">http://zhiheng.me/124#comment-195</a> <a href="#fnref2" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p><a href="https://waylau.gitbooks.io/essential-java/docs/concurrency-Immutable%20Objects.html#" target="_blank" rel="noopener">https://waylau.gitbooks.io/essential-java/docs/concurrency-Immutable Objects.html#</a> <a href="#fnref3" class="footnote-backref">↩</a></p>
+</li>
+</ol>
+</section>
+
       
     </div>
 
@@ -646,190 +556,44 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://capsm.github.io/2017/10/11/浅谈JAVA抽象类及接口/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chenglong Ma">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="capsM's Notebook">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/11/浅谈JAVA抽象类及接口/" itemprop="url">
-                  浅谈JAVA抽象类及接口
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2017-10-11 00:55:00" itemprop="dateCreated datePublished" datetime="2017-10-11T00:55:00+11:00">2017-10-11</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-11-11 14:21:47" itemprop="dateModified" datetime="2018-11-11T14:21:47+11:00">2018-11-11</time>
-              
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a></span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/Java/" rel="tag"># Java</a>
           
-
+            <a href="/tags/Immutable/" rel="tag"># Immutable</a>
           
-            
+            <a href="/tags/Mutable/" rel="tag"># Mutable</a>
           
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          <p>作为面向对象语言，JAVA同样具有封装、继承和多态的基本特征，其中抽象类和接口很好地体现了这一点，因为结构相似但又有实际的不同，所以这里放在一起说。</p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2017/10/11/浅谈JAVA抽象类及接口/" rel="contents">
-                Read more &raquo;
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/11/浅谈JAVA抽象类及接口/" rel="next" title="浅谈JAVA抽象类及接口">
+                <i class="fa fa-chevron-left"></i> 浅谈JAVA抽象类及接口
               </a>
-            </div>
-         
-          <!--/noindex-->
-        
-      
-    </div>
+            
+          </div>
 
-    
+          <span class="post-nav-divider"></span>
 
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/10/设计模式总结/" rel="prev" title="设计模式总结">
+                设计模式总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
 
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -839,14 +603,21 @@
   </article>
 
 
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
           
+
+  
+      <div class="comments" id="comments">
+		<div id="gitalk-container"></div>
+		<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+	  </div>
+	  
+  
+
+
 
         </div>
         
@@ -867,8 +638,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -964,6 +744,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">¶前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#是什么？"><span class="nav-number">2.</span> <span class="nav-text">¶是什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#immutable-objects"><span class="nav-number">2.1.</span> <span class="nav-text">¶Immutable Objects</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么？"><span class="nav-number">3.</span> <span class="nav-text">¶为什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#怎么做？"><span class="nav-number">4.</span> <span class="nav-text">¶怎么做？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#不可变变量"><span class="nav-number">4.1.</span> <span class="nav-text">¶不可变变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不可变类"><span class="nav-number">4.2.</span> <span class="nav-text">¶不可变类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">¶总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">6.</span> <span class="nav-text">¶参考文献</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1103,6 +899,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
 
   
 
@@ -1125,6 +925,27 @@
 
 
 
+
+	
+		
+			<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+			<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+			<script type="text/javascript">
+				const gitalk = new Gitalk({
+				id: md5(location.pathname),
+				clientID: '501e687f334b266920ae',
+				clientSecret: '6a543c72c1255478c27a130b27fad6526a9fbea3',
+				repo: 'capsM.github.io',
+				owner: 'capsM',
+				admin: 'capsM'.split(','),
+				pagerDirection: 'first',
+				// facebook-like distraction free mode
+				distractionFreeMode: false
+				})
+				gitalk.render('gitalk-container')
+			</script>
+		
+	
 
 
   

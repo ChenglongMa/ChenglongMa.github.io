@@ -1,3 +1,3 @@
-https://capsm.github.io/设计模式总结.html
-https://capsm.github.io/Immutable和Mutable-Objects-in-Java.html
-https://capsm.github.io/浅谈JAVA抽象类及接口.html
+https://capsm.github.io/2018/11/10/设计模式总结/
+https://capsm.github.io/2017/11/10/Immutable和Mutable-Objects-in-Java/
+https://capsm.github.io/2017/10/11/浅谈JAVA抽象类及接口/
