@@ -145,7 +145,7 @@
 <meta property="og:image" content="https://chenglongma.com/10/elgamal/encryption.png">
 <meta property="og:image" content="https://chenglongma.com/10/elgamal/decryption.png">
 <meta property="og:image" content="https://chenglongma.com/10/elgamal/hom.png">
-<meta property="og:updated_time" content="2019-11-24T12:50:52.088Z">
+<meta property="og:updated_time" content="2019-11-24T13:02:16.740Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ElGamal Encryption">
 <meta name="twitter:description" content="ElGamal Encryption Algorithm The Elgamal encryption scheme is an asymmetric key encryption algorithm which consists of three phases (i.e., key generation, encryption, decryption). It is based on the D">
@@ -438,7 +438,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-11-24 23:50:52" itemprop="dateModified" datetime="2019-11-24T23:50:52+11:00">2019-11-24</time>
+                <time title="Modified: 2019-11-25 00:02:16" itemprop="dateModified" datetime="2019-11-25T00:02:16+11:00">2019-11-25</time>
               
             
           </span>
@@ -522,8 +522,9 @@ Based on the example shown in the figure of <strong>key generation</strong> phas
 $$<br>
 \begin{align}<br>
 	\left\lbrace  c_1, c_2 \right\rbrace &amp;= \left\lbrace  g^k \mod p, y^k \cdot m \mod p \right\rbrace \nonumber\newline<br>
-	&amp;= \left\lbrace  100^89 \mod 809, 65^89 \cdot 100 \mod 809 \right\rbrace \nonumber\newline<br>
+	&amp;= \left\lbrace  100^{89} \mod 809, 65^{89} \cdot 100 \mod 809 \right\rbrace \nonumber\newline<br>
 	&amp;= \left\lbrace  345, 517 \right\rbrace,<br>
+	\tag{2.1}<br>
 \end{align}<br>
 $$</p>
 <p>the result will be:</p>
@@ -546,6 +547,7 @@ $$<br>
 	  &amp;= (517 \times 720) \mod 809\<br>
 	  &amp;= 100<br>
 \end{split}<br>
+\tag{3.1}<br>
 \end{align}<br>
 $$<br>
 Finally, we complete all the tree phases of Elgamal:</p>
