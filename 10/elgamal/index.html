@@ -145,7 +145,7 @@
 <meta property="og:image" content="https://chenglongma.com/10/elgamal/encryption.png">
 <meta property="og:image" content="https://chenglongma.com/10/elgamal/decryption.png">
 <meta property="og:image" content="https://chenglongma.com/10/elgamal/hom.png">
-<meta property="og:updated_time" content="2019-11-24T12:48:10.047Z">
+<meta property="og:updated_time" content="2019-11-24T12:50:52.088Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ElGamal Encryption">
 <meta name="twitter:description" content="ElGamal Encryption Algorithm The Elgamal encryption scheme is an asymmetric key encryption algorithm which consists of three phases (i.e., key generation, encryption, decryption). It is based on the D">
@@ -438,7 +438,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-11-24 23:48:10" itemprop="dateModified" datetime="2019-11-24T23:48:10+11:00">2019-11-24</time>
+                <time title="Modified: 2019-11-24 23:50:52" itemprop="dateModified" datetime="2019-11-24T23:50:52+11:00">2019-11-24</time>
               
             
           </span>
@@ -491,7 +491,7 @@
       
         <h1>ElGamal Encryption Algorithm</h1>
 <p>The Elgamal encryption scheme is an asymmetric key encryption algorithm which consists of three phases (i.e., key generation, encryption, decryption). It is based on the <em>Diffie-Hellman</em> key exchange and defined over a cyclic group $ G $. Therefore, its security relies heavily on Discrete-log based building blocks.</p>
-<p>This algorithm can be tested at <a href="https://chenglongma.com/simple-elgamal/">here</a></p>
+<p>This algorithm can be tested at <a href="https://chenglongma.com/simple-elgamal/">here</a>.</p>
 <a id="more"></a>
 <h2 id="configuration"><a class="header-anchor" href="#configuration">¶</a>Configuration</h2>
 <p>The Elgamal algorithm is defined on a cyclic group so that it should be safe to select a prime $ p $ to generate a prime order group $ Z_p^* $. Then we need to choose a prime $ q $ to define a unique subgroup $ G_q $ and $ g \in Z_p^* $ is one of its generators where $ p = \gamma q + 1 $, $\gamma$ is a specific integer.</p>
@@ -1389,6 +1389,30 @@ Based on the deduction of Equ.$\eqref{hom}$, we have verified the homomorphic pr
   
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src=""></script>
+
+    
   
 
 
