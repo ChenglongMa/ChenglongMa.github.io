@@ -133,25 +133,32 @@
 
 
 
-  <meta name="description" content="作为面向对象语言，JAVA同样具有封装、继承和多态的基本特征，其中抽象类和接口很好地体现了这一点，因为结构相似但又有实际的不同，所以这里放在一起说。">
-<meta name="keywords" content="Java,Abstract Class,Interface">
+  <meta name="description" content="This report briefly describes how Keccak-f[25] works.">
+<meta name="keywords" content="keccak">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浅谈JAVA抽象类及接口">
-<meta property="og:url" content="https://chenglongma.com/10/浅谈JAVA抽象类及接口/index.html">
+<meta property="og:title" content="Simple Keccak">
+<meta property="og:url" content="https://chenglongma.com/10/simple-keccak/index.html">
 <meta property="og:site_name" content="Chenglong Ma">
-<meta property="og:description" content="作为面向对象语言，JAVA同样具有封装、继承和多态的基本特征，其中抽象类和接口很好地体现了这一点，因为结构相似但又有实际的不同，所以这里放在一起说。">
+<meta property="og:description" content="This report briefly describes how Keccak-f[25] works.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-11T03:21:47.978Z">
+<meta property="og:image" content="https://chenglongma.com/10/simple-keccak/theta.png">
+<meta property="og:image" content="https://chenglongma.com/10/simple-keccak/pi.png">
+<meta property="og:image" content="https://chenglongma.com/10/simple-keccak/chi_demo.png">
+<meta property="og:image" content="https://chenglongma.com/10/simple-keccak/chi.png">
+<meta property="og:image" content="https://chenglongma.com/10/simple-keccak/iota.png">
+<meta property="og:image" content="https://chenglongma.com/10/simple-keccak/final.png">
+<meta property="og:updated_time" content="2019-11-24T11:32:49.505Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浅谈JAVA抽象类及接口">
-<meta name="twitter:description" content="作为面向对象语言，JAVA同样具有封装、继承和多态的基本特征，其中抽象类和接口很好地体现了这一点，因为结构相似但又有实际的不同，所以这里放在一起说。">
+<meta name="twitter:title" content="Simple Keccak">
+<meta name="twitter:description" content="This report briefly describes how Keccak-f[25] works.">
+<meta name="twitter:image" content="https://chenglongma.com/10/simple-keccak/theta.png">
 
 
 
 
 
 
-  <link rel="canonical" href="https://chenglongma.com/10/浅谈JAVA抽象类及接口/">
+  <link rel="canonical" href="https://chenglongma.com/10/simple-keccak/">
 
 
 
@@ -161,7 +168,7 @@
   };
 </script>
 
-  <title>浅谈JAVA抽象类及接口 | Chenglong Ma</title>
+  <title>Simple Keccak | Chenglong Ma</title>
   
 
 
@@ -374,7 +381,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenglongma.com/10/浅谈JAVA抽象类及接口/">
+    <link itemprop="mainEntityOfPage" href="https://chenglongma.com/10/simple-keccak/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chenglong Ma">
@@ -391,7 +398,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">浅谈JAVA抽象类及接口
+          <h2 class="post-title" itemprop="name headline">Simple Keccak
               
             
           </h2>
@@ -416,7 +423,7 @@
                 
               
 
-              <time title="Created: 2017-10-11 00:55:00" itemprop="dateCreated datePublished" datetime="2017-10-11T00:55:00+11:00">2017-10-11</time>
+              <time title="Created: 2019-10-18 12:43:19" itemprop="dateCreated datePublished" datetime="2019-10-18T12:43:19+11:00">2019-10-18</time>
             
 
             
@@ -433,7 +440,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-11-11 14:21:47" itemprop="dateModified" datetime="2018-11-11T14:21:47+11:00">2018-11-11</time>
+                <time title="Modified: 2019-11-24 22:32:49" itemprop="dateModified" datetime="2019-11-24T22:32:49+11:00">2019-11-24</time>
               
             
           </span>
@@ -450,7 +457,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Cryptography/" itemprop="url" rel="index"><span itemprop="name">Cryptography</span></a></span>
 
                 
                 
@@ -470,6 +477,8 @@
           
 
           
+              <div class="post-description">This report briefly describes how Keccak-f[25] works.</div>
+          
 
         </div>
       </header>
@@ -484,86 +493,64 @@
       
 
       
-        <p>作为面向对象语言，JAVA同样具有封装、继承和多态的基本特征，其中抽象类和接口很好地体现了这一点，因为结构相似但又有实际的不同，所以这里放在一起说。</p>
+        <h1 id="Keccak-f-25"><a href="#Keccak-f-25" class="headerlink" title="Keccak-$ f[25] $"></a>Keccak-$ f[25] $</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Keccak is an implementation of SHA-3 Cryptographic Hash Algorithm. In this report, we discuss a lightweight version Keccak where we set state $ b = 25 = 5 \times 5 \times 2^l $ in its Sponge stage. I.e., $ l=0 $ and thus there is only one slice ($ 5 \times 5 $ bits) and 12 rounds as $ n_rounds = 12 + 2l $. Each round function consists of 5 steps to process the state: $ { \theta \rightarrow \rho \rightarrow \pi \rightarrow \chi \rightarrow \iota } $. The output of former step would be treated as the input of next, likewise, the output of $ \iota $ step will be feed into $ \theta $ step of next round. We implement 4 of them in this project ( $ \rho $ step excluded). We will discuss these steps in detail in the following sections.</p>
+<p><strong>The implementation of this report can be accessed at <a href="https://chenglongma.com/simple-keccak/">here</a>.</strong></p>
 <a id="more"></a>
-<p>假如我们要写一个Zoo的project，有多种动物的类<code>Dog</code>, <code>Cat</code>, <code>Parrot</code>等，它们都有<code>eat()</code>的方法，我们会自然想到建造一个<code>Animal</code>的类作为父类存放这些动物共有的方法及属性，如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">(String food)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"I am eating "</span> + food);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">----------------------------------------------------</span><br><span class="line">  应用时：</span><br><span class="line">  Animal Snoopy=<span class="keyword">new</span> Dog();</span><br><span class="line">  Snoopy.eat(<span class="string">"Cookies"</span>);</span><br></pre></td></tr></table></figure>
-<p>我们发现即使不用抽象类也可以很好地完成任务，那么<strong>为什么要用抽象类而不用普通类呢？</strong></p>
-<p>先从<strong>抽象方法</strong>讲起：</p>
-<hr>
-<h2 id="抽象方法"><a href="#抽象方法" class="headerlink" title="抽象方法"></a>抽象方法</h2><p>抽象方法指用“<code>abstract</code>” 修饰的方法，该方法只有声明，没有实现的方法体，它的具体实现交给子类来确定，可以看出抽象方法是生而为“继承”的，例如在<code>Animal</code>中只指定<code>eat()</code>方法，具体怎么吃让小狗小猫去决定：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">(String food)</span></span>;</span><br></pre></td></tr></table></figure>
-<p>使用抽象方法有三点要求：</p>
-<ul>
-<li>如果一个类包含抽象方法，那么该类<strong>必须</strong>是抽象类。</li>
-<li>任何子类<strong>必须</strong>重写父类的抽象方法，<strong>或者声明自身为抽象类</strong>。</li>
-<li><strong>构造方法及静态方法</strong>（类方法，用<code>static</code>修饰）不能声明为抽象方法，也无法对其进行重写<code>Override</code>。</li>
-</ul>
-<p>那么问题的答案很明了了，当<code>Animal</code>中有抽象方法时，那么使用普通类就不行了，必须使用抽象类，那么<strong>类里没有抽象方法，可不可以声明为抽象类呢？有何作用？</strong></p>
-<hr>
-<h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><p>抽象类是对<strong>对象（类）</strong>的抽象，和抽象方法一样，声明抽象类时只需要使用修饰符“<code>abstract</code>” 就可以：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">(String food)</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol>
-<li><p>抽象方法必须包含在抽象类里，但<strong>抽象类里不一定要有抽象方法</strong></p>
-<p>先回答前一个小问题，没有抽象方法，类一样可以声明为抽象类，和普通类除了修饰符其余写法一样</p>
-</li>
-<li><p>抽象类只能被继承，不可以实例化</p>
-<p>很好理解，抽象类作为抽象出来的“模具”存在，自然不能“实例化”，只有抽象类的<strong>非抽象子类</strong>可以创建对象。第二个小问题答案也就有了，没有抽象方法的抽象类的作用是：<strong>强制子类去继承该类，并强制不允许被实例化</strong>。基于此，人们通常在设计阶段决定要不要设计抽象类。</p>
-</li>
-<li><p>抽象类可以有无数子类，但一个子类<strong>只能继承一个抽象类</strong></p>
-<p>这个和普通类相同，子类只允许有一个父类。<em>注意区分接口：子类可以实现多个接口。</em></p>
-</li>
-<li><p>抽象类可以继承别的抽象类，可以实现别的接口</p>
-</li>
-<li><p>抽象类可以有构造函数，只是是为子类提供的</p>
-<p>抽象类内构造函数是要求子函数必须实现的，所以在子类的构造函数中<strong>必须</strong>加一句</p>
-<p><code>super();</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Dog</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">(String food)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//do something</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>​</p>
-</li>
-</ol>
-<p>我们了解到还有一种不能实例化也没有方法具体实现的机制，接口，那和抽象类有什么区别？</p>
-<hr>
-<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p>接口是对对象行为的抽象，通常以interface来声明，是抽象方法的集合。<strong>接口并不是类</strong>，编写接口的方式和类很相似，但是它们属于不同的概念。类描述对象的属性和方法。接口则包含类要实现的方法。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Movable</span> </span>&#123;</span><br><span class="line">    <span class="comment">//这里省略public static final，因为接口里变量</span></span><br><span class="line">  	<span class="comment">//默认都是常量，而且不能private</span></span><br><span class="line">    <span class="comment">/*public static final*/</span> String name = <span class="keyword">null</span>; </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//这里省略public abstract，因为接口里方法默认都是抽象的，符合</span></span><br><span class="line">    <span class="comment">//抽象方法的一切特点</span></span><br><span class="line">    <span class="comment">/*public abstract*/</span> <span class="function"><span class="keyword">void</span> <span class="title">walk</span><span class="params">()</span></span>; </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol>
-<li><p>如上图所示，接口内只能声明<code>public</code>常量和抽象方法</p>
-<p><code>public static final</code> 和 <code>public abstract</code> 可以省略</p>
-</li>
-<li><p>接口内没有<strong>构造函数</strong></p>
-<p>因为接口<strong>不能实例化</strong>，而且接口不是类，只是一类动作的集合，所以不存在“<strong>构造</strong>”的概念</p>
-</li>
-<li><p>接口不是被类<strong>继承</strong>(<code>extends</code>)了，而是要被类<strong>实现</strong>(<code>implements</code>)。</p>
-<p>准确地说，接口不是类，所以不能被继承，它是方法的集合，可以被实现。（用法相似，称呼不同）</p>
-</li>
-<li><p>子类可以实现<strong>多</strong>个接口</p>
-<p>这一点是与其他类最明显的差异，普通类及抽象类都只能<strong>单一继承</strong></p>
-</li>
-<li><p>接口可以继承别的<strong>接口</strong>，但不能继承<strong>类</strong></p>
-<p>​</p>
-</li>
-</ol>
-<hr>
-<h2 id="抽象类与接口的区别"><a href="#抽象类与接口的区别" class="headerlink" title="抽象类与接口的区别"></a>抽象类与接口的区别</h2><ol>
-<li><p><u>抽象类是对<strong>对象</strong>的抽象；接口是对<strong>行为</strong>的抽象</u></p>
-<p>虽然两者在使用的相似，甚至可以互换而不出现bug，但两者设计的初衷是不同的</p>
-<ol>
-<li>抽象类是<strong>一类事物</strong>，像<code>Animal</code>对<code>Dog</code>；</li>
-<li>接口是<strong>一类动作</strong>，像<code>Movable</code>对<code>walk()</code>；</li>
-</ol>
-</li>
-<li><p><u>抽象类单一继承；接口可以多“继承”（<em>准确地应该是<strong>实现</strong></em> ）</u></p>
-</li>
-<li><p>抽象类可以像普通类一样声明各类字段，各类方法；接口只能声明常量和抽象方法</p>
-<ol>
-<li>抽象类可以实现包括抽象方法的其他任意方法；</li>
-<li>接口只有常量和<del>抽象方法</del>（<em>在最新的JAVA8中情况有所改变，本篇只点不讲</em>）</li>
-<li>接口内不能有构造函数而抽象类可以有；</li>
-</ol>
-</li>
-<li><p>基本区别就是这些，可以在日后的实践中慢慢掌握，目前来说必须掌握的是1.2.两条。</p>
-</li>
-</ol>
+<h2 id="theta-Step"><a href="#theta-Step" class="headerlink" title="$\theta$ Step"></a>$\theta$ Step</h2><p>The $\theta$ Step is defined as below: </p>
+<script type="math/tex; mode=display">
+\begin{cases}
+C[x] = A[x,0] \oplus A[x,1] \oplus A[x,2] \oplus A[x,3] \oplus A[x,4] ,& x \in [0,4] \newline 
+D[x] = C[x-1] \oplus rot(C[x+1],1), & x \in [0,4] \newline 
+A[x,y] = A[x,y] \oplus D[x] , & x,y \in [0,4] \newline 
+\end{cases} \tag{1}</script><p>where $ A[x,y] $ indicates the lane in column $ x $ and row $ y $; thus $ C[x] $ is a bitwise $ XOR $ summation between all rows of column $ x $. Then, $ rot(C[x+1], 1) $ rotates the bits within the lane $ C[x] $. Particularly, as there is only slice in our implementation, the $ rot $ function makes no changes so that $ rot(C[x+1], 1) = C[x+1] $. Thereafter, $ D[x] $ combines $ C[x-1] $ and $ C[x+1] $ by $ XOR $ summation. Finally, the output of each single value in $ A[] $ of this step obtains from the original $ A[x,y]\ XOR\ D[x]$.</p>
+<p>An example of this step is shown below, including input and all outputs of intermediate steps.</p>
+<p><img src="/10/simple-keccak/theta.png" alt="theta"></p>
+<p>The origin of coordinates in each matrix (i.e.\  $ A[0,0] $) locates at the left bottom. Take $ A[2,3] $ as an example, the input is $ 0 $ and the output of intermediate steps are:</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\begin{split}
+C[2]&= A[2,0] \oplus A[2,1] \oplus A[2,2] \oplus A[2,3] \oplus A[2,4]\newline 
+    &= 0 \oplus 0 \oplus 1 \oplus 0 \oplus 0\newline 
+    &= 1\newline 
+D[2]&= C[1]  \oplus C[3]\newline 
+    &= 0 \oplus 0\newline 
+    &= 0\newline 
+A'[2,3] &= A[2,3]  \oplus D[2]\newline 
+        &= 0 \oplus 0\newline 
+        &= 0\newline 
+\end{split} \tag{2}  \label{eq:theta}
+\end{equation}</script><h2 id="pi-Step"><a href="#pi-Step" class="headerlink" title="$\pi$ Step"></a>$\pi$ Step</h2><p>Differ from the other 3 steps, which are all <em>substitution</em> functions, $\pi$ step is a <em>permutation</em> function. The output of $\theta$ step will put into $\pi$ step as initial input. The $\pi$ step is defined as:</p>
+<script type="math/tex; mode=display">
+A'[y, 2x+3y] = rot(A[x,y], r[x,y]), x,y \in [0,4], \tag{3}</script><p>likewise as $\theta$ step, $ x $ and $ y $ represent the index of <em>column</em> and <em>row</em> respectively (the same below). $ rot $ function would also make no effects.</p>
+<p>Continued from the example of  $\theta$ step $\eqref{eq:theta}$, the $\pi$ step is illustrated below:</p>
+<p><img src="/10/simple-keccak/pi.png" alt="pi"></p>
+<p>As shown above, the value of $ A[2,3] $ would be assigned to $ A’[3, (2\times2+3\times3) \mod 5] = A’[3,3] $, i.e., $ A’[3,3] = A[2,3] = 0 $.</p>
+<h2 id="chi-Step"><a href="#chi-Step" class="headerlink" title="$\chi$ Step"></a>$\chi$ Step</h2><p>The output of $ A’[x,y] $ in $\chi$ step is determined by $ \bar{A}[x+1,y]$ and $ A[x+2,y] $, the complete definition is:</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+A'[x,y] = A[x,y] \oplus (\bar{A}[x+1,y] \wedge A[x+2,y]) , x,y \in [0,4],
+\tag{4} \label{chi}
+\end{equation}</script><p>where $ \bar{A}[x+1,y] $ is the $ NOT $ operation of $ A[x+1,y] $. This step can be illustrated as the following graph:</p>
+<p><img src="/10/simple-keccak/chi_demo.png" alt="chi_demonstration"></p>
+<p>Therefore, $ A[2,3] $ would be substituted as:</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\begin{split}
+A'[2,3] &= A[2,3] \oplus (\bar{A}[3,3] \wedge A[4,3])\\
+        &= 1 \oplus (1 \wedge 1)\\
+        &= 0
+\end{split} \tag{5} \label{eq:chi}
+\end{align}</script><p>The complete intermediate outputs are:</p>
+<p><img src="/10/simple-keccak/chi.png" alt="chi"></p>
+<h2 id="iota-Step"><a href="#iota-Step" class="headerlink" title="$\iota$ Step"></a>$\iota$ Step</h2><p>The $\iota$ step is the final step of one round in Keccak. It introduces a set of <em>round constants</em> and combines $ A[0,0] $ with one of them (pick a different value for each round) by $ XOR $ summation, as shown below (Equ. $\eqref{iota}$).<br>The rest of matrix would remain their values unchanged.</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+A'[0,0] = A[0,0] \oplus RC[i_r],
+\tag{6} \label{iota}
+\end{equation}</script><p>where $ RC[] $ is the rounds constants array and $ i_r $ equals the current round index. It should be noted that each slice in the state of Keccak should $ XOR $ the <em>slice$ ^{th} $</em> bit in $ RC[i_r] $ from the leftmost (e.g., in our implementation, only the <em>leftmost</em> bit of $ RC[i_r] $ is used). Based on this, we get our final output of the first round:</p>
+<p><img src="/10/simple-keccak/iota.png" alt="iota"></p>
+<h2 id="Rounds"><a href="#Rounds" class="headerlink" title="Rounds"></a>Rounds</h2><p>As mentioned at the beginning of this section, there are $ 12 $ rounds in our implementation. For each round, we feed the final output of the $\iota$ step into the $\theta$ step of next round and switch the round constants to next index. The last round of Keccak-$ f[25] $ is shown below:</p>
+<p><img src="/10/simple-keccak/final.png" alt="final"></p>
 
       
     </div>
@@ -585,7 +572,7 @@
     <strong>Post author:  </strong>Chenglong Ma</li>
   <li class="post-copyright-link">
     <strong>Post link: </strong>
-    <a href="https://chenglongma.com/10/浅谈JAVA抽象类及接口/" title="浅谈JAVA抽象类及接口">https://chenglongma.com/10/浅谈JAVA抽象类及接口/</a>
+    <a href="https://chenglongma.com/10/simple-keccak/" title="Simple Keccak">https://chenglongma.com/10/simple-keccak/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</li>
@@ -598,11 +585,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Java/" rel="tag"># Java</a>
-          
-            <a href="/tags/Abstract-Class/" rel="tag"># Abstract Class</a>
-          
-            <a href="/tags/Interface/" rel="tag"># Interface</a>
+            <a href="/tags/keccak/" rel="tag"># keccak</a>
           
         </div>
       
@@ -635,15 +618,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/11/设计模式总结/" rel="next" title="设计模式总结">
+                <i class="fa fa-chevron-left"></i> 设计模式总结
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/11/Immutable和Mutable-Objects-in-Java/" rel="prev" title="Immutable和Mutable Objects in Java">
-                Immutable和Mutable Objects in Java <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -830,7 +813,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#抽象方法"><span class="nav-number">1.</span> <span class="nav-text">抽象方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抽象类"><span class="nav-number">2.</span> <span class="nav-text">抽象类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口"><span class="nav-number">3.</span> <span class="nav-text">接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抽象类与接口的区别"><span class="nav-number">4.</span> <span class="nav-text">抽象类与接口的区别</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Keccak-f-25"><span class="nav-number">1.</span> <span class="nav-text">Keccak-$ f[25] $</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#theta-Step"><span class="nav-number">1.2.</span> <span class="nav-text">$\theta$ Step</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pi-Step"><span class="nav-number">1.3.</span> <span class="nav-text">$\pi$ Step</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chi-Step"><span class="nav-number">1.4.</span> <span class="nav-text">$\chi$ Step</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iota-Step"><span class="nav-number">1.5.</span> <span class="nav-text">$\iota$ Step</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rounds"><span class="nav-number">1.6.</span> <span class="nav-text">Rounds</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1371,6 +1354,30 @@
   
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src=""></script>
+
+    
   
 
 
