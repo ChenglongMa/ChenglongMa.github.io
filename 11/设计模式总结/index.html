@@ -1,173 +1,78 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next mist use-motion" lang="zh-Hans,en,default">
-<head><meta name="generator" content="Hexo 3.8.0">
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<html lang="zh-Hans,en,default">
+<head>
+  <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-
-
-
-  
-  
-  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
-
-
-
-
-  
-  
-    
-    
-  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-  <meta name="google-site-verification" content="NsFY6RnjeS5ywoTshnrzhJOkNupbYN5N512K5uauvoU">
-
-
-
-  <meta name="msvalidate.01" content="D9FD3B04029AE4031E674DD45AB1187F">
-
-
-
-
-
-
-  <meta name="baidu-site-verification" content="ASA5Q7pwGy">
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=6.5.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=6.5.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=6.5.0">
-
-
-  <link rel="mask-icon" href="/images/safari-pinned-tab.svg?v=6.5.0" color="#222">
-
-
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
   <link rel="manifest" href="/images/site.webmanifest">
-
-
   <meta name="msapplication-config" content="/images/browserconfig.xml">
+  <link rel="alternate" href="/atom.xml" title="Chenglong Ma" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
 
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
+    hostname: new URL('https://chenglongma.com').hostname,
     root: '/',
-    scheme: 'Mist',
-    version: '6.5.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    scheme: 'Muse',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":true,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: true,
+    lazyload: true,
+    pangu: false,
     algolia: {
-      applicationID: '',
+      appID: '',
       apiKey: '',
       indexName: '',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    sidebarPadding: 40
   };
 </script>
 
-
-  
-
-
-
-
-  <meta name="description" content="¶前言 本文旨在帮助复习设计模式相关概念，只包含简略要点，非详细介绍。">
+  <meta name="description" content="前言本文旨在帮助复习设计模式相关概念，只包含简略要点，非详细介绍。">
 <meta name="keywords" content="Design Patterns">
 <meta property="og:type" content="article">
 <meta property="og:title" content="设计模式总结">
 <meta property="og:url" content="https://chenglongma.com/11/设计模式总结/index.html">
 <meta property="og:site_name" content="Chenglong Ma">
-<meta property="og:description" content="¶前言 本文旨在帮助复习设计模式相关概念，只包含简略要点，非详细介绍。">
+<meta property="og:description" content="前言本文旨在帮助复习设计模式相关概念，只包含简略要点，非详细介绍。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://chenglongma.com/11/设计模式总结/adapter.png">
-<meta property="og:image" content="https://chenglongma.com/11/设计模式总结/singleton.png">
-<meta property="og:image" content="https://chenglongma.com/11/设计模式总结/1541753510666.png">
-<meta property="og:image" content="https://chenglongma.com/11/设计模式总结/1541821696843.png">
-<meta property="og:image" content="https://chenglongma.com/11/设计模式总结/1541754654574.png">
-<meta property="og:image" content="https://chenglongma.com/11/设计模式总结/1541823472361.png">
-<meta property="og:image" content="https://chenglongma.com/11/设计模式总结/1541760163905.png">
-<meta property="og:image" content="https://design-patterns.readthedocs.io/zh_CN/latest/_images/Facade.jpg">
-<meta property="og:image" content="https://chenglongma.com/11/设计模式总结/1541824090370.png">
 <meta property="og:updated_time" content="2018-11-10T09:15:32.473Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式总结">
-<meta name="twitter:description" content="¶前言 本文旨在帮助复习设计模式相关概念，只包含简略要点，非详细介绍。">
-<meta name="twitter:image" content="https://chenglongma.com/11/设计模式总结/adapter.png">
+<meta name="twitter:description" content="前言本文旨在帮助复习设计模式相关概念，只包含简略要点，非详细介绍。">
+
+<link rel="canonical" href="https://chenglongma.com/11/设计模式总结/">
 
 
-
-
-
-
-  <link rel="canonical" href="https://chenglongma.com/11/设计模式总结/">
-
-
-
-<script type="text/javascript" id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
   };
 </script>
 
@@ -179,299 +84,182 @@
 
 
 
-
-
-
-
-
   <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
 
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
-    
-  
-
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
 
-    <div class="custom-logo-site-title">
+    <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Chenglong Ma</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-    
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
   </div>
 </div>
-
 
 
 <nav class="site-nav">
   
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
-    <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-    <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-graduation-cap"></i> <br>About</a>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-    <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-    <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
 
-      
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
-        </li>
-      
-    </ul>
-  
-
-  
-    
-
-  
-
-  
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
-
-
-
-    </div>
-  
 </nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
 
+</div>
+<div class="search-pop-overlay"></div>
 
-
-  
-
-
-
+  </div>
 </div>
     </header>
 
     
-  
-  
-  
-    
-      
-    
-    <a href="https://github.com/ChenglongMa" class="github-corner" target="_blank" title="Follow me on GitHub" aria-label="Follow me on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#222; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg>
-    
-      </a>
-    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/ChenglongMa" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
 
 
-
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
           
-          <div id="content" class="content">
+
+          <div class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
-
-  
-
+  <div class="posts-expand">
+      
   
   
-  
-
-  
-    <div class="reading-progress-bar"></div>
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="https://chenglongma.com/11/设计模式总结/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
       <meta itemprop="name" content="Chenglong Ma">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Chenglong Ma">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">设计模式总结
-              
-            
-          </h2>
-        
+        <h2 class="post-title" itemprop="name headline">
+          设计模式总结
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
+              <span class="post-meta-item-text">Posted on</span>
               
 
               <time title="Created: 2018-11-10 11:10:00 / Modified: 20:15:32" itemprop="dateCreated datePublished" datetime="2018-11-10T11:10:00+11:00">2018-11-10</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
+            </span>
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a></span>
-
-                
-                
-              
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/" itemprop="url" rel="index">
+                    <span itemprop="name">Programming</span>
+                  </a>
+                </span>
             </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -479,15 +267,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        <h2 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h2>
-<p>本文旨在帮助复习<strong>设计模式</strong>相关概念，只包含简略要点，非详细介绍。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文旨在帮助复习<strong>设计模式</strong>相关概念，只包含简略要点，非详细介绍。</p>
 <a id="more"></a>
-<h2 id="设计模式类型"><a class="header-anchor" href="#设计模式类型">¶</a>设计模式类型</h2>
-<h3 id="创建型-creational-patterns-5"><a class="header-anchor" href="#创建型-creational-patterns-5">¶</a>创建型 Creational Patterns (5):</h3>
-<p>​	<em>abstract the object instantiation process.</em></p>
+<h2 id="设计模式类型"><a href="#设计模式类型" class="headerlink" title="设计模式类型"></a>设计模式类型</h2><h3 id="创建型-Creational-Patterns-5"><a href="#创建型-Creational-Patterns-5" class="headerlink" title="创建型 Creational Patterns (5):"></a>创建型 Creational Patterns (5):</h3><p>​    <em>abstract the object instantiation process.</em></p>
 <ol>
 <li><strong>工厂方法模式 factory</strong></li>
 <li>抽象工厂 abstractFactory</li>
@@ -495,8 +277,7 @@
 <li>建造者模式 builder</li>
 <li>原型模式 prototype</li>
 </ol>
-<h3 id="结构型-structural-patterns-7"><a class="header-anchor" href="#结构型-structural-patterns-7">¶</a>结构型 Structural Patterns (7):</h3>
-<p>​	<em>describe how classes and objects can be combined to form larger structures.</em></p>
+<h3 id="结构型-Structural-Patterns-7"><a href="#结构型-Structural-Patterns-7" class="headerlink" title="结构型 Structural Patterns (7):"></a>结构型 Structural Patterns (7):</h3><p>​    <em>describe how classes and objects can be combined to form larger structures.</em></p>
 <ol>
 <li>桥接模式bridge</li>
 <li><strong>适配器模式adapter</strong></li>
@@ -506,51 +287,36 @@
 <li><strong>外观模式facade</strong></li>
 <li>代理模式proxy</li>
 </ol>
-<h3 id="行为型-behavioural-patterns-11"><a class="header-anchor" href="#行为型-behavioural-patterns-11">¶</a>行为型 Behavioural Patterns (11):</h3>
-<p>​	<em>are most specifically concerned with communication between objects.</em></p>
+<h3 id="行为型-Behavioural-Patterns-11"><a href="#行为型-Behavioural-Patterns-11" class="headerlink" title="行为型 Behavioural Patterns (11):"></a>行为型 Behavioural Patterns (11):</h3><p>​    <em>are most specifically concerned with communication between objects.</em></p>
 <ol>
-<li>
-<p>模板方法模式template</p>
+<li><p>模板方法模式template</p>
 </li>
-<li>
-<p><strong>策略模式strategy</strong></p>
+<li><p><strong>策略模式strategy</strong></p>
 <p><em>两个类之间:</em></p>
 </li>
-<li>
-<p><strong>观察者模式observer</strong></p>
+<li><p><strong>观察者模式observer</strong></p>
 </li>
-<li>
-<p>迭代子模式iterator（容器与容器遍历）</p>
+<li><p>迭代子模式iterator（容器与容器遍历）</p>
 </li>
-<li>
-<p>责任链模式chain of responsibility（责任链模式）（串的替换—可以使用链式操作）</p>
+<li><p>责任链模式chain of responsibility（责任链模式）（串的替换—-可以使用链式操作）</p>
 </li>
-<li>
-<p>命令模式command</p>
+<li><p>命令模式command</p>
 <p><em>类的状态：</em></p>
 </li>
-<li>
-<p>备忘录模式memento</p>
+<li><p>备忘录模式memento</p>
 </li>
-<li>
-<p>状态模式state</p>
+<li><p>状态模式state</p>
 <p><em>通过中间类：</em></p>
 </li>
-<li>
-<p>访问者模式visitor</p>
+<li><p>访问者模式visitor</p>
 </li>
-<li>
-<p>中介模式mediator</p>
+<li><p>中介模式mediator</p>
 </li>
-<li>
-<p>解释器模式interpreter</p>
+<li><p>解释器模式interpreter  </p>
 </li>
 </ol>
-<h2 id="adapter-适配器模式"><a class="header-anchor" href="#adapter-适配器模式">¶</a>Adapter 适配器模式</h2>
-<h3 id="类图："><a class="header-anchor" href="#类图：">¶</a>类图：</h3>
-<p><img src="/11/设计模式总结/adapter.png" alt="Adapter Pattern Diagram"></p>
-<h3 id="代码示例："><a class="header-anchor" href="#代码示例：">¶</a>代码示例：</h3>
-<p>原有程序代码：</p>
+<h2 id="Adapter-适配器模式"><a href="#Adapter-适配器模式" class="headerlink" title="Adapter 适配器模式"></a>Adapter 适配器模式</h2><h3 id="类图："><a href="#类图：" class="headerlink" title="类图："></a>类图：</h3><p><img alt="Adapter Pattern Diagram" data-src="/11/设计模式总结/adapter.png"></p>
+<h3 id="代码示例："><a href="#代码示例：" class="headerlink" title="代码示例："></a>代码示例：</h3><p>原有程序代码：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Context</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 这里只是提供一种应用场景，</span></span><br><span class="line">        <span class="comment">// 并非必须要 switch 或者 for loop</span></span><br><span class="line">        oldTest();</span><br><span class="line">        newTest();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Adapter 版调用方式</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">newTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        IShapeAdapter[] shapes = &#123;</span><br><span class="line">                <span class="keyword">new</span> ILineAdapter(),</span><br><span class="line">                <span class="keyword">new</span> IRectangleAdapter(),</span><br><span class="line">                <span class="keyword">new</span> IWeatherMapAdapter()</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="comment">// A begin and end point from a graphical editor</span></span><br><span class="line">        Point p1 = <span class="keyword">new</span> Point(<span class="number">10</span>, <span class="number">20</span>);</span><br><span class="line">        Point p2 = <span class="keyword">new</span> Point(<span class="number">30</span>, <span class="number">60</span>);</span><br><span class="line">        <span class="keyword">for</span> (IShapeAdapter shape : shapes) &#123;</span><br><span class="line">            <span class="comment">// 统一了调用方法签名</span></span><br><span class="line">            shape.draw(p1, p2);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 原版调用方式</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">oldTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Object[] shapes = &#123;<span class="keyword">new</span> LineGraphic(), <span class="keyword">new</span> RectangleGraphic()&#125;;</span><br><span class="line">        <span class="comment">// A begin and end point from a graphical editor</span></span><br><span class="line">        Point p1 = <span class="keyword">new</span> Point(<span class="number">10</span>, <span class="number">20</span>);</span><br><span class="line">        Point p2 = <span class="keyword">new</span> Point(<span class="number">30</span>, <span class="number">60</span>);</span><br><span class="line">        <span class="keyword">for</span> (Object shape : shapes)</span><br><span class="line">            <span class="keyword">if</span> (shape.getClass().getName().equals(<span class="string">"Line"</span>))</span><br><span class="line">                ((LineGraphic) shape).drawLine(p1, p2);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (shape.getClass().getName().equals(<span class="string">"Rectangle"</span>))</span><br><span class="line">                ((RectangleGraphic) shape).drawRect(</span><br><span class="line">                        <span class="keyword">new</span> Point(Math.min(p1.x, p2.x), Math.min(p1.y, p2.y)),</span><br><span class="line">                        Math.abs(p2.x - p1.x), Math.abs(p2.y - p1.y)</span><br><span class="line">                );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">LineGraphic</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">drawLine</span><span class="params">(Point p1, Point p2)</span> </span>&#123;</span><br><span class="line">            <span class="comment">// Stub for testing replacing real library call</span></span><br><span class="line">            System.out.println(<span class="string">"line from "</span> + p1 + <span class="string">" to "</span> + p2);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">RectangleGraphic</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">drawRect</span><span class="params">(Point p, <span class="keyword">int</span> width, <span class="keyword">int</span> height)</span> </span>&#123;</span><br><span class="line">            <span class="comment">// Stub for testing replacing real library call</span></span><br><span class="line">            System.out.println(<span class="string">"rectangle at "</span> + p + <span class="string">" with width "</span> + width</span><br><span class="line">                    + <span class="string">" and height "</span> + height);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">WeatherMapGraphic</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">drawCurrent</span><span class="params">(<span class="keyword">int</span> length, Point p)</span> </span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"WeatherMapGraphic drawCurrent was called"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>以下为新增类</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Adapter 接口</span></span><br><span class="line"><span class="comment">// 1. 统一方法签名</span></span><br><span class="line"><span class="comment">// 2. 为可能的新增功能提供接口规范</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IShapeAdapter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">draw</span><span class="params">(Point p1, Point p2)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -558,446 +324,253 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ILineAdapter</span> <span class="keyword">implements</span> <span class="title">IShapeAdapter</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Context.LineGraphic adaptee = <span class="keyword">new</span> Context.LineGraphic();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">(Point p1, Point p2)</span> </span>&#123;</span><br><span class="line">        adaptee.drawLine(p1, p2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IRectangleAdapter</span> <span class="keyword">implements</span> <span class="title">IShapeAdapter</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Context.RectangleGraphic adaptee = <span class="keyword">new</span> Context.RectangleGraphic();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">(Point p1, Point p2)</span> </span>&#123;</span><br><span class="line">        adaptee.drawRect(<span class="keyword">new</span> Point(Math.min(p1.x, p2.x), Math.min(p1.y, p2.y)),</span><br><span class="line">                Math.abs(p2.x - p1.x), Math.abs(p2.y - p1.y));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IWeatherMapAdapter</span> <span class="keyword">implements</span> <span class="title">IShapeAdapter</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Context.WeatherMapGraphic adaptee = <span class="keyword">new</span> Context.WeatherMapGraphic();</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">(Point p1, Point p2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> length = Math.abs(p2.x - p1.x);</span><br><span class="line">        Point p = <span class="keyword">new</span> Point(Math.min(p1.x, p2.x), Math.min(p1.y, p2.y));</span><br><span class="line">        adaptee.drawCurrent(length, p);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="关键词"><a class="header-anchor" href="#关键词">¶</a>关键词:</h3>
-<p><em>incompatible, different interfaces, different methods (method signature)</em></p>
-<h3 id="总结"><a class="header-anchor" href="#总结">¶</a>总结</h3>
-<p>当出现以上关键词或者在Class Diagram里各个<strong>相似</strong>的类，方法名或方法签名（<em>签名包括方法名和参数列表</em>）不同时，应该使用Adapter pattern。</p>
-<h2 id="factory-not-gof-简单工厂模式"><a class="header-anchor" href="#factory-not-gof-简单工厂模式">¶</a>Factory (not GoF) 简单工厂模式</h2>
-<h3 id="代码示例：-v2"><a class="header-anchor" href="#代码示例：-v2">¶</a>代码示例：</h3>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IShape</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="关键词"><a href="#关键词" class="headerlink" title="关键词:"></a>关键词:</h3><p><em>incompatible, different interfaces, different methods (method signature)</em></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>当出现以上关键词或者在Class Diagram里各个<strong>相似</strong>的类，方法名或方法签名（<em>签名包括方法名和参数列表</em>）不同时，应该使用Adapter pattern。</p>
+<h2 id="Factory-not-GoF-简单工厂模式"><a href="#Factory-not-GoF-简单工厂模式" class="headerlink" title="Factory (not GoF) 简单工厂模式"></a>Factory (not GoF) 简单工厂模式</h2><h3 id="代码示例：-1"><a href="#代码示例：-1" class="headerlink" title="代码示例："></a>代码示例：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IShape</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Circle</span> <span class="keyword">implements</span> <span class="title">IShape</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Inside Circle::draw() method."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span> <span class="keyword">implements</span> <span class="title">IShape</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Inside Rectangle::draw() method."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Square</span> <span class="keyword">implements</span> <span class="title">IShape</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Inside Square::draw() method."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShapeFactory</span> </span>&#123;</span><br><span class="line">    <span class="comment">//使用 getShape 方法获取形状类型的对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> IShape <span class="title">getShape</span><span class="params">(String shapeType)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (shapeType == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (shapeType.equalsIgnoreCase(<span class="string">"CIRCLE"</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> Circle();</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (shapeType.equalsIgnoreCase(<span class="string">"RECTANGLE"</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> Rectangle();</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (shapeType.equalsIgnoreCase(<span class="string">"SQUARE"</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> Square();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Context</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ShapeFactory shapeFactory = <span class="keyword">new</span> ShapeFactory();</span><br><span class="line">        <span class="comment">//获取 Circle 的对象，并调用它的 draw 方法</span></span><br><span class="line">        IShape shape1 = shapeFactory.getShape(<span class="string">"CIRCLE"</span>);</span><br><span class="line">        <span class="comment">//调用 Circle 的 draw 方法</span></span><br><span class="line">        shape1.draw();</span><br><span class="line">        <span class="comment">//获取 Rectangle 的对象，并调用它的 draw 方法</span></span><br><span class="line">        IShape shape2 = shapeFactory.getShape(<span class="string">"RECTANGLE"</span>);</span><br><span class="line">        <span class="comment">//调用 Rectangle 的 draw 方法</span></span><br><span class="line">        shape2.draw();</span><br><span class="line">        <span class="comment">//获取 Square 的对象，并调用它的 draw 方法</span></span><br><span class="line">        IShape shape3 = shapeFactory.getShape(<span class="string">"SQUARE"</span>);</span><br><span class="line">        <span class="comment">//调用 Square 的 draw 方法</span></span><br><span class="line">        shape3.draw();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>Output:</p>
-<p>Inside Circle::draw() method.<br>
-Inside Rectangle::draw() method.<br>
-Inside Square::draw() method.</p>
+<p>Inside Circle::draw() method.<br>Inside Rectangle::draw() method.<br>Inside Square::draw() method.</p>
 </blockquote>
-<h3 id="关键词："><a class="header-anchor" href="#关键词：">¶</a>关键词：</h3>
-<p><em>complex creation logic, separate the creation responsibilities for better cohesion</em></p>
-<h3 id="总结-v2"><a class="header-anchor" href="#总结-v2">¶</a>总结</h3>
-<ol>
+<h3 id="关键词："><a href="#关键词：" class="headerlink" title="关键词："></a>关键词：</h3><p><em>complex creation logic, separate the creation responsibilities for better cohesion</em></p>
+<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><ol>
 <li>简单工厂模式(Simple Factory) 是对GoF中工厂模式的简化，二者不是同一模式</li>
 <li>工厂模式隐藏了创建细节，特别是<strong>复杂的创建</strong>过程</li>
 </ol>
-<h2 id="singleton-单例模式"><a class="header-anchor" href="#singleton-单例模式">¶</a>Singleton (单例模式)</h2>
-<h3 id="类图：-v2"><a class="header-anchor" href="#类图：-v2">¶</a>类图：</h3>
-<p><img src="/11/设计模式总结/singleton.png" alt="Singleton Pattern Diagram"></p>
-<h3 id="代码示例：-v3"><a class="header-anchor" href="#代码示例：-v3">¶</a>代码示例：</h3>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 以 &#123;<span class="doctag">@link</span> ShapeFactory&#125; 为例</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonShapeFactory</span> <span class="keyword">extends</span> <span class="title">ShapeFactory</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * NOTE：</span></span><br><span class="line"><span class="comment">     * 该变量为 private static</span></span><br><span class="line"><span class="comment">     * 用于内部实例化该类</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> SingletonShapeFactory instance = <span class="keyword">new</span> SingletonShapeFactory();</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * NOTE：</span></span><br><span class="line"><span class="comment">     * 构造函数访问符一定为 private</span></span><br><span class="line"><span class="comment">     * 目的是阻止外界访问，阻止外界实例化</span></span><br><span class="line"><span class="comment">     * 这样该类在整个程序中只有一个实例化过的对象</span></span><br><span class="line"><span class="comment">     * 即 instance</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">SingletonShapeFactory</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// do sth...</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 提供 static 方法，为外界提供访问入口</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 唯一的 instance</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingletonShapeFactory <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 单例模式的变种之一</span></span><br><span class="line"><span class="comment">     * 1. Lazy initialization</span></span><br><span class="line"><span class="comment">     * instance初始值为 null</span></span><br><span class="line"><span class="comment">     * 即 instance 只在需要时被实例化</span></span><br><span class="line"><span class="comment">     * 2. 使用 synchronized 修饰</span></span><br><span class="line"><span class="comment">     * 防止多线程并发访问时造成实例化多个 instance</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> SingletonShapeFactory <span class="title">getInstance2</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>)</span><br><span class="line">            instance = <span class="keyword">new</span> SingletonShapeFactory();</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="关键词：-v2"><a class="header-anchor" href="#关键词：-v2">¶</a>关键词：</h3>
-<p><em>one instance of a class is allowed, Objects need a global and single point of access</em></p>
-<h3 id="总结-v3"><a class="header-anchor" href="#总结-v3">¶</a>总结</h3>
-<p><strong>要点：</strong></p>
+<h2 id="Singleton-单例模式"><a href="#Singleton-单例模式" class="headerlink" title="Singleton (单例模式)"></a>Singleton (单例模式)</h2><h3 id="类图：-1"><a href="#类图：-1" class="headerlink" title="类图："></a>类图：</h3><p><img alt="Singleton Pattern Diagram" data-src="/11/设计模式总结/singleton.png"></p>
+<h3 id="代码示例：-2"><a href="#代码示例：-2" class="headerlink" title="代码示例："></a>代码示例：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 以 &#123;<span class="doctag">@link</span> ShapeFactory&#125; 为例</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonShapeFactory</span> <span class="keyword">extends</span> <span class="title">ShapeFactory</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * NOTE：</span></span><br><span class="line"><span class="comment">     * 该变量为 private static</span></span><br><span class="line"><span class="comment">     * 用于内部实例化该类</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> SingletonShapeFactory instance = <span class="keyword">new</span> SingletonShapeFactory();</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * NOTE：</span></span><br><span class="line"><span class="comment">     * 构造函数访问符一定为 private</span></span><br><span class="line"><span class="comment">     * 目的是阻止外界访问，阻止外界实例化</span></span><br><span class="line"><span class="comment">     * 这样该类在整个程序中只有一个实例化过的对象</span></span><br><span class="line"><span class="comment">     * 即 instance</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">SingletonShapeFactory</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// do sth...</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 提供 static 方法，为外界提供访问入口</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 唯一的 instance</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingletonShapeFactory <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 单例模式的变种之一</span></span><br><span class="line"><span class="comment">     * 1. Lazy initialization</span></span><br><span class="line"><span class="comment">     * instance初始值为 null</span></span><br><span class="line"><span class="comment">     * 即 instance 只在需要时被实例化</span></span><br><span class="line"><span class="comment">     * 2. 使用 synchronized 修饰</span></span><br><span class="line"><span class="comment">     * 防止多线程并发访问时造成实例化多个 instance</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> SingletonShapeFactory <span class="title">getInstance2</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>)</span><br><span class="line">            instance = <span class="keyword">new</span> SingletonShapeFactory();</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="关键词：-1"><a href="#关键词：-1" class="headerlink" title="关键词："></a>关键词：</h3><p><em>one instance of a class is allowed, Objects need a global and single point of access</em></p>
+<h3 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h3><p><strong>要点：</strong></p>
 <ol>
 <li>private constructor</li>
 <li>static instance and getter</li>
 <li>在class diagram或sequence diagram中类名右上角标注1</li>
 </ol>
-<p><img src="/11/设计模式总结/1541753510666.png" alt="1541753510666"></p>
+<p><img alt="1541753510666" data-src="/11/设计模式总结/1541753510666.png"></p>
 <p><strong>思考：</strong></p>
 <ol>
 <li>如果<code>getInstance()</code>方法替换为以下代码行不行；</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingletonShapeFactory <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 同样保证了外界无法 new 另外的对象</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> SingletonShapeFactory();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ol>
-<li>
-<p>Why not aren’t all Singleton service methods <code>static</code>?</p>
+<li><p>Why not aren’t all Singleton service methods <code>static</code>?</p>
 <p><code>static</code> 方法不能被<code>Override</code>，不是虚方法，所以无法实现多态(not polymorphic)</p>
 </li>
 </ol>
-<h2 id="strategy-策略模式"><a class="header-anchor" href="#strategy-策略模式">¶</a>Strategy (策略模式)</h2>
-<h3 id="类图：-v3"><a class="header-anchor" href="#类图：-v3">¶</a>类图：</h3>
-<p><img src="/11/设计模式总结/1541821696843.png" alt="Strategy Pattern Diagram"></p>
-<h3 id="总结-v4"><a class="header-anchor" href="#总结-v4">¶</a>总结</h3>
-<p><strong>要点：</strong></p>
+<h2 id="Strategy-策略模式"><a href="#Strategy-策略模式" class="headerlink" title="Strategy (策略模式)"></a>Strategy (策略模式)</h2><h3 id="类图：-2"><a href="#类图：-2" class="headerlink" title="类图："></a>类图：</h3><p><img alt="Strategy Pattern Diagram" data-src="/11/设计模式总结/1541821696843.png"></p>
+<h3 id="总结-3"><a href="#总结-3" class="headerlink" title="总结"></a>总结</h3><p><strong>要点：</strong></p>
 <ol>
-<li>
-<p>使用哪种策略的判断条件不尽相同，自定义</p>
+<li><p>使用哪种策略的判断条件不尽相同，自定义</p>
 <ol>
-<li>
-<p>即，Lecture Note中将 Context Object <code>Sale</code>作为参数传入<code>ISalePricingStrategy</code>中不是<strong>唯一/必须</strong>的</p>
-<p><img src="/11/设计模式总结/1541754654574.png" alt="1541754654574"></p>
+<li><p>即，Lecture Note中将 Context Object <code>Sale</code>作为参数传入<code>ISalePricingStrategy</code>中不是<strong>唯一/必须</strong>的</p>
+<p><img alt="1541754654574" data-src="/11/设计模式总结/1541754654574.png"></p>
 </li>
 </ol>
 </li>
-<li>
-<p>执行策略模式的方法一般是将策略接口作为参数传入，例如：</p>
+<li><p>执行策略模式的方法一般是将策略接口作为参数传入，例如：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">executeStrategy</span><span class="params">(IStrategy stragtegy, <span class="keyword">int</span> num1, <span class="keyword">int</span> num2,...)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> strategy.doOperation(num1, num2,...);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li>
-<p>策略模式视不同情况执行不同策略，而不是 <em>同时</em> 执行 <em>所有</em> 策略，所以不一定要有 if…else…或switch…case…</p>
+<li><p>策略模式视不同情况执行不同策略，而不是 <em>同时</em> 执行 <em>所有</em> 策略，所以不一定要有 if…else…或switch…case…</p>
 </li>
 </ol>
-<h2 id="composite-组合模式"><a class="header-anchor" href="#composite-组合模式">¶</a>Composite (组合模式)</h2>
-<h3 id="类图：-v4"><a class="header-anchor" href="#类图：-v4">¶</a>类图：</h3>
-<p><img src="/11/设计模式总结/1541823472361.png" alt="Composite Pattern Diagram"></p>
-<h3 id="代码示例：-v4"><a class="header-anchor" href="#代码示例：-v4">¶</a>代码示例：</h3>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Pricing Strategy 接口</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ISalePricingStrategy</span> </span>&#123;</span><br><span class="line">    <span class="function">Money <span class="title">getTotal</span><span class="params">(SaleContext saleContext)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Composite-组合模式"><a href="#Composite-组合模式" class="headerlink" title="Composite (组合模式)"></a>Composite (组合模式)</h2><h3 id="类图：-3"><a href="#类图：-3" class="headerlink" title="类图："></a>类图：</h3><p><img alt="Composite Pattern Diagram" data-src="/11/设计模式总结/1541823472361.png"></p>
+<h3 id="代码示例：-3"><a href="#代码示例：-3" class="headerlink" title="代码示例："></a>代码示例：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Pricing Strategy 接口</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ISalePricingStrategy</span> </span>&#123;</span><br><span class="line">    <span class="function">Money <span class="title">getTotal</span><span class="params">(SaleContext saleContext)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 普通策略</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AbsoluteDiscountOverThresholdPricingStrategy</span> <span class="keyword">implements</span> <span class="title">ISalePricingStrategy</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Money discount, threshold;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AbsoluteDiscountOverThresholdPricingStrategy</span><span class="params">(Money discount, Money threshold)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.discount = discount;</span><br><span class="line">        <span class="keyword">this</span>.threshold = threshold;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Money <span class="title">getTotal</span><span class="params">(SaleContext saleContext)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Money(discount.yuan * <span class="number">0.01</span> + threshold.yuan);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 普通策略</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PercentageDiscountPricingStrategy</span> <span class="keyword">implements</span> <span class="title">ISalePricingStrategy</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">double</span> percentage;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PercentageDiscountPricingStrategy</span><span class="params">(<span class="keyword">double</span> percentage)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.percentage = percentage;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Money <span class="title">getTotal</span><span class="params">(SaleContext saleContext)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Money(saleContext.getPreDiscountTotal() * percentage);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 策略模式 + 组合模式 (abstract class)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">CompositePricingStrategy</span> <span class="keyword">implements</span> <span class="title">ISalePricingStrategy</span> </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> List&lt;ISalePricingStrategy&gt; pricingStrategies = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(ISalePricingStrategy strategy)</span> </span>&#123;</span><br><span class="line">        pricingStrategies.add(strategy);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> Money <span class="title">getTotal</span><span class="params">(SaleContext saleContext)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 如果要求写代码</span></span><br><span class="line"><span class="comment"> * 注意 interface 用 implements //第三人称</span></span><br><span class="line"><span class="comment"> *      abstract class 用 extends //第三人称</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CompositeBestForCustomerPricingStrategy</span> <span class="keyword">extends</span> <span class="title">CompositePricingStrategy</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Money <span class="title">getTotal</span><span class="params">(SaleContext saleContext)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">double</span> lowestTotal = Double.MAX_VALUE;</span><br><span class="line">        <span class="keyword">for</span> (ISalePricingStrategy strategy : pricingStrategies) &#123;</span><br><span class="line">            <span class="keyword">double</span> total = strategy.getTotal(saleContext).yuan;</span><br><span class="line">            lowestTotal = Math.min(total, lowestTotal);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Money(lowestTotal);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CompositeBestForStorePricingStrategy</span> <span class="keyword">extends</span> <span class="title">CompositePricingStrategy</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Money <span class="title">getTotal</span><span class="params">(SaleContext saleContext)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//<span class="doctag">TODO:</span> do sth...</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="关键词：-v3"><a class="header-anchor" href="#关键词：-v3">¶</a>关键词：</h3>
-<p><em>group or composition</em></p>
-<h3 id="总结-v5"><a class="header-anchor" href="#总结-v5">¶</a>总结</h3>
-<p><img src="/11/设计模式总结/1541760163905.png" alt="1541760163905"></p>
+<h3 id="关键词：-2"><a href="#关键词：-2" class="headerlink" title="关键词："></a>关键词：</h3><p><em>group or composition</em></p>
+<h3 id="总结-4"><a href="#总结-4" class="headerlink" title="总结"></a>总结</h3><p><img alt="1541760163905" data-src="/11/设计模式总结/1541760163905.png"></p>
 <p><strong>要点：</strong></p>
 <ol>
 <li><code>CompositePricingStrategy</code> 可以是具体类，也可以是抽象类 (abstract class)</li>
 <li><code>Composite</code> class可以包含任意实现 <code>Component</code> 接口的类，包括自己</li>
-<li>在 <code>Composite</code> 的 <code>operation()</code> 中可以 <code>for...each</code> 执行所有子类 <code>operation()</code>，也可以筛选特定执行
-<ol>
+<li>在 <code>Composite</code> 的 <code>operation()</code> 中可以 <code>for...each</code> 执行所有子类 <code>operation()</code>，也可以筛选特定执行<ol>
 <li>在 <code>Composite</code> + <code>Strategy</code> 的模式中，谨防将 <code>CompositeStrategy</code> 写成 <code>Context</code> ，区别在于 <code>CompositeStrategy</code> 可组合<strong>部分</strong>也可以组合<strong>全部</strong>策略，而 <code>Context</code> 必须<strong>适用全部</strong>策略</li>
 </ol>
 </li>
 </ol>
-<h2 id="façade-外观模式"><a class="header-anchor" href="#façade-外观模式">¶</a>Façade (外观模式)</h2>
-<h3 id="类图：-v5"><a class="header-anchor" href="#类图：-v5">¶</a>类图：</h3>
-<p><img src="https://design-patterns.readthedocs.io/zh_CN/latest/_images/Facade.jpg" alt="Facade Pattern Diagram"></p>
-<h3 id="代码示例：-v5"><a class="header-anchor" href="#代码示例：-v5">¶</a>代码示例：</h3>
-<p><strong>Subsystem代码：</strong></p>
+<h2 id="Facade-外观模式"><a href="#Facade-外观模式" class="headerlink" title="Façade (外观模式)"></a>Façade (外观模式)</h2><h3 id="类图：-4"><a href="#类图：-4" class="headerlink" title="类图："></a>类图：</h3><p><img alt="Facade Pattern Diagram" data-src="https://design-patterns.readthedocs.io/zh_CN/latest/_images/Facade.jpg"></p>
+<h3 id="代码示例：-4"><a href="#代码示例：-4" class="headerlink" title="代码示例："></a>代码示例：</h3><p><strong>Subsystem代码：</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CPU</span> </span>&#123;   </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startup</span><span class="params">()</span></span>&#123;  </span><br><span class="line">        System.out.println(<span class="string">"cpu startup!"</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">shutdown</span><span class="params">()</span></span>&#123;  </span><br><span class="line">        System.out.println(<span class="string">"cpu shutdown!"</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Memory</span> </span>&#123;    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startup</span><span class="params">()</span></span>&#123;  </span><br><span class="line">        System.out.println(<span class="string">"memory startup!"</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">turnoff</span><span class="params">()</span></span>&#123;  </span><br><span class="line">        System.out.println(<span class="string">"memory shutdown!"</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125; </span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Disk</span> </span>&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startup</span><span class="params">()</span></span>&#123;  </span><br><span class="line">        System.out.println(<span class="string">"disk startup!"</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">poweroff</span><span class="params">()</span></span>&#123;  </span><br><span class="line">        System.out.println(<span class="string">"disk shutdown!"</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>Facade 代码：</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Computer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> CPU cpu;</span><br><span class="line">    <span class="keyword">private</span> Memory memory;</span><br><span class="line">    <span class="keyword">private</span> Disk disk;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Computer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        cpu = <span class="keyword">new</span> CPU();</span><br><span class="line">        memory = <span class="keyword">new</span> Memory();</span><br><span class="line">        disk = <span class="keyword">new</span> Disk();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startup</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"start the computer!"</span>);</span><br><span class="line">        cpu.startup();</span><br><span class="line">        memory.startup();</span><br><span class="line">        disk.startup();</span><br><span class="line">        System.out.println(<span class="string">"start computer finished!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">shutdown</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"begin to close the computer!"</span>);</span><br><span class="line">        cpu.shutdown();</span><br><span class="line">        memory.turnoff();</span><br><span class="line">        disk.poweroff();</span><br><span class="line">        System.out.println(<span class="string">"computer closed!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="关键词：-v4"><a class="header-anchor" href="#关键词：-v4">¶</a>关键词：</h3>
-<p><em>common, unified interface, subsystem</em></p>
-<h3 id="总结-v6"><a class="header-anchor" href="#总结-v6">¶</a>总结</h3>
-<p>要点：</p>
+<h3 id="关键词：-3"><a href="#关键词：-3" class="headerlink" title="关键词："></a>关键词：</h3><p><em>common, unified interface, subsystem</em></p>
+<h3 id="总结-5"><a href="#总结-5" class="headerlink" title="总结"></a>总结</h3><p>要点：</p>
 <ol>
-<li>
-<p>接口不是必需，因为不能要求subsystem中方法签名都必须相同</p>
+<li><p>接口不是必需，因为不能要求subsystem中方法签名都必须相同</p>
 <p>如：<code>shutdown()</code> / <code>turnoff()</code> / <code>poweroff()</code></p>
 </li>
-<li>
-<p>该模式应用于将复杂的系统执行简化、隐藏细节</p>
+<li><p>该模式应用于将复杂的系统执行简化、隐藏细节</p>
 </li>
 </ol>
-<h2 id="observer-aka-publish-subscribe-观察者模式"><a class="header-anchor" href="#observer-aka-publish-subscribe-观察者模式">¶</a>Observer (aka Publish-Subscribe) (观察者模式)</h2>
-<h3 id="类图：-v6"><a class="header-anchor" href="#类图：-v6">¶</a>类图：</h3>
-<p><img src="/11/设计模式总结/1541824090370.png" alt="Observer Pattern Diagram"></p>
-<h3 id="关键词：-v5"><a class="header-anchor" href="#关键词：-v5">¶</a>关键词：</h3>
-<p><em>subscriber or listener</em></p>
-<h3 id="总结-v7"><a class="header-anchor" href="#总结-v7">¶</a>总结</h3>
-<p>f<em>r</em>e<em>e</em>s<strong>t</strong>y<em>l</em>e</p>
+<h2 id="Observer-aka-Publish-Subscribe-观察者模式"><a href="#Observer-aka-Publish-Subscribe-观察者模式" class="headerlink" title="Observer (aka Publish-Subscribe) (观察者模式)"></a>Observer (aka Publish-Subscribe) (观察者模式)</h2><h3 id="类图：-5"><a href="#类图：-5" class="headerlink" title="类图："></a>类图：</h3><p><img alt="Observer Pattern Diagram" data-src="/11/设计模式总结/1541824090370.png"></p>
+<h3 id="关键词：-4"><a href="#关键词：-4" class="headerlink" title="关键词："></a>关键词：</h3><p><em>subscriber or listener</em></p>
+<h3 id="总结-6"><a href="#总结-6" class="headerlink" title="总结"></a>总结</h3><p>f<em>r</em>e<em>e</em>s<strong>t</strong>y<em>l</em>e</p>
 
-      
     </div>
 
     
+    
+    
+        
 
-    
-    
-    
-
-    
-
-    
-
-    
-      <div>
-        <ul class="post-copyright">
+<div>
+<ul class="post-copyright">
   <li class="post-copyright-author">
-    <strong>Post author:  </strong>Chenglong Ma</li>
+    <strong>Post author:  </strong>Chenglong Ma
+  </li>
   <li class="post-copyright-link">
     <strong>Post link: </strong>
     <a href="https://chenglongma.com/11/设计模式总结/" title="设计模式总结">https://chenglongma.com/11/设计模式总结/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</li>
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/null" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
 </ul>
-
-      </div>
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Design-Patterns/" rel="tag"># Design Patterns</a>
-          
-        </div>
-      
-
-      
-      
-        <div class="post-widgets">
-        
-
-        
-
-        
-          
-          <div class="social_share">
-            
-            
-               <div id="needsharebutton-postbottom">
-                 <span class="btn">
-                    <i class="fa fa-share-alt" aria-hidden="true"></i>
-                 </span>
-               </div>
-            
-          </div>
-        
-        </div>
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/11/Immutable和Mutable-Objects-in-Java/" rel="next" title="Immutable和Mutable Objects in Java">
-                <i class="fa fa-chevron-left"></i> Immutable和Mutable Objects in Java
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/10/simple-keccak/" rel="prev" title="Simple Keccak">
-                Simple Keccak <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-  </div>
-
-
-          </div>
-          
-
-  
-      <div class="comments" id="comments">
-		<div id="gitalk-container"></div>
-		<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-	  </div>
-	  
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="Chenglong Ma">
-            
-              <p class="site-author-name" itemprop="name">Chenglong Ma</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">5</span>
-                    <span class="site-state-item-name">posts</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">2</span>
-                    <span class="site-state-item-name">categories</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">8</span>
-                    <span class="site-state-item-name">tags</span>
-                  </a>
-                </div>
-              
-            </nav>
-          
-
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  <a href="https://github.com/ChenglongMa" target="_blank" title="GitHub" rel="external nofollow"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                  
-                </span>
-              
-                <span class="links-of-author-item">
-                  <a href="https://www.linkedin.com/in/machenglong" target="_blank" title="Linkedin" rel="external nofollow"><i class="fa fa-fw fa-linkedin"></i>Linkedin</a>
-                  
-                </span>
-              
-            </div>
-          
-
-          
-          
-            <div class="cc-license motion-element" itemprop="license">
-              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank" rel="external nofollow">
-                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons">
-              </a>
-            </div>
-          
-
-          
-          
-
-          
-            
-          
-          
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">¶前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计模式类型"><span class="nav-number">2.</span> <span class="nav-text">¶设计模式类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建型-creational-patterns-5"><span class="nav-number">2.1.</span> <span class="nav-text">¶创建型 Creational Patterns (5):</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结构型-structural-patterns-7"><span class="nav-number">2.2.</span> <span class="nav-text">¶结构型 Structural Patterns (7):</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#行为型-behavioural-patterns-11"><span class="nav-number">2.3.</span> <span class="nav-text">¶行为型 Behavioural Patterns (11):</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#adapter-适配器模式"><span class="nav-number">3.</span> <span class="nav-text">¶Adapter 适配器模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类图："><span class="nav-number">3.1.</span> <span class="nav-text">¶类图：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码示例："><span class="nav-number">3.2.</span> <span class="nav-text">¶代码示例：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关键词"><span class="nav-number">3.3.</span> <span class="nav-text">¶关键词:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">3.4.</span> <span class="nav-text">¶总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#factory-not-gof-简单工厂模式"><span class="nav-number">4.</span> <span class="nav-text">¶Factory (not GoF) 简单工厂模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码示例：-v2"><span class="nav-number">4.1.</span> <span class="nav-text">¶代码示例：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关键词："><span class="nav-number">4.2.</span> <span class="nav-text">¶关键词：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结-v2"><span class="nav-number">4.3.</span> <span class="nav-text">¶总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#singleton-单例模式"><span class="nav-number">5.</span> <span class="nav-text">¶Singleton (单例模式)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类图：-v2"><span class="nav-number">5.1.</span> <span class="nav-text">¶类图：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码示例：-v3"><span class="nav-number">5.2.</span> <span class="nav-text">¶代码示例：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关键词：-v2"><span class="nav-number">5.3.</span> <span class="nav-text">¶关键词：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结-v3"><span class="nav-number">5.4.</span> <span class="nav-text">¶总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#strategy-策略模式"><span class="nav-number">6.</span> <span class="nav-text">¶Strategy (策略模式)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类图：-v3"><span class="nav-number">6.1.</span> <span class="nav-text">¶类图：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结-v4"><span class="nav-number">6.2.</span> <span class="nav-text">¶总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#composite-组合模式"><span class="nav-number">7.</span> <span class="nav-text">¶Composite (组合模式)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类图：-v4"><span class="nav-number">7.1.</span> <span class="nav-text">¶类图：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码示例：-v4"><span class="nav-number">7.2.</span> <span class="nav-text">¶代码示例：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关键词：-v3"><span class="nav-number">7.3.</span> <span class="nav-text">¶关键词：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结-v5"><span class="nav-number">7.4.</span> <span class="nav-text">¶总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#façade-外观模式"><span class="nav-number">8.</span> <span class="nav-text">¶Façade (外观模式)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类图：-v5"><span class="nav-number">8.1.</span> <span class="nav-text">¶类图：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码示例：-v5"><span class="nav-number">8.2.</span> <span class="nav-text">¶代码示例：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关键词：-v4"><span class="nav-number">8.3.</span> <span class="nav-text">¶关键词：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结-v6"><span class="nav-number">8.4.</span> <span class="nav-text">¶总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#observer-aka-publish-subscribe-观察者模式"><span class="nav-number">9.</span> <span class="nav-text">¶Observer (aka Publish-Subscribe) (观察者模式)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类图：-v6"><span class="nav-number">9.1.</span> <span class="nav-text">¶类图：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关键词：-v5"><span class="nav-number">9.2.</span> <span class="nav-text">¶关键词：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结-v7"><span class="nav-number">9.3.</span> <span class="nav-text">¶总结</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright"> &copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-hand-spock-o"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Chenglong Ma</span>
-
-  
-
-  
 </div>
 
 
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Design-Patterns/" rel="tag"># Design Patterns</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/11/Immutable和Mutable-Objects-in-Java/" rel="prev" title="Immutable和Mutable Objects in Java">
+      <i class="fa fa-chevron-left"></i> Immutable和Mutable Objects in Java
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/10/simple-keccak/" rel="next" title="Simple Keccak">
+      Simple Keccak <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
+  </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a> v3.8.0</div>
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计模式类型"><span class="nav-number">2.</span> <span class="nav-text">设计模式类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建型-Creational-Patterns-5"><span class="nav-number">2.1.</span> <span class="nav-text">创建型 Creational Patterns (5):</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结构型-Structural-Patterns-7"><span class="nav-number">2.2.</span> <span class="nav-text">结构型 Structural Patterns (7):</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#行为型-Behavioural-Patterns-11"><span class="nav-number">2.3.</span> <span class="nav-text">行为型 Behavioural Patterns (11):</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Adapter-适配器模式"><span class="nav-number">3.</span> <span class="nav-text">Adapter 适配器模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类图："><span class="nav-number">3.1.</span> <span class="nav-text">类图：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码示例："><span class="nav-number">3.2.</span> <span class="nav-text">代码示例：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关键词"><span class="nav-number">3.3.</span> <span class="nav-text">关键词:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">3.4.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Factory-not-GoF-简单工厂模式"><span class="nav-number">4.</span> <span class="nav-text">Factory (not GoF) 简单工厂模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码示例：-1"><span class="nav-number">4.1.</span> <span class="nav-text">代码示例：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关键词："><span class="nav-number">4.2.</span> <span class="nav-text">关键词：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结-1"><span class="nav-number">4.3.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Singleton-单例模式"><span class="nav-number">5.</span> <span class="nav-text">Singleton (单例模式)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类图：-1"><span class="nav-number">5.1.</span> <span class="nav-text">类图：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码示例：-2"><span class="nav-number">5.2.</span> <span class="nav-text">代码示例：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关键词：-1"><span class="nav-number">5.3.</span> <span class="nav-text">关键词：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结-2"><span class="nav-number">5.4.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Strategy-策略模式"><span class="nav-number">6.</span> <span class="nav-text">Strategy (策略模式)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类图：-2"><span class="nav-number">6.1.</span> <span class="nav-text">类图：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结-3"><span class="nav-number">6.2.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Composite-组合模式"><span class="nav-number">7.</span> <span class="nav-text">Composite (组合模式)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类图：-3"><span class="nav-number">7.1.</span> <span class="nav-text">类图：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码示例：-3"><span class="nav-number">7.2.</span> <span class="nav-text">代码示例：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关键词：-2"><span class="nav-number">7.3.</span> <span class="nav-text">关键词：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结-4"><span class="nav-number">7.4.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Facade-外观模式"><span class="nav-number">8.</span> <span class="nav-text">Façade (外观模式)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类图：-4"><span class="nav-number">8.1.</span> <span class="nav-text">类图：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码示例：-4"><span class="nav-number">8.2.</span> <span class="nav-text">代码示例：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关键词：-3"><span class="nav-number">8.3.</span> <span class="nav-text">关键词：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结-5"><span class="nav-number">8.4.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Observer-aka-Publish-Subscribe-观察者模式"><span class="nav-number">9.</span> <span class="nav-text">Observer (aka Publish-Subscribe) (观察者模式)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类图：-5"><span class="nav-number">9.1.</span> <span class="nav-text">类图：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关键词：-4"><span class="nav-number">9.2.</span> <span class="nav-text">关键词：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结-6"><span class="nav-number">9.3.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Chenglong Ma"
+      src="/uploads/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Chenglong Ma</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ChenglongMa" title="GitHub → https://github.com/ChenglongMa" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/machenglong" title="Linkedin → https://www.linkedin.com/in/machenglong" rel="noopener" target="_blank"><i class="fa fa-fw fa-linkedin"></i>Linkedin</a>
+      </span>
+  </div>
 
 
 
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-hand-spock-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chenglong Ma</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0
+  </div>
   <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme – <a class="theme-link" target="_blank" rel="external nofollow" href="https://theme-next.org">NexT.Mist</a> v6.5.0</div>
-
-
-
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.5.0
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ddcaf8c4d67d57f" async="async"></script>
+  </div>
 
         
 
@@ -1011,542 +584,100 @@ Inside Square::draw() method.</p>
         
       </div>
     </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-	
-    
-
-    
   </div>
 
   
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
 
 
 
   
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-	
-		
-			<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-			<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
-			<script type="text/javascript">
-				const gitalk = new Gitalk({
-				id: md5(location.pathname),
-				clientID: '501e687f334b266920ae',
-				clientSecret: '6a543c72c1255478c27a130b27fad6526a9fbea3',
-				repo: 'ChenglongMa.github.io',
-				owner: 'ChenglongMa',
-				admin: 'ChenglongMa'.split(','),
-				pagerDirection: 'first',
-				// facebook-like distraction free mode
-				distractionFreeMode: false
-				})
-				gitalk.render('gitalk-container')
-			</script>
-		
-	
-
-
-  
-
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-  
-
-  
-
-
-  
-  
-  
-  <script src="/lib/needsharebutton/needsharebutton.js"></script>
-
   <script>
-    
-      pbOptions = {};
-      
-          pbOptions.iconStyle = "box";
-      
-          pbOptions.boxForm = "horizontal";
-      
-          pbOptions.position = "bottomCenter";
-      
-          pbOptions.networks = "Weibo,Wechat,Douban,Linkedin,Twitter,Facebook";
-      
-      new needShareButton('#needsharebutton-postbottom', pbOptions);
-    
-    
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
   </script>
 
-  
 
-  
 
-  
-  <script type="text/javascript" src="/js/src/js.cookie.js?v=6.5.0"></script>
-  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=6.5.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('div.pdf').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js', () => {
+    document.querySelectorAll('div.pdf').forEach(element => {
+      PDFObject.embed(element.getAttribute('target'), element, {
+        pdfOpenParams: {
+          navpanes: 0,
+          toolbar: 0,
+          statusbar: 0,
+          pagemode: 'thumbs',
+          view: 'FitH'
+        },
+        PDFJS_URL: '/lib/pdf/web/viewer.html',
+        height: element.getAttribute('height') || '500px'
+      });
+    });
+  }, window.PDFObject);
+}
 </script>
 
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
+
+
+
+
+  
+
+  
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout: 3000,
+        priority: true,
+        ignores: [uri => uri.includes('#'),uri => uri == 'https://chenglongma.com/11/设计模式总结/',]
+      });
+      });
+  </script>
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: '36beffd2994f0c094a67',
+      clientSecret: '60b9f1cfd6c878bd3d72fddaca47a75d4702e7f6',
+      repo: 'ChenglongMa.github.io',
+      owner: 'ChenglongMa',
+      admin: ['ChenglongMa'],
+      id: 'c6b4b78cfdcdab197848038d4bbc459a',
+        language: '',
+      distractionFreeMode: 'true'
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
 </script>
-
-<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-
-
-  
-
-  
-
-  
 
 </body>
 </html>
