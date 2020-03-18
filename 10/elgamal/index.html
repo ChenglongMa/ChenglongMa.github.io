@@ -49,18 +49,18 @@
   };
 </script>
 
-  <meta name="description" content="ElGamal Encryption AlgorithmThe Elgamal encryption scheme is an asymmetric key encryption algorithm which consists of three phases (i.e., key generation, encryption, decryption). It is based on the Di">
+  <meta name="description" content="ElGamal Encryption Algorithm The Elgamal encryption scheme is an asymmetric key encryption algorithm which consists of three phases (i.e., key generation, encryption, decryption). It is based on the D">
 <meta name="keywords" content="ElGamal">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ElGamal Encryption">
 <meta property="og:url" content="https://chenglongma.com/10/elgamal/index.html">
 <meta property="og:site_name" content="Chenglong Ma">
-<meta property="og:description" content="ElGamal Encryption AlgorithmThe Elgamal encryption scheme is an asymmetric key encryption algorithm which consists of three phases (i.e., key generation, encryption, decryption). It is based on the Di">
+<meta property="og:description" content="ElGamal Encryption Algorithm The Elgamal encryption scheme is an asymmetric key encryption algorithm which consists of three phases (i.e., key generation, encryption, decryption). It is based on the D">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-11-26T04:48:51.056Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ElGamal Encryption">
-<meta name="twitter:description" content="ElGamal Encryption AlgorithmThe Elgamal encryption scheme is an asymmetric key encryption algorithm which consists of three phases (i.e., key generation, encryption, decryption). It is based on the Di">
+<meta name="twitter:description" content="ElGamal Encryption Algorithm The Elgamal encryption scheme is an asymmetric key encryption algorithm which consists of three phases (i.e., key generation, encryption, decryption). It is based on the D">
 
 <link rel="canonical" href="https://chenglongma.com/10/elgamal/">
 
@@ -273,80 +273,102 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="ElGamal-Encryption-Algorithm"><a href="#ElGamal-Encryption-Algorithm" class="headerlink" title="ElGamal Encryption Algorithm"></a>ElGamal Encryption Algorithm</h1><p>The Elgamal encryption scheme is an asymmetric key encryption algorithm which consists of three phases (i.e., key generation, encryption, decryption). It is based on the <em>Diffie-Hellman</em> key exchange and defined over a cyclic group $ G $. Therefore, its security relies heavily on Discrete-log based building blocks.</p>
+        <h1>ElGamal Encryption Algorithm</h1>
+<p>The Elgamal encryption scheme is an asymmetric key encryption algorithm which consists of three phases (i.e., key generation, encryption, decryption). It is based on the <em>Diffie-Hellman</em> key exchange and defined over a cyclic group $ G $. Therefore, its security relies heavily on Discrete-log based building blocks.</p>
 <p><strong>This algorithm can be tested at <a href="https://chenglongma.com/simple-elgamal/">here</a>.</strong></p>
 <a id="more"></a>
-<h2 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h2><p>The Elgamal algorithm is defined on a cyclic group so that it should be safe to select a prime $ p $ to generate a prime order group $ Z_p^\star $. Then we need to choose a prime $ q $ to define a unique subgroup $ G_q $ and $ g \in Z_p^\star $ is one of its generators where $ p = \gamma q + 1 $, $\gamma$ is a specific integer.</p>
-<h2 id="Key-Generation"><a href="#Key-Generation" class="headerlink" title="Key Generation"></a>Key Generation</h2><p>To generate the <em>public</em> key of Elgamal, we firstly pick a random $ x $ as the <em>private</em> key where $ x \in \left( 0,q \right)  $. Then we get the public key $ \left\lbrace p,g,y \right\rbrace  $:</p>
-<script type="math/tex; mode=display">
-\begin{equation}
-\left\lbrace p,g,y \right\rbrace = \left\lbrace p,g, g^x \mod p \right\rbrace,
-\tag{1}
-\end{equation}</script><p>now we can pass this public key triplets to anyone who wants to send his\slash her encrypted message to us. The following is an example of key generation phase:</p>
+<h2 id="configuration"><a class="header-anchor" href="#configuration">¶</a>Configuration</h2>
+<p>The Elgamal algorithm is defined on a cyclic group so that it should be safe to select a prime $ p $ to generate a prime order group $ Z_p^\star $. Then we need to choose a prime $ q $ to define a unique subgroup $ G_q $ and $ g \in Z_p^\star $ is one of its generators where $ p = \gamma q + 1 $, $\gamma$ is a specific integer.</p>
+<h2 id="key-generation"><a class="header-anchor" href="#key-generation">¶</a>Key Generation</h2>
+<p>To generate the <em>public</em> key of Elgamal, we firstly pick a random $ x $ as the <em>private</em> key where $ x \in \left( 0,q \right)  $. Then we get the public key $ \left\lbrace p,g,y \right\rbrace  $:<br>
+$$<br>
+\begin{equation}<br>
+\left\lbrace p,g,y \right\rbrace = \left\lbrace p,g, g^x \mod p \right\rbrace,<br>
+\tag{1}<br>
+\end{equation}<br>
+$$<br>
+now we can pass this public key triplets to anyone who wants to send his\slash her encrypted message to us. The following is an example of key generation phase:</p>
 <p><img alt="key-generation" data-src="/10/elgamal/key_gen.png"></p>
 <p>It should be noted that $ y $ can be calculated by <em>Fast Exponentiation Methods</em> whose pseudo-code is shown in following:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fast_exponentiation</span><span class="params">(x, exp, n)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    res = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(exp):</span><br><span class="line">        res = (res * x) % n</span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
-<h2 id="Encryption"><a href="#Encryption" class="headerlink" title="Encryption"></a>Encryption</h2><p>Assume that we encrypt a message $ m  \in (0,p)$ using the above configured ElGamal. First, we need to choose an integer $ k \in (0,q) $ randomly. Then, we get the cipher pair $ \left\lbrace  c_1, c_2 \right\rbrace  $:</p>
-<script type="math/tex; mode=display">
-\begin{equation}
-\begin{cases}
-    c_1 &= g^k \mod p\newline
-    c_2 &= y^k \cdot m \mod p
-\end{cases}
-\tag{2}
-\end{equation}</script><p>Based on the example shown in the figure of <strong>key generation</strong> phase and setting $ m=100,k=89 $, we can easily get the cipher is:</p>
-<script type="math/tex; mode=display">
-\begin{align}
-    \left\lbrace  c_1, c_2 \right\rbrace &= \left\lbrace  g^k \mod p, y^k \cdot m \mod p \right\rbrace \nonumber\newline
-    &= \left\lbrace  100^{89} \mod 809, 65^{89} \cdot 100 \mod 809 \right\rbrace \nonumber\newline
-    &= \left\lbrace  345, 517 \right\rbrace,
-    \tag{2.1}
-\end{align}</script><p>the result will be:</p>
+<h2 id="encryption"><a class="header-anchor" href="#encryption">¶</a>Encryption</h2>
+<p>Assume that we encrypt a message $ m  \in (0,p)$ using the above configured ElGamal. First, we need to choose an integer $ k \in (0,q) $ randomly. Then, we get the cipher pair $ \left\lbrace  c_1, c_2 \right\rbrace  $:<br>
+$$<br>
+\begin{equation}<br>
+\begin{cases}<br>
+	c_1 &amp;= g^k \mod p\newline<br>
+	c_2 &amp;= y^k \cdot m \mod p<br>
+\end{cases}<br>
+\tag{2}<br>
+\end{equation}<br>
+$$<br>
+Based on the example shown in the figure of <strong>key generation</strong> phase and setting $ m=100,k=89 $, we can easily get the cipher is:<br>
+$$<br>
+\begin{align}<br>
+	\left\lbrace  c_1, c_2 \right\rbrace &amp;= \left\lbrace  g^k \mod p, y^k \cdot m \mod p \right\rbrace \nonumber\newline<br>
+	&amp;= \left\lbrace  100^{89} \mod 809, 65^{89} \cdot 100 \mod 809 \right\rbrace \nonumber\newline<br>
+	&amp;= \left\lbrace  345, 517 \right\rbrace,<br>
+	\tag{2.1}<br>
+\end{align}<br>
+$$</p>
+<p>the result will be:</p>
 <p><img alt="encryption" data-src="/10/elgamal/encryption.png"></p>
-<h2 id="Decryption"><a href="#Decryption" class="headerlink" title="Decryption"></a>Decryption</h2><p>With the private key $ x $, we can decode the cipher pair $ \left\lbrace  c_1, c_2 \right\rbrace  $ to get the plaintext $ m $:</p>
-<script type="math/tex; mode=display">
-\begin{equation}
-m = \frac{C_2}{C_1^x} \mod p = C_2 \cdot C_1^{-x} \mod p
-\tag{3}
-\end{equation}</script><p>where $ (C_1^{-x} \mod p) $ is the inverse of $ (C_1^{x} \mod p) $ that $ (C_1^{-x}\cdot C_1^{x} \equiv 1 \mod p) $. There are multiple methods to solve this equation. We implement an <em>Extended Euclidean algorithm</em> to get the <strong>inverse</strong>, see the code following (refer to <a href="https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm</a>): </p>
+<h2 id="decryption"><a class="header-anchor" href="#decryption">¶</a>Decryption</h2>
+<p>With the private key $ x $, we can decode the cipher pair $ \left\lbrace  c_1, c_2 \right\rbrace  $ to get the plaintext $ m $:<br>
+$$<br>
+\begin{equation}<br>
+m = \frac{C_2}{C_1^x} \mod p = C_2 \cdot C_1^{-x} \mod p<br>
+\tag{3}<br>
+\end{equation}<br>
+$$<br>
+where $ (C_1^{-x} \mod p) $ is the inverse of $ (C_1^{x} \mod p) $ that $ (C_1^{-x}\cdot C_1^{x} \equiv 1 \mod p) $. There are multiple methods to solve this equation. We implement an <em>Extended Euclidean algorithm</em> to get the <strong>inverse</strong>, see the code following (refer to <a href="https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm</a>):</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">inverse</span><span class="params">(a, n)</span>:</span></span><br><span class="line">    (t, newt) = (<span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">    (r, newr) = (n, a)</span><br><span class="line">    <span class="keyword">while</span> newr:</span><br><span class="line">        quotient = r // newr</span><br><span class="line">        (t, newt) = (newt, t - quotient * newt)</span><br><span class="line">        (r, newr) = (newr, r - quotient * newr)</span><br><span class="line">    <span class="keyword">if</span> r &gt;= <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">raise</span> Exception(<span class="string">'a is not invertible.'</span>)</span><br><span class="line">    <span class="keyword">if</span> t &lt;= <span class="number">0</span>:</span><br><span class="line">        t += n</span><br><span class="line">    <span class="keyword">return</span> t</span><br></pre></td></tr></table></figure>
-<p>Continued with the above example, we can get:</p>
-<script type="math/tex; mode=display">
-\begin{align}
-\begin{split}
-    m &= \frac{C_2}{C_1^x} \mod p = C_2 \cdot C_1^{-x} \mod p\\
-      &= (517 \times 720) \mod 809\\
-      &= 100
-\end{split}
-\tag{3.1}
-\end{align}</script><p>Finally, we complete all the tree phases of Elgamal:</p>
+<p>Continued with the above example, we can get:<br>
+$$<br>
+\begin{align}<br>
+\begin{split}<br>
+	m &amp;= \frac{C_2}{C_1^x} \mod p = C_2 \cdot C_1^{-x} \mod p\<br>
+	  &amp;= (517 \times 720) \mod 809\<br>
+	  &amp;= 100<br>
+\end{split}<br>
+\tag{3.1}<br>
+\end{align}<br>
+$$<br>
+Finally, we complete all the tree phases of Elgamal:</p>
 <p><img alt="decryption" data-src="/10/elgamal/decryption.png"></p>
-<h2 id="Homomorphic-Property-of-ElGamal"><a href="#Homomorphic-Property-of-ElGamal" class="headerlink" title="Homomorphic Property of ElGamal"></a>Homomorphic Property of ElGamal</h2><p><em>Homomorphic encryption</em> allows users to perform calculations on the <em>ciphers</em> and bring the calculated encrypted results into correspondence with the results of operated on the <em>plaintexts</em>. It enables the black-box operations on cipher messages and improves the security of the information transfer process. Elgamal is an implementation of homomorphic encryption. The multiplicative operation between two ciphers of $ m_1 $ and $ m_2 $ is as follows:</p>
-<script type="math/tex; mode=display">
-\begin{align}
-\begin{split}
-    C_1 = (c_1,c_2) &= (g^k \mod p, y^k \cdot m_1 \mod p)\newline
-    C_2 = (c'_1,c'_2) &= (g^{k'} \mod p, y^{k'} \cdot m_2 \mod p)
-\end{split}
-\tag{4}
-\end{align}</script><p>The product of $ C_1 $ and $ C_2 $ is:</p>
-<script type="math/tex; mode=display">
-\begin{align}
-\begin{split}
-    C_1 \cdot C_2 &= (c_1,c_2) \cdot (c'_1,c'_2)\\
-                  &= (g^{k+k'} \mod p, y^{k+k'} \cdot (m_1 \cdot m_2) \mod p)
-\end{split}
-\tag{5}
-\end{align}</script><p>Then, we get decryption of $ C_1 \cdot C_2 $ and verify if it equals the product of $ m_1 $ and $ m_2 $:</p>
-<script type="math/tex; mode=display">
-\begin{align}
-\begin{split}
-&D[(g^{k+k'}, y^{k+k'} \cdot (m_1 \cdot m_2))]
-    = \frac{(y^{k+k'} \cdot (m_1 \cdot m_2))}{(g^{x \cdot (k+k')})} \mod p\\
-&= m_1 \cdot m_2 \mod p
-\end{split}
-\tag{6} \label{hom}
-\end{align}</script><p>Based on the deduction of Equ.$\eqref{hom}$, we have verified the homomorphic property of ElGamal, which is also demonstrated in our implementation. We randomly choose 5 integer messages $ [m_1, m_2, \cdots, m_5] $ and 5 random integer $ k $ $ [k_1, k_2, \cdots, k_5] $, then encrypt them respectively. Finally, we calculate the products of each pair and the output has proved the homomorphic property of ElGamal as well, shown in below.</p>
+<h2 id="homomorphic-property-of-elgamal"><a class="header-anchor" href="#homomorphic-property-of-elgamal">¶</a>Homomorphic Property of ElGamal</h2>
+<p><em>Homomorphic encryption</em> allows users to perform calculations on the <em>ciphers</em> and bring the calculated encrypted results into correspondence with the results of operated on the <em>plaintexts</em>. It enables the black-box operations on cipher messages and improves the security of the information transfer process. Elgamal is an implementation of homomorphic encryption. The multiplicative operation between two ciphers of $ m_1 $ and $ m_2 $ is as follows:<br>
+$$<br>
+\begin{align}<br>
+\begin{split}<br>
+	C_1 = (c_1,c_2) &amp;= (g^k \mod p, y^k \cdot m_1 \mod p)\newline<br>
+	C_2 = (c’_1,c’_2) &amp;= (g^{k’} \mod p, y^{k’} \cdot m_2 \mod p)<br>
+\end{split}<br>
+\tag{4}<br>
+\end{align}<br>
+$$<br>
+The product of $ C_1 $ and $ C_2 $ is:<br>
+$$<br>
+\begin{align}<br>
+\begin{split}<br>
+	C_1 \cdot C_2 &amp;= (c_1,c_2) \cdot (c’_1,c’_2)\<br>
+				  &amp;= (g^{k+k’} \mod p, y^{k+k’} \cdot (m_1 \cdot m_2) \mod p)<br>
+\end{split}<br>
+\tag{5}<br>
+\end{align}<br>
+$$<br>
+Then, we get decryption of $ C_1 \cdot C_2 $ and verify if it equals the product of $ m_1 $ and $ m_2 $:<br>
+$$<br>
+\begin{align}<br>
+\begin{split}<br>
+&amp;D[(g^{k+k’}, y^{k+k’} \cdot (m_1 \cdot m_2))]<br>
+	= \frac{(y^{k+k’} \cdot (m_1 \cdot m_2))}{(g^{x \cdot (k+k’)})} \mod p\<br>
+&amp;= m_1 \cdot m_2 \mod p<br>
+\end{split}<br>
+\tag{6} \label{hom}<br>
+\end{align}<br>
+$$<br>
+Based on the deduction of Equ.$\eqref{hom}$, we have verified the homomorphic property of ElGamal, which is also demonstrated in our implementation. We randomly choose 5 integer messages $ [m_1, m_2, \cdots, m_5] $ and 5 random integer $ k $ $ [k_1, k_2, \cdots, k_5] $, then encrypt them respectively. Finally, we calculate the products of each pair and the output has proved the homomorphic property of ElGamal as well, shown in below.</p>
 <p><img alt="hom" data-src="/10/elgamal/hom.png"></p>
 
     </div>
@@ -386,7 +408,10 @@ m = \frac{C_2}{C_1^x} \mod p = C_2 \cdot C_1^{-x} \mod p
     <a href="/10/simple-keccak/" rel="prev" title="Simple Keccak">
       <i class="fa fa-chevron-left"></i> Simple Keccak
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/03/pds-tute1/" rel="next" title="Tute1 -- Jupyter notebook FAQ">
+      Tute1 -- Jupyter notebook FAQ <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -425,7 +450,7 @@ m = \frac{C_2}{C_1^x} \mod p = C_2 \cdot C_1^{-x} \mod p
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ElGamal-Encryption-Algorithm"><span class="nav-number">1.</span> <span class="nav-text">ElGamal Encryption Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Configuration"><span class="nav-number">1.1.</span> <span class="nav-text">Configuration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Key-Generation"><span class="nav-number">1.2.</span> <span class="nav-text">Key Generation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Encryption"><span class="nav-number">1.3.</span> <span class="nav-text">Encryption</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Decryption"><span class="nav-number">1.4.</span> <span class="nav-text">Decryption</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Homomorphic-Property-of-ElGamal"><span class="nav-number">1.5.</span> <span class="nav-text">Homomorphic Property of ElGamal</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">ElGamal Encryption Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#configuration"><span class="nav-number">1.1.</span> <span class="nav-text">¶Configuration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#key-generation"><span class="nav-number">1.2.</span> <span class="nav-text">¶Key Generation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#encryption"><span class="nav-number">1.3.</span> <span class="nav-text">¶Encryption</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#decryption"><span class="nav-number">1.4.</span> <span class="nav-text">¶Decryption</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#homomorphic-property-of-elgamal"><span class="nav-number">1.5.</span> <span class="nav-text">¶Homomorphic Property of ElGamal</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -441,20 +466,20 @@ m = \frac{C_2}{C_1^x} \mod p = C_2 \cdot C_1^{-x} \mod p
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -492,7 +517,7 @@ m = \frac{C_2}{C_1^x} \mod p = C_2 \cdot C_1^{-x} \mod p
 <div class="copyright">
   
   &copy; 2017 – 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-hand-spock-o"></i>
   </span>
