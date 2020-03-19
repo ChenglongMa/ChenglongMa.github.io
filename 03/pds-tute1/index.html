@@ -49,18 +49,18 @@
   };
 </script>
 
-  <meta name="description" content="This post will give you some tips for Jupyter notebook configurations.">
+  <meta name="description" content="This post will give you some tips for Jupyter notebook configurations. For more useful details, please refer to https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/.">
 <meta name="keywords" content="Python,Jupyter notebook">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Tute1 -- Jupyter notebook FAQ">
 <meta property="og:url" content="https://chenglongma.com/03/pds-tute1/index.html">
 <meta property="og:site_name" content="Chenglong Ma">
-<meta property="og:description" content="This post will give you some tips for Jupyter notebook configurations.">
+<meta property="og:description" content="This post will give you some tips for Jupyter notebook configurations. For more useful details, please refer to https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-18T05:39:59.197Z">
+<meta property="og:updated_time" content="2020-03-19T12:39:36.150Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tute1 -- Jupyter notebook FAQ">
-<meta name="twitter:description" content="This post will give you some tips for Jupyter notebook configurations.">
+<meta name="twitter:description" content="This post will give you some tips for Jupyter notebook configurations. For more useful details, please refer to https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/.">
 
 <link rel="canonical" href="https://chenglongma.com/03/pds-tute1/">
 
@@ -240,10 +240,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-03-18 11:04:39 / Modified: 16:39:59" itemprop="dateCreated datePublished" datetime="2020-03-18T11:04:39+11:00">2020-03-18</time>
+              <time title="Created: 2020-03-18 11:04:39" itemprop="dateCreated datePublished" datetime="2020-03-18T11:04:39+11:00">2020-03-18</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-03-19 23:39:36" itemprop="dateModified" datetime="2020-03-19T23:39:36+11:00">2020-03-19</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -267,32 +273,26 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>This post will give you some tips for <code>Jupyter notebook</code> configurations.</p>
+        <p>This post will give you some tips for <code>Jupyter notebook</code> configurations. For more useful details, please refer to <a href="https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/" target="_blank" rel="noopener">https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/</a>.</p>
 <a id="more"></a>
-<h2 id="how-to-change-the-default-directory-where-jupyter-notebook-launched"><a class="header-anchor" href="#how-to-change-the-default-directory-where-jupyter-notebook-launched">¶</a>How to change the (default) directory where Jupyter notebook launched?</h2>
-<ol>
-<li>
-<p>Start a <strong>Command Line Interface</strong> (cli) window. It is called <code>terminal</code> in MacOS while <code>Anaconda Prompt</code> in  Windows.</p>
+<h2 id="How-to-change-the-default-directory-where-Jupyter-notebook-launched"><a href="#How-to-change-the-default-directory-where-Jupyter-notebook-launched" class="headerlink" title="How to change the (default) directory where Jupyter notebook launched?"></a>How to change the (default) directory where Jupyter notebook launched?</h2><ol>
+<li><p>Start a <strong>Command Line Interface</strong> (cli) window. It is called <code>terminal</code> in MacOS while <code>Anaconda Prompt</code> in  Windows.</p>
 </li>
-<li>
-<p><code>cd</code> <sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup> into your desired folder/directory, e.g., <code>C:\pds\tute\</code> or <code>~/pds/tute</code>.</p>
+<li><p><code>cd</code> <sup><a href="#fn_1" id="reffn_1">1</a></sup> into your desired folder/directory, e.g., <code>C:\pds\tute\</code> or <code>~/pds/tute</code>.</p>
+<p><sup><a href="#fn_1" id="reffn_1">1</a></sup>:<code>cd</code> is short for <code>Change Directory</code>, a cli command to change the current working directory.</p>
 </li>
-<li>
-<p>Type <code>jupyter notebook</code> to start a new Jupyter notebook app, as shown below:</p>
+<li><p>Type <code>jupyter notebook</code> to start a new Jupyter notebook app, as shown below:</p>
 </li>
 </ol>
 <p><img alt="jupyter cli commands" data-src="/03/pds-tute1/image-20200318134418098.png"></p>
 <p>Then, we can check whether the <code>Jupyter notebook</code> has started from the correct directory, see ③ .</p>
 <p>Now, the server has been active and you can visit <code>http://localhost:8888/</code> in your favourite browser, see ④. <strong>NB: the URL can vary depending on your OS and Jupyter version.</strong></p>
-<h2 id="how-to-rename-the-ipynb-file"><a class="header-anchor" href="#how-to-rename-the-ipynb-file">¶</a>How to rename the <code>.ipynb</code> file?</h2>
-<p>There are multiple options available:</p>
+<h2 id="How-to-rename-the-ipynb-file"><a href="#How-to-rename-the-ipynb-file" class="headerlink" title="How to rename the .ipynb file?"></a>How to rename the <code>.ipynb</code> file?</h2><p>There are multiple options available:</p>
 <ol>
-<li>
-<p>Click the filename (e.g., “Untitled” ) in the top and type a new filename in the pop-up dialog.</p>
+<li><p>Click the filename (e.g., “Untitled” ) in the top and type a new filename in the pop-up dialog.</p>
 <p><img alt="rename file" data-src="/03/pds-tute1/image-20200318145202566.png"></p>
 </li>
-<li>
-<p>Rename it from the home page:</p>
+<li><p>Rename it from the home page:</p>
 <ol>
 <li>Tick the checkbox of the certain file;</li>
 <li>Click the <strong>Rename</strong> button and type a new name;</li>
@@ -300,36 +300,61 @@
 <p><img alt="rename from home page" data-src="/03/pds-tute1/image-20200318145718915.png"></p>
 <p><strong>NB: you must shut down the running notebook before renaming it.</strong></p>
 </li>
-<li>
-<p>Enter your local directory (e.g., <code>C:\pds\tute\</code>) and find the untitled file and rename it.</p>
+<li><p>Enter your local directory (e.g., <code>C:\pds\tute\</code>) and find the untitled file and rename it.</p>
 </li>
 </ol>
 <p><strong>NB: please note if you have permission to change the filename.</strong></p>
-<h2 id="why-the-ipython-prompts-cell-numbers-are-unordered-in-my-notebook"><a class="header-anchor" href="#why-the-ipython-prompts-cell-numbers-are-unordered-in-my-notebook">¶</a>Why the iPython prompts (cell numbers) are unordered in my notebook?</h2>
-<blockquote>
+<h2 id="Why-the-iPython-prompts-cell-numbers-are-unordered-in-my-notebook"><a href="#Why-the-iPython-prompts-cell-numbers-are-unordered-in-my-notebook" class="headerlink" title="Why the iPython prompts (cell numbers) are unordered in my notebook?"></a>Why the iPython prompts (cell numbers) are unordered in my notebook?</h2><blockquote>
 <p>iPython prompts are numbered, and each time you enter a command, this number will increase by 1. This makes it easy to repeat commands without typing them again.</p>
 </blockquote>
 <p>The cell numbers indicate <strong>the order you run the scripts</strong>. Say if you run <code>x = range(100)</code> again after <code>plt.plot(x,y)</code>, the <code>In [2]</code> will become <code>In [5]</code> as shown below:</p>
 <p><img alt="cell numbers" data-src="/03/pds-tute1/image-20200318151423477.png"></p>
 <p>You can recall it using the Jupyter <strong>magic</strong> commands which start with a <code>%</code> sign (e.g., <code>%history</code>, <code>%rerun</code>).</p>
-<h3 id="how-to-reset-the-number-then"><a class="header-anchor" href="#how-to-reset-the-number-then">¶</a>How to reset the number then?</h3>
-<p>Well, you can rerun all the cells via the <code>Kernel</code> menu but you cannot reset the numbers without rerunning them.</p>
+<h3 id="How-to-reset-the-number-then"><a href="#How-to-reset-the-number-then" class="headerlink" title="How to reset the number then?"></a>How to reset the number then?</h3><p>Well, you can rerun all the cells via the <code>Kernel</code> menu but you cannot reset the numbers without rerunning them.</p>
 <p><img alt="rerun all" data-src="/03/pds-tute1/image-20200318154635393.png"></p>
-<h2 id="how-to-use-tab-completion"><a class="header-anchor" href="#how-to-use-tab-completion">¶</a>How to use “tab-completion”?</h2>
-<p>You may have seen many hackers type commands quickly, and so can you😉.</p>
-<p>Generally, cli apps support <strong>tab-completion</strong>, i.e., you can auto-complete commands/paths by clicking <code>tab</code> button on your keyboard <strong>if what you have typed can uniquely identify a certain command/file</strong>:</p>
-<img alt="image-20200318160240988" style="zoom:25%;" data-src="/03/pds-tute1/image-20200318160240988.png">
-<p>For example, you can type <code>cd C:\pds\t</code> and get <code>cd C:\pds\tute</code> after clicking <code>tab</code> button.</p>
+<h2 id="How-to-use-“tab-completion”"><a href="#How-to-use-“tab-completion”" class="headerlink" title="How to use “tab-completion”?"></a>How to use “tab-completion”?</h2><p>You may have seen many hackers type commands quickly, and so can you😉.</p>
+<p>Generally, cli apps support <strong>tab-completion</strong>, i.e., you can auto-complete commands/paths by pressing <kbd>Tab</kbd> button on your keyboard <strong>if what you have typed can uniquely identify a certain command/file</strong>:</p>
+<p><img alt="image-20200318160240988" style="zoom:25%;" data-src="/03/pds-tute1/image-20200318160240988.png"></p>
+<p>For example, you can type <code>cd C:\pds\t</code> and get <code>cd C:\pds\tute</code> after pressing <kbd>Tab</kbd> button.</p>
 <p>Fortunately, Jupyter supports this feature as well in our notebook. Try this:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">impor&lt;tab&gt; matp&lt;tab&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>impor<kbd>Tab</kbd><kbd>Space</kbd>matp<kbd>Tab</kbd></strong></p>
 <p><img alt="tab_completion" data-src="/03/pds-tute1/tab_completion.gif"></p>
-<hr class="footnotes-sep">
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p><code>cd</code> is short for <code>Change Directory</code>, a cli command to change the current working directory. <a href="#fnref1" class="footnote-backref">↩</a></p>
+<h2 id="Some-useful-shortcuts-for-Jupyter-notebook"><a href="#Some-useful-shortcuts-for-Jupyter-notebook" class="headerlink" title="Some useful shortcuts for Jupyter notebook"></a>Some useful shortcuts for Jupyter notebook</h2><p><img alt="shortcuts" data-src="/03/pds-tute1/image-20200319232819538.png"></p>
+<p>Before we continue, I’d like to introduce two modes for the notebook: <strong>Edit</strong> mode and <strong>Command</strong> mode. A basic introduction is available at: <a href="https://jupyter-notebook.readthedocs.io/en/stable/examples/Notebook/Notebook Basics.html#Modal-editor" target="_blank" rel="noopener">here</a>. So, there are different shortcuts for each mode.</p>
+<h3 id="Command-mode"><a href="#Command-mode" class="headerlink" title="Command mode"></a>Command mode</h3><ol>
+<li><p><kbd>H</kbd></p>
+<p>Open the shortcuts list.</p>
+</li>
+<li><p>Double click <kbd>D</kbd></p>
+<p><strong>D</strong>elete selected cells.</p>
+</li>
+<li><p><kbd>A</kbd></p>
+<p>Insert cell <strong>a</strong>bove.</p>
+</li>
+<li><p><kbd>B</kbd></p>
+<p>Insert cell <strong>b</strong>elow.</p>
+</li>
+<li><p><kbd>C</kbd></p>
+<p><strong>C</strong>opy selected cells.</p>
+</li>
+<li><p><kbd>V</kbd></p>
+<p>Paste cells below.</p>
 </li>
 </ol>
-</section>
+<h3 id="Edit-mode"><a href="#Edit-mode" class="headerlink" title="Edit mode"></a>Edit mode</h3><ol>
+<li><p><kbd>Ctrl</kbd> + <kbd>Shift</kbd>  + <kbd>P</kbd> (or <kbd>Cmd</kbd> + <kbd>Shift</kbd>  + <kbd>P</kbd> for Mac OS)</p>
+<p>Open shortcuts list.</p>
+</li>
+<li><p><kbd>Ctrl</kbd> + <kbd>Enter</kbd></p>
+<p>Run cell.</p>
+</li>
+<li><p><kbd>Alt</kbd> + <kbd>Enter</kbd></p>
+<p>Run cell and <strong>insert a new cell below</strong>.</p>
+</li>
+<li><p><kbd>Ctrl</kbd> + <kbd>Shift</kbd>  + <kbd>-</kbd> (Minus button)</p>
+<p>Split cell at cursor.</p>
+</li>
+</ol>
 
     </div>
 
@@ -407,7 +432,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#how-to-change-the-default-directory-where-jupyter-notebook-launched"><span class="nav-number">1.</span> <span class="nav-text">¶How to change the (default) directory where Jupyter notebook launched?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#how-to-rename-the-ipynb-file"><span class="nav-number">2.</span> <span class="nav-text">¶How to rename the .ipynb file?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#why-the-ipython-prompts-cell-numbers-are-unordered-in-my-notebook"><span class="nav-number">3.</span> <span class="nav-text">¶Why the iPython prompts (cell numbers) are unordered in my notebook?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#how-to-reset-the-number-then"><span class="nav-number">3.1.</span> <span class="nav-text">¶How to reset the number then?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#how-to-use-tab-completion"><span class="nav-number">4.</span> <span class="nav-text">¶How to use “tab-completion”?</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#How-to-change-the-default-directory-where-Jupyter-notebook-launched"><span class="nav-number">1.</span> <span class="nav-text">How to change the (default) directory where Jupyter notebook launched?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-to-rename-the-ipynb-file"><span class="nav-number">2.</span> <span class="nav-text">How to rename the .ipynb file?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-the-iPython-prompts-cell-numbers-are-unordered-in-my-notebook"><span class="nav-number">3.</span> <span class="nav-text">Why the iPython prompts (cell numbers) are unordered in my notebook?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#How-to-reset-the-number-then"><span class="nav-number">3.1.</span> <span class="nav-text">How to reset the number then?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-to-use-“tab-completion”"><span class="nav-number">4.</span> <span class="nav-text">How to use “tab-completion”?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Some-useful-shortcuts-for-Jupyter-notebook"><span class="nav-number">5.</span> <span class="nav-text">Some useful shortcuts for Jupyter notebook</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Command-mode"><span class="nav-number">5.1.</span> <span class="nav-text">Command mode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Edit-mode"><span class="nav-number">5.2.</span> <span class="nav-text">Edit mode</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
