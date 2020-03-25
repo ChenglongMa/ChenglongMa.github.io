@@ -1,6 +1,258 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Tute3 -- Pandas notes</title>
+    <url>/03/pds-tute3/</url>
+    <content><![CDATA[<p>Here are some basic usage of <code>pandas</code> package.</p>
+<a id="more"></a>
+<p>Say we have a piece of dataset named “abalone” retrieved from <a href="https://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.data" target="_blank" rel="noopener">here</a>. The first 5 lines are:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">M,0.455,0.365,0.095,0.514,0.2245,0.101,0.15,15</span><br><span class="line">M,0.35,0.265,0.09,0.2255,0.0995,0.0485,0.07,7</span><br><span class="line">F,0.53,0.42,0.135,0.677,0.2565,0.1415,0.21,9</span><br><span class="line">M,0.44,0.365,0.125,0.516,0.2155,0.114,0.155,10</span><br><span class="line">I,0.33,0.255,0.08,0.205,0.0895,0.0395,0.055,7</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>Let’s shoot a glance at the data: it has no <strong>header</strong> row, and each row is split by <strong>comma</strong> (,), the first column is <code>string</code>, last one is <code>int</code> while others are <code>float</code> type.</p>
+<p>Then, we would load this dataset using <code>pandas</code> magic.</p>
+<h2 id="Load-dataset"><a href="#Load-dataset" class="headerlink" title="Load dataset"></a>Load dataset</h2><p>We use <code>pandas.read_csv()</code> to load it as it’s a typical csv (comma-separated values) file. There are plentiful parameters in this method but only a few we will use commonly. To let <code>pandas</code> know we want to set its <strong>header</strong> , <strong>delimiter</strong> and the <strong>decimal point</strong> is “.”, we would do this:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">abalone_p = <span class="string">"https://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.data"</span></span><br><span class="line"></span><br><span class="line">abalone = pd.read_csv(</span><br><span class="line">    abalone_p, sep=<span class="string">','</span>, decimal=<span class="string">'.'</span>, header=<span class="keyword">None</span>, </span><br><span class="line">    names=[</span><br><span class="line">        <span class="string">'Sex'</span>, <span class="string">'Length'</span>, <span class="string">'Diameter'</span>, <span class="string">'Height'</span>, <span class="string">'Whole weight'</span>, </span><br><span class="line">        <span class="string">'Shucked weight'</span>, <span class="string">'Viscera weight'</span>, <span class="string">'Shell weight'</span>, <span class="string">'Rings'</span></span><br><span class="line">    ]</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>sep</code> specifies the <strong>delimiter</strong> of this file, which can accept regex, e.g., “<code>[,;]</code>“; Alternatively, you can use <code>delimiter</code> instead of <code>sep</code>.</li>
+<li><code>decimal</code> specifies the <strong>decimal point</strong> character.</li>
+<li><code>header</code> specifies row number<strong>(s)</strong> to use as the column names; <strong><em>NB</em></strong>: it can accept <em>list of int</em> to indicate multiple row headers. E.g., <code>header=0</code> indicates the first line of <strong>data</strong> is the header; <code>header=None</code> indicates no header in file; <code>header=[0,1]</code> indicates the first two lines are the headers.</li>
+<li><code>names</code> specifies the columns names. “If the file contains a header row, then you should explicitly pass <code>header=0</code> to override the column names.”</li>
+</ul>
+<p>Some other parameters you may need:</p>
+<ul>
+<li><code>skiprows</code>: Line numbers to skip (0-indexed) or number of lines to skip (<code>int</code>) at the start of the file.</li>
+<li><code>nrows</code>: Number of rows of file to read. Useful for reading pieces of large files.</li>
+</ul>
+<ul>
+<li><code>chunksize</code>: Return <code>TextFileReader</code> object for iteration. </li>
+<li><code>iterator</code>: Return <code>TextFileReader</code> object for iteration or getting chunks with <code>get_chunk()</code>.</li>
+</ul>
+<p>For more detailed info, please refer to the <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html" target="_blank" rel="noopener"><code>pandas.read_csv</code> doc</a>.</p>
+<h2 id="Access-the-data"><a href="#Access-the-data" class="headerlink" title="Access the data"></a>Access the data</h2><h3 id="Get-a-column"><a href="#Get-a-column" class="headerlink" title="Get a column"></a>Get a column</h3><p>If we want to get a particular <strong>column</strong> of the dataset, we can use <strong>square brackets</strong> ([]) with column name(s).</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sex = abalone[<span class="string">'Sex'</span>]</span><br></pre></td></tr></table></figure>
+<p>Or, you can use <code>abalone.Sex</code> if there is no space in the column name and which is not a <code>pandas</code> method name (e.g., <code>mean</code>):</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sex = abalone.Sex <span class="comment"># ✔</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">whole_weight = abalone[<span class="string">'Whole weight'</span>] <span class="comment"># ✔</span></span><br><span class="line">whole_weight = abalone.Whole weight <span class="comment"># ✗</span></span><br></pre></td></tr></table></figure>
+<h3 id="Get-a-row"><a href="#Get-a-row" class="headerlink" title="Get a row"></a>Get a row</h3><p>Well, if we want to get a particular <strong>row</strong> of the dataset, we can use <code>.loc[]</code> or <code>.iloc[]</code>. Let’s check their official doc:</p>
+<ul>
+<li><code>.loc[]</code> is primarily <strong>label</strong> based, but may also be used with a <code>boolean</code> array.</li>
+<li><code>.iloc[]</code> is primarily <strong>integer position</strong> based (from <code>0</code> to <code>length-1</code> of the axis), but may also be used with a <code>boolean</code> array.</li>
+</ul>
+<p>It’s clear that they can both accept <code>boolean</code> array inputs like:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">male_abalone = abalone.loc[abalone.Sex == <span class="string">'M'</span>]</span><br><span class="line">female_abalone = abalone.iloc[list(abalone.Sex == <span class="string">'F'</span>)] <span class="comment"># we need convert `pd.Series` to `list`.</span></span><br></pre></td></tr></table></figure>
+<p>Before we compare their difference, I’ll introduce the <code>index</code> in <code>pd.DataFrame</code> firstly. Let’s see the first 5 rows of <code>abalone</code> dataset:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:right"></th>
+<th style="text-align:right">Sex</th>
+<th style="text-align:right">Length</th>
+<th style="text-align:right">Diameter</th>
+<th style="text-align:right">Height</th>
+<th style="text-align:right">Whole weight</th>
+<th style="text-align:right">Shucked weight</th>
+<th style="text-align:right">Viscera weight</th>
+<th style="text-align:right">Shell weight</th>
+<th style="text-align:right">Rings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">0</td>
+<td style="text-align:right">M</td>
+<td style="text-align:right">0.455</td>
+<td style="text-align:right">0.365</td>
+<td style="text-align:right">0.095</td>
+<td style="text-align:right">0.5140</td>
+<td style="text-align:right">0.2245</td>
+<td style="text-align:right">0.1010</td>
+<td style="text-align:right">0.150</td>
+<td style="text-align:right">15</td>
+</tr>
+<tr>
+<td style="text-align:right">1</td>
+<td style="text-align:right">M</td>
+<td style="text-align:right">0.350</td>
+<td style="text-align:right">0.265</td>
+<td style="text-align:right">0.090</td>
+<td style="text-align:right">0.2255</td>
+<td style="text-align:right">0.0995</td>
+<td style="text-align:right">0.0485</td>
+<td style="text-align:right">0.070</td>
+<td style="text-align:right">7</td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+<td style="text-align:right">F</td>
+<td style="text-align:right">0.530</td>
+<td style="text-align:right">0.420</td>
+<td style="text-align:right">0.135</td>
+<td style="text-align:right">0.6770</td>
+<td style="text-align:right">0.2565</td>
+<td style="text-align:right">0.1415</td>
+<td style="text-align:right">0.210</td>
+<td style="text-align:right">9</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td style="text-align:right">M</td>
+<td style="text-align:right">0.440</td>
+<td style="text-align:right">0.365</td>
+<td style="text-align:right">0.125</td>
+<td style="text-align:right">0.5160</td>
+<td style="text-align:right">0.2155</td>
+<td style="text-align:right">0.1140</td>
+<td style="text-align:right">0.155</td>
+<td style="text-align:right">10</td>
+</tr>
+<tr>
+<td style="text-align:right">4</td>
+<td style="text-align:right">I</td>
+<td style="text-align:right">0.330</td>
+<td style="text-align:right">0.255</td>
+<td style="text-align:right">0.080</td>
+<td style="text-align:right">0.2050</td>
+<td style="text-align:right">0.0895</td>
+<td style="text-align:right">0.0395</td>
+<td style="text-align:right">0.055</td>
+<td style="text-align:right">7</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The first column without name indicates the <code>index</code> which can be <code>integer</code> or <code>string</code> label. We can use <code>abalone.index</code> to get it. Now, after the entrée, let’s taste the dinner:</p>
+<p><code>.loc[]</code> use a <strong>label</strong> index to identify a certain row while <code>.iloc[]</code> use <strong>integer position</strong> instead. For example, we take a piece of sub-dataset first:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sub_data = abalone.head()</span><br></pre></td></tr></table></figure>
+<p>Now, <code>sub_data</code> will return the exact same result as above. Then, we do the following comparison:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sub_data.loc[<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sub_data.iloc[<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+<p>What did you see?</p>
+<p>Then, let’s wave a magic wand:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sub_data = sub_data.set_index(pd.Index([<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'d'</span>,<span class="string">'e'</span>]))</span><br></pre></td></tr></table></figure>
+<p>Now, the <code>index</code> column of <code>sub_data</code> has become <code>[&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;,&#39;e&#39;]</code>: </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:right"></th>
+<th style="text-align:right">Sex</th>
+<th style="text-align:right">Length</th>
+<th style="text-align:right">Diameter</th>
+<th style="text-align:right">Height</th>
+<th style="text-align:right">Whole weight</th>
+<th style="text-align:right">Shucked weight</th>
+<th style="text-align:right">Viscera weight</th>
+<th style="text-align:right">Shell weight</th>
+<th style="text-align:right">Rings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">a</td>
+<td style="text-align:right">M</td>
+<td style="text-align:right">0.455</td>
+<td style="text-align:right">0.365</td>
+<td style="text-align:right">0.095</td>
+<td style="text-align:right">0.5140</td>
+<td style="text-align:right">0.2245</td>
+<td style="text-align:right">0.1010</td>
+<td style="text-align:right">0.150</td>
+<td style="text-align:right">15</td>
+</tr>
+<tr>
+<td style="text-align:right">b</td>
+<td style="text-align:right">M</td>
+<td style="text-align:right">0.350</td>
+<td style="text-align:right">0.265</td>
+<td style="text-align:right">0.090</td>
+<td style="text-align:right">0.2255</td>
+<td style="text-align:right">0.0995</td>
+<td style="text-align:right">0.0485</td>
+<td style="text-align:right">0.070</td>
+<td style="text-align:right">7</td>
+</tr>
+<tr>
+<td style="text-align:right">c</td>
+<td style="text-align:right">F</td>
+<td style="text-align:right">0.530</td>
+<td style="text-align:right">0.420</td>
+<td style="text-align:right">0.135</td>
+<td style="text-align:right">0.6770</td>
+<td style="text-align:right">0.2565</td>
+<td style="text-align:right">0.1415</td>
+<td style="text-align:right">0.210</td>
+<td style="text-align:right">9</td>
+</tr>
+<tr>
+<td style="text-align:right">d</td>
+<td style="text-align:right">M</td>
+<td style="text-align:right">0.440</td>
+<td style="text-align:right">0.365</td>
+<td style="text-align:right">0.125</td>
+<td style="text-align:right">0.5160</td>
+<td style="text-align:right">0.2155</td>
+<td style="text-align:right">0.1140</td>
+<td style="text-align:right">0.155</td>
+<td style="text-align:right">10</td>
+</tr>
+<tr>
+<td style="text-align:right">e</td>
+<td style="text-align:right">I</td>
+<td style="text-align:right">0.330</td>
+<td style="text-align:right">0.255</td>
+<td style="text-align:right">0.080</td>
+<td style="text-align:right">0.2050</td>
+<td style="text-align:right">0.0895</td>
+<td style="text-align:right">0.0395</td>
+<td style="text-align:right">0.055</td>
+<td style="text-align:right">7</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Do the above statements again, what happened?</p>
+<p>Alright, if I wanted to get the correct result, I need to change the <code>.loc</code> statement to this:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sub_data.loc[<span class="string">'c'</span>]</span><br></pre></td></tr></table></figure>
+<p>You might wake up now. Great, let’s think about this further:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sub_data = sub_data.set_index(pd.Index([<span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">4</span>]))</span><br><span class="line">a = sub_data.loc[<span class="number">2</span>]</span><br><span class="line">b = sub_data.iloc[<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+<p>Now, does <code>a</code> equal <code>b</code>?</p>
+<h2 id="Grouping-statistics"><a href="#Grouping-statistics" class="headerlink" title="Grouping statistics"></a>Grouping statistics</h2><p><code>.groupby()</code> is a powerful method in <code>pandas</code>. You won’t feel strange if you have learned <code>group by</code> syntax in <code>SQL</code>. It splits the entire dataset based on unique values and then do some calculations or apply a function.</p>
+<p>Let’s continue from <code>sub_data</code> and group it by <code>Sex</code> column:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sex_grp = sub_data.groupby(<span class="string">'Sex'</span>)</span><br></pre></td></tr></table></figure>
+<p><code>sex_grp</code> is a <code>DataFrameGroupBy</code> object which contains information of these groups and have multiple functions available.</p>
+<ul>
+<li><code>.ngroups</code>: return the number of groups</li>
+<li><code>.groups</code>: return all indices of groups</li>
+<li><code>.mean()</code>, <code>.std()</code>, <code>.median()</code>, etc. can provide corresponding stats information</li>
+<li><code>.apply()</code>, <code>.aggregate()</code>, etc. can accept <code>callable</code> functions to modify the groups</li>
+</ul>
+<p>For more details, please check their documents respectively.</p>
+]]></content>
+      <categories>
+        <category>Practical Data Science</category>
+      </categories>
+      <tags>
+        <tag>notes</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Tute2 -- Basic Python</title>
+    <url>/03/pds-tute2/</url>
+    <content><![CDATA[<p>I’ll introduce some basic Python programming knowledge in this article.</p>
+<a id="more"></a>
+<h2 id="Typed-language"><a href="#Typed-language" class="headerlink" title="Typed language"></a>Typed language</h2><p>Typed language allows us to define a specific <strong>data type</strong> for a variable. The type can be known by the compiler at compile time or runtime.</p>
+<h3 id="Strongly-typed-vs-Weakly-typed"><a href="#Strongly-typed-vs-Weakly-typed" class="headerlink" title="Strongly typed vs Weakly typed"></a>Strongly typed vs Weakly typed</h3><p>The key difference between <strong>Strongly typed</strong> and <strong>Weakly typed</strong> languages is the former don’t allow to change the type of variables <strong>implicitly</strong>.</p>
+<p>For example in <strong>Python</strong>:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n = <span class="string">'9'</span> <span class="comment"># `n` is a `str` now</span></span><br><span class="line">n2 = n - <span class="number">1</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Practical Data Science</category>
+      </categories>
+      <tags>
+        <tag>notes</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Tute1 -- Jupyter notebook FAQ</title>
     <url>/03/pds-tute1/</url>
     <content><![CDATA[<p>This post will give you some tips for <code>Jupyter notebook</code> configurations. For more useful details, please refer to <a href="https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/" target="_blank" rel="noopener">https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/</a>.</p>
