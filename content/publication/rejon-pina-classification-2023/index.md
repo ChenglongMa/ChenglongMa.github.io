@@ -3,7 +3,7 @@ title: 'Classification Algorithm for Skin Color (CASCo): A new tool to measure s
   color in social science research'
 authors:
 - René Alejandro Rejón Piña
-- Chenglong Ma
+- admin
 date: '2023-01-01'
 publishDate: '2023-12-23T12:25:40.152443Z'
 publication_types:
