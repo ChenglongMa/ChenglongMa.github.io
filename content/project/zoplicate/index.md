@@ -3,7 +3,7 @@ title: Zoplicate
 summary:
   The plugin for [Zotero](https://www.zotero.org/) specializes in detecting and managing duplicate items within the library. It automatically identifies if a newly imported item is a duplicate of an existing one, prompting the user to handle and process any duplicate items accordingly.
 tags:
-  - Plugin Development
+  - Plugin
 date: "2023-10-29T00:00:00Z"
 
 # Optional external URL for project (replaces project detail page).

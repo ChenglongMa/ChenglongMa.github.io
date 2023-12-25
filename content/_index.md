@@ -174,8 +174,8 @@ sections:
           tag: '*'
         - name: Computer Vision
           tag: Computer Vision
-        - name: Other
-          tag: Plugin Development
+        - name: Plugin
+          tag: Plugin
     design:
       # Choose how many columns the section has. Valid values: '1' or '2'.
       columns: '1'
