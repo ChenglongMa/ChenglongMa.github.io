@@ -87,7 +87,7 @@ skills:
         icon: cat
         icon_pack: fas      
       - name: Hiking
-        description: 'Driving, hiking, talking, with my darling.'
+        description: 'Hiking in the mountains, enjoying the beauty of nature.'
         percent: 70
         icon: person-hiking
         icon_pack: fas
