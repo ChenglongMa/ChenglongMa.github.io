@@ -2,7 +2,7 @@
 title: Evaluation of Herd Behavior Caused by Population-scale Concept Drift in Collaborative
   Filtering
 authors:
-- Chenglong Ma
+- admin
 - Yongli Ren
 - Pablo Castells
 - Mark Sanderson

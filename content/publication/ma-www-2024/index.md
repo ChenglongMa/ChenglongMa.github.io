@@ -1,7 +1,7 @@
 ---
 title: Temporal Conformity-aware Hawkes Graph Network for Recommendations
 authors:
-- Chenglong Ma
+- admin
 - Yongli Ren
 - Pablo Castells
 - Mark Sanderson
