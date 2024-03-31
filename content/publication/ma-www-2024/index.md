@@ -37,4 +37,8 @@ tags:
 - Temporal Graph Attention Network
 - Hawkes Process
 - Recommendations
+
+links:
+  - name: URL
+    url: https://dl.acm.org/doi/10.1145/3589334.3645354
 ---
