@@ -17,7 +17,7 @@ status:
 superuser: true
 
 # Role/position/tagline
-role: PhD Student in Computer Science
+role: Ph.D. Student in Computer Science
 
 # Organizations/Affiliations to show in About widget
 organizations:
@@ -47,7 +47,7 @@ education:
     - course: Master of Information Technology
       institution: RMIT University
       year: 2018
-    - course: Bachelor of Mechanical Engineering
+    - course: Bachelor of Mechatronic Engineering
       institution: Beijing Information Science & Technology University
       year: 2010
 
