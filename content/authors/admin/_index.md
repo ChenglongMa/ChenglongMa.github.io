@@ -1,9 +1,9 @@
 ---
 # Display name
-title: 马成龙
+title: Chenglong Ma
 
 # Name pronunciation (optional)
-name_pronunciation: Mǎ Chénglóng
+#name_pronunciation: Mǎ Chénglóng
 
 # Full name (for SEO)
 first_name: Chenglong

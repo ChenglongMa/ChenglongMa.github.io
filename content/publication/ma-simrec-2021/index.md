@@ -2,7 +2,7 @@
 title: 'From Changing User Needs to Changing Behavior: The Impact of User Macro-Trends
   on Recommender Systems'
 authors:
-- Chenglong Ma
+- admin
 - Yongli Ren
 - Pablo Castells
 - Mark Sanderson
