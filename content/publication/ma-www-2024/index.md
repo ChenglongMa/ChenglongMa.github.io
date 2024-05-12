@@ -41,4 +41,6 @@ tags:
 links:
   - name: URL
     url: https://dl.acm.org/doi/10.1145/3589334.3645354
+
+url_poster: '/posters/www2024.pdf'
 ---
