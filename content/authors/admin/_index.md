@@ -33,7 +33,7 @@ bio: "Advancing Recommender System: Ph.D. on a Mission to Optimize User Experien
 interests:
   - Recommender Systems
   - Information Retrieval
-  - Computer Vision
+  - Responsible AI
   - User Modeling
   - Social Influence
   - Simulation
