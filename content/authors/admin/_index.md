@@ -27,7 +27,7 @@ organizations:
     url: https://www.admscentre.org.au/chenglong-ma/
 
 # Short bio (displayed in user profile at end of posts)
-bio: "Advancing Recommender System: PhD Candidate on a Mission to Optimize User Experiences!"
+bio: "Advancing Recommender System: Ph.D. on a Mission to Optimize User Experiences!"
 
 # Interests to show in About widget
 interests:
