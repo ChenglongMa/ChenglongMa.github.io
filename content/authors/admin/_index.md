@@ -17,14 +17,15 @@ status:
 superuser: true
 
 # Role/position/tagline
-role: Ph.D. in Computer Science
+role: Ph.D. | Research Fellow at ADM+S
 
 # Organizations/Affiliations to show in About widget
 organizations:
+  - name: ADM+S Centre
+    url: https://www.admscentre.org.au/chenglong-ma/  
   - name: RMIT University
     url: https://www.rmit.edu.au/
-  - name: ADM+S Centre
-    url: https://www.admscentre.org.au/chenglong-ma/
+
 
 # Short bio (displayed in user profile at end of posts)
 bio: "Advancing Recommender System: Ph.D. on a Mission to Optimize User Experiences!"
