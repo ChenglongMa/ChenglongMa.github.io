@@ -3,10 +3,13 @@ import ThemeToggle from './ThemeToggle.astro';
 ---
 
 <nav class="home-nav" aria-label="Primary navigation">
-  <a href="/research/">Research</a>
-  <a href="/publications/">Publications</a>
-  <a href="/projects/">Projects</a>
-  <a href="/talks/">Talks</a>
-  <a href="/cv/">CV</a>
+  <a class="home-brand" href="/" aria-label="Chenglong Ma home"><img src="/media/icon.svg" alt="" />chenglong@ma:~$</a>
+  <span class="home-nav-links">
+    <a href="/research/">/research</a>
+    <a href="/publications/">/publications</a>
+    <a href="/projects/">/projects</a>
+    <a href="/talks/">/talks</a>
+    <a href="/cv/">/cv</a>
+  </span>
   <ThemeToggle />
 </nav>

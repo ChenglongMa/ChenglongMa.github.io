@@ -20,85 +20,66 @@ const selectedPublications = publications.filter((publication) => publication.fe
 const shownPublications = (selectedPublications.length ? selectedPublications : publications).slice(0, 3);
 const featuredProjects = projects.filter((project) => project.data.featured).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 2);
 const recentTalks = talks.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 2);
-const latest = activities[0];
 ---
 
 <BaseLayout header={false} footer={false}>
   <main>
-    <section class="cover" aria-labelledby="home-title">
-      <div class="cover-portrait">
-        <img src={profile.avatar} alt={`Portrait of ${profile.name}`} />
-        <div class="cover-name">
-          <p>{profile.role}</p>
-          <h1 id="home-title">Chenglong<br />Ma</h1>
+    <div class="terminal-wrap">
+      <HomeNav />
+      <header class="terminal-hero" aria-labelledby="home-title">
+        <p class="prompt-line"><span>$</span> whoami --academic</p>
+        <h1 id="home-title">Chenglong Ma <span class="terminal-role">// research fellow</span><span class="caret" aria-hidden="true"></span></h1>
+        <p class="terminal-lede">{profile.description} I study how systems can distinguish enduring interests from social influence and rapid changes in behaviour.</p>
+        <div class="terminal-actions">
+          <a class="terminal-button primary" href="/publications/">view publications</a>
+          <a class="terminal-button" href="/research/">read the research</a>
         </div>
-      </div>
-      <div class="cover-main">
-        <HomeNav />
-        <div class="cover-intro">
-          <p class="eyebrow">{profile.affiliation} · {profile.location}</p>
-          <h2>Making recommendation systems better reflect people.</h2>
-          <p>{profile.description}</p>
-          <div class="cover-contact">
-            <a href={`mailto:${profile.email}`}>Email</a>
-            <a href={profile.links.scholar} target="_blank" rel="noreferrer">Google Scholar</a>
-            <a href={profile.links.orcid} target="_blank" rel="noreferrer">ORCID</a>
-            <a href={profile.links.github} target="_blank" rel="noreferrer">GitHub</a>
-          </div>
-        </div>
-        {latest && <div class="latest-strip">
-          <p class="latest-label">Latest</p>
-          <p><a href={latest.href}>{latest.kind} · {latest.title}</a></p>
-          <p>{formatDate(latest.date, { month: 'short', year: 'numeric' })}</p>
-        </div>}
-      </div>
-    </section>
+      </header>
 
-    <div class="home-content">
-      <section class="home-section" aria-labelledby="news-title">
-        <SectionHeading id="news-title" eyebrow="Automatically assembled" title="News" href="/news/" />
+      <section class="terminal-block" aria-labelledby="news-title">
+        <SectionHeading id="news-title" eyebrow="00 // latest" title="Recent updates" href="/news/" />
         <div class="news-list">
           {activities.slice(0, 3).map((activity) => (
             <a class="news-item" href={activity.href} target={activity.href.startsWith('http') ? '_blank' : undefined} rel={activity.href.startsWith('http') ? 'noreferrer' : undefined}>
               <time datetime={activity.date.toISOString()}>{formatDate(activity.date, { month: 'short', year: 'numeric' })}</time>
-              <span><strong>{activity.kind}</strong> — {activity.title}</span>
+              <span><strong>{activity.kind}</strong> · {activity.title}</span>
               <span aria-hidden="true">↗</span>
             </a>
           ))}
         </div>
       </section>
 
-      <section class="home-section" aria-labelledby="publications-title">
-        <SectionHeading id="publications-title" eyebrow="Selected work" title="Publications" href="/publications/" />
+      <section class="terminal-block" aria-labelledby="publications-title">
+        <SectionHeading id="publications-title" eyebrow="01 // selected publications" title="Research output" href="/publications/" linkLabel="see all publications" />
         <div class="publication-list">
           {shownPublications.map((publication) => <PublicationRow publication={publication} compact />)}
         </div>
       </section>
 
-      <section class="home-section" aria-labelledby="projects-title">
-        <SectionHeading id="projects-title" eyebrow="Open tools" title="Featured projects" href="/projects/" />
+      <section class="terminal-block" aria-labelledby="projects-title">
+        <SectionHeading id="projects-title" eyebrow="02 // selected projects" title="Tools built alongside research" href="/projects/" linkLabel="see all projects" />
         <div class="project-grid">
-          {featuredProjects.map((project) => (
+          {featuredProjects.map((project, index) => (
             <a class="project-card" href={project.data.href} target="_blank" rel="noreferrer">
               {project.data.image && <div class="project-image"><img src={project.data.image} alt="" /></div>}
-              <p class="project-kicker">{project.data.tags.join(' · ')}</p>
-              <h3>{project.data.title}</h3>
-              <p>{project.data.summary}</p>
+              <div class="project-card-body">
+                <p class="project-kicker">PROJ.{String(index + 1).padStart(3, '0')}</p>
+                <h3>{project.data.title}</h3>
+                <p>{project.data.summary}</p>
+                <span class="tags">{project.data.tags.map((tag) => <span class="tag">{tag}</span>)}</span>
+              </div>
             </a>
           ))}
         </div>
       </section>
 
-      <section class="home-section" aria-labelledby="talks-title">
-        <SectionHeading id="talks-title" eyebrow="Presentations" title="Recent talks" href="/talks/" />
+      <section class="terminal-block" aria-labelledby="talks-title">
+        <SectionHeading id="talks-title" eyebrow="03 // presentations" title="Talks &amp; posters" href="/talks/" linkLabel="see all talks" />
         <div class="talk-list">
           {recentTalks.map((talk) => (
             <article class="talk-row">
               <time class="talk-date" datetime={talk.data.date.toISOString()}>{formatDate(talk.data.date, { month: 'short', year: 'numeric' })}</time>
-              <div>
-                <h3><a href={`/talks/${talk.id}/`}>{talk.data.title}</a></h3>
-                <p>{talk.data.event} · {talk.data.location}</p>
-              </div>
+              <div><h3><a href={`/talks/${talk.id}/`}>{talk.data.title}</a></h3><p>{talk.data.event} · {talk.data.location}</p></div>
               <a class="talk-arrow" href={`/talks/${talk.id}/`} aria-label={`Read more about ${talk.data.title}`}>↗</a>
             </article>
           ))}
@@ -106,5 +87,5 @@ const latest = activities[0];
       </section>
     </div>
   </main>
-  <Footer />
+  <div class="terminal-wrap"><Footer /></div>
 </BaseLayout>
