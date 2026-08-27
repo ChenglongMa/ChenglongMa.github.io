@@ -1,9 +1,11 @@
 ---
 import ThemeToggle from './ThemeToggle.astro';
+const path = Astro.url.pathname;
+const promptPath = path === '/' ? '~' : `~${path.replace(/\/+$/, '')}`;
 ---
 
 <nav class="home-nav" aria-label="Primary navigation">
-  <a class="home-brand" href="/" aria-label="Chenglong Ma home"><img src="/media/icon.svg" alt="" />chenglong@ma:~$</a>
+  <a class="home-brand" href="/" aria-label="Chenglong Ma home"><img src="/media/icon.svg" alt="" />chenglongma@rmit: {promptPath}$</a>
   <span class="home-nav-links">
     <a href="/research/">/research</a>
     <a href="/publications/">/publications</a>

@@ -1,11 +1,12 @@
 ---
 import ThemeToggle from './ThemeToggle.astro';
 const path = Astro.url.pathname;
+const promptPath = path === '/' ? '~' : `~${path.replace(/\/+$/, '')}`;
 const isActive = (href: string) => path === href || path.startsWith(`${href}`);
 ---
 
 <header class="site-header">
-  <a class="wordmark" href="/" aria-label="Chenglong Ma home"><img src="/media/icon.svg" alt="" />chenglong@ma:~$</a>
+  <a class="wordmark" href="/" aria-label="Chenglong Ma home"><img src="/media/icon.svg" alt="" />chenglongma@rmit: {promptPath}$</a>
   <nav class="primary-nav" aria-label="Primary navigation">
     <a class:list={{ active: isActive('/research/') }} href="/research/">/research</a>
     <a class:list={{ active: isActive('/publications/') || path.startsWith('/publication/') }} href="/publications/">/publications</a>
