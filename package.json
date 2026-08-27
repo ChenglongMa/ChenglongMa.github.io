@@ -1,0 +1,23 @@
+{
+  "name": "chenglongma.github.io",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "test:content": "node scripts/validate-content.mjs"
+  },
+  "dependencies": {
+    "@citation-js/core": "^0.8.1",
+    "@citation-js/plugin-bibtex": "^0.8.1",
+    "astro": "^5.0.0",
+    "yaml": "^2.6.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@types/node": "^26.4.0",
+    "typescript": "^5.7.2"
+  }
+}

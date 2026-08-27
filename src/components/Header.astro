@@ -1,0 +1,25 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+const path = Astro.url.pathname;
+const isActive = (href: string) => path === href || path.startsWith(`${href}`);
+---
+
+<header class="site-header">
+  <a class="wordmark" href="/" aria-label="Chenglong Ma home">CM<span>.</span></a>
+  <nav class="primary-nav" aria-label="Primary navigation">
+    <a class:list={{ active: isActive('/research/') }} href="/research/">Research</a>
+    <a class:list={{ active: isActive('/publications/') || path.startsWith('/publication/') }} href="/publications/">Publications</a>
+    <a class:list={{ active: isActive('/projects/') || path.startsWith('/project/') }} href="/projects/">Projects</a>
+    <details class="nav-more">
+      <summary class:list={{ active: isActive('/teaching/') || isActive('/talks/') || isActive('/awards/') }}>More <span aria-hidden="true">+</span></summary>
+      <div class="more-menu">
+        <a href="/news/">News</a>
+        <a href="/teaching/">Teaching</a>
+        <a href="/talks/">Talks &amp; Posters</a>
+        <a href="/awards/">Awards</a>
+      </div>
+    </details>
+    <a class:list={{ active: isActive('/cv/') }} href="/cv/">CV</a>
+    <ThemeToggle />
+  </nav>
+</header>

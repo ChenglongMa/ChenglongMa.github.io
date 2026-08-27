@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const areas = (await getCollection('research')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout title="Research">
+  <main class="page-shell">
+    <header class="page-intro">
+      <p class="eyebrow">Research</p>
+      <h1>Questions about people, systems, and change.</h1>
+      <p class="lede">My work examines how recommender systems can better understand evolving user behaviour and respond responsibly to social influence.</p>
+    </header>
+    <div class="research-list">
+      {areas.map((area) => (
+        <article class="research-item">
+          <h2>{area.data.title}</h2>
+          <div>
+            <p>{area.data.summary}</p>
+            <div class="tags">{area.data.keywords.map((keyword) => <span class="tag">{keyword}</span>)}</div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </main>
+</BaseLayout>

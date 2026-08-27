@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PublicationRow from '../../components/PublicationRow.astro';
+import { getPublications } from '../../lib/publications';
+
+const publications = await getPublications();
+---
+
+<BaseLayout title="Publications" description="Publications by Chenglong Ma.">
+  <main class="page-shell">
+    <header class="page-intro">
+      <p class="eyebrow">Research output</p>
+      <h1>Publications</h1>
+      <p class="lede">This list is rendered from the repository’s <code>publications.bib</code>. Links, posters, and related work are added automatically when available.</p>
+    </header>
+    <div class="publication-list">
+      {publications.map((publication) => <PublicationRow publication={publication} compact />)}
+    </div>
+  </main>
+</BaseLayout>

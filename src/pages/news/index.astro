@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getActivities } from '../../lib/activity';
+import { formatDate } from '../../lib/format';
+
+const activities = await getActivities();
+---
+
+<BaseLayout title="News">
+  <main class="page-shell">
+    <header class="page-intro">
+      <p class="eyebrow">News</p>
+      <h1>What’s new</h1>
+      <p class="lede">A low-maintenance record assembled from publications, projects, talks, and awards.</p>
+    </header>
+    <div class="news-list news-list-page">
+      {activities.map((activity) => (
+        <a class="news-item" href={activity.href} target={activity.href.startsWith('http') ? '_blank' : undefined} rel={activity.href.startsWith('http') ? 'noreferrer' : undefined}>
+          <time datetime={activity.date.toISOString()}>{formatDate(activity.date)}</time>
+          <span><strong>{activity.kind}</strong> — {activity.title}</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      ))}
+    </div>
+  </main>
+</BaseLayout>

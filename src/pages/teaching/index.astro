@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const teaching = (await getCollection('teaching')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout title="Teaching">
+  <main class="page-shell">
+    <header class="page-intro">
+      <p class="eyebrow">Teaching</p>
+      <h1>Teaching</h1>
+      <p class="lede">Learning activities and teaching contributions.</p>
+    </header>
+    <div class="teaching-list">
+      {teaching.map((item) => (
+        <article class="teaching-row">
+          <p class="teaching-period">{item.data.period}</p>
+          <div>
+            <h2>{item.data.title}</h2>
+            <p><strong>{item.data.role}</strong> · {item.data.institution}</p>
+            <p>{item.data.summary}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </main>
+</BaseLayout>

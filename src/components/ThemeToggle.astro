@@ -1,0 +1,13 @@
+<button class="theme-toggle" type="button" aria-label="Switch colour theme" data-theme-toggle>
+  <span class="theme-icon theme-icon-sun" aria-hidden="true">☼</span>
+  <span class="theme-icon theme-icon-moon" aria-hidden="true">◐</span>
+</button>
+
+<script>
+  const button = document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
+  button?.addEventListener('click', () => {
+    const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    localStorage.setItem('theme', next);
+  });
+</script>

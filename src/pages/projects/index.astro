@@ -1,0 +1,32 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const projects = (await getCollection('projects')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout title="Projects">
+  <main class="page-shell">
+    <header class="page-intro">
+      <p class="eyebrow">Projects</p>
+      <h1>Useful things made alongside research.</h1>
+      <p class="lede">Open tools and research software that make ideas easier to inspect, use, or build upon.</p>
+    </header>
+    <div class="project-index">
+      {projects.map((project) => (
+        <article class="project-card" id={project.id}>
+          {project.data.image && <a class="project-image" href={project.data.href} target="_blank" rel="noreferrer"><img src={project.data.image} alt="" /></a>}
+          <div>
+            <p class="project-kicker">{project.data.tags.join(' · ')}</p>
+            <h2><a href={project.data.href} target="_blank" rel="noreferrer">{project.data.title}</a></h2>
+            <p>{project.data.summary}</p>
+            <div class="inline-links">
+              <a href={project.data.href} target="_blank" rel="noreferrer">Visit project ↗</a>
+              {project.data.github && <a href={project.data.github} target="_blank" rel="noreferrer">Source code ↗</a>}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </main>
+</BaseLayout>

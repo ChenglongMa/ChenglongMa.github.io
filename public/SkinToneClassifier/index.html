@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Skin Tone Classifier | An easy-to-use library for skin tone classification.</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Skin Tone Classifier" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="An easy-to-use library for skin tone classification." />
+<meta property="og:description" content="An easy-to-use library for skin tone classification." />
+<link rel="canonical" href="index.html" />
+<meta property="og:url" content="https://chenglongma.com/SkinToneClassifier/" />
+<meta property="og:site_name" content="Skin Tone Classifier" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Skin Tone Classifier" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","description":"An easy-to-use library for skin tone classification.","headline":"Skin Tone Classifier","name":"Skin Tone Classifier","url":"https://chenglongma.com/SkinToneClassifier/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style" type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/SkinToneClassifier/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <a id="skip-to-content" href="index.html#content">Skip to the content.</a>
+
+    <header class="page-header" role="banner">
+      <h1 class="project-name">Skin Tone Classifier</h1>
+      <h2 class="project-tagline">An easy-to-use library for skin tone classification.</h2>
+      
+        <a href="https://github.com/ChenglongMa/SkinToneClassifier" class="btn">View on GitHub</a>
+      
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <head>
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/ChenglongMa/SkinToneClassifier/main/docs/icon.svg" />
+</head>
+
+<div style="text-align:center;">
+    <img src="https://raw.githubusercontent.com/ChenglongMa/SkinToneClassifier/main/docs/stone-logo.png" alt="stone logo" />
+    <img src="https://raw.githubusercontent.com/ChenglongMa/SkinToneClassifier/main/docs/illustration.svg" alt="model illustration" />
+</div>
+
+<p><img src="https://img.shields.io/pypi/pyversions/skin-tone-classifier" alt="PyPI - Python Version" />
+<a href="https://pypi.org/project/skin-tone-classifier/"><img src="https://img.shields.io/pypi/v/skin-tone-classifier" alt="PyPI" /></a>
+<a href="https://pypi.org/project/skin-tone-classifier/"><img src="https://img.shields.io/pypi/dm/skin-tone-classifier" alt="PyPI - Downloads" /></a>
+<a href="https://pepy.tech/projects/skin-tone-classifier"><img src="https://static.pepy.tech/badge/skin-tone-classifier" alt="PyPI Downloads" /></a>
+<a href="https://github.com/ChenglongMa/SkinToneClassifier/releases/latest"><img src="https://img.shields.io/github/v/release/ChenglongMa/SkinToneClassifier?include_prereleases" alt="GitHub release (latest by date including pre-releases)" /></a>
+<a href="https://github.com/ChenglongMa/SkinToneClassifier/blob/main/LICENSE"><img src="https://img.shields.io/github/license/ChenglongMa/SkinToneClassifier" alt="GitHub License" /></a>
+<a href="https://youtube.com/playlist?list=PLYRpHlp-9V_E5ZLhW1hbNaVjS5Zg6b6kQ&amp;si=ezxUR7McUbZa4clT"><img src="https://img.shields.io/badge/YouTube-Skin_Tone_Classifier-FF0000?logo=youtube" alt="youtube" /></a>
+<a href="https://colab.research.google.com/drive/1k-cryEZ9PInJRXWIi17ib66ufYV2Ikwe?usp=sharing"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab" /></a>
+<a href="https://github.com/ChenglongMa/SkinToneClassifier"><img src="https://img.shields.io/github/stars/ChenglongMa/SkinToneClassifier" alt="GitHub Repo stars" /></a></p>
+
+<p>An easy-to-use library for skin tone classification.</p>
+
+<p>This can be used to detect <strong>face</strong> or <strong>skin area</strong> in the specified images.
+The detected skin tones are then classified into the specified color categories.
+The library finally generates results to report the detected faces (if any),
+dominant skin tones and color categories.</p>
+
+<p>Check out the <a href="https://github.com/ChenglongMa/SkinToneClassifier/blob/main/CHANGELOG.md">Changelog</a> for the latest updates.</p>
+
+<p><em>If you find this project helpful, please
+consider <a href="https://github.com/ChenglongMa/SkinToneClassifier">giving it a star</a></em> ⭐. <em>It would be a great encouragement
+for me!</em></p>
+
+<hr />
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+<p><strong>Table of Contents</strong></p>
+
+<ul>
+  <li><a href="index.html#showcases">Showcases</a>
+    <ul>
+      <li><a href="index.html#perla-palette-default">PERLA Palette (default)</a></li>
+      <li><a href="index.html#yadon-ostfeld-palette">YADON-OSTFELD Palette</a></li>
+      <li><a href="index.html#proder-palette">PRODER Palette</a></li>
+    </ul>
+  </li>
+  <li><a href="index.html#video-tutorials">Video tutorials</a>
+    <ul>
+      <li><a href="index.html#playlist">Playlist</a></li>
+      <li><a href="index.html#1-how-to-install-python-and-stone">1. How to install Python and <code class="language-plaintext highlighter-rouge">stone</code></a></li>
+      <li><a href="index.html#2-use-stone-in-gui-mode">2. Use <code class="language-plaintext highlighter-rouge">stone</code> in GUI mode</a></li>
+      <li><a href="index.html#3-use-stone-in-cli-mode">3. Use <code class="language-plaintext highlighter-rouge">stone</code> in CLI mode</a></li>
+      <li><a href="index.html#4-use-stone-in-python-scripts">4. Use <code class="language-plaintext highlighter-rouge">stone</code> in Python scripts</a></li>
+    </ul>
+  </li>
+  <li><a href="index.html#installation">Installation</a>
+    <ul>
+      <li><a href="index.html#install-from-pip">Install from pip</a>
+        <ul>
+          <li><a href="index.html#install-the-cli-mode-only">Install the CLI mode only</a></li>
+          <li><a href="index.html#install-the-cli-mode-and-the-gui-mode">Install the CLI mode and the GUI mode</a></li>
+        </ul>
+      </li>
+      <li><a href="index.html#install-from-source">Install from source</a></li>
+    </ul>
+  </li>
+  <li><a href="index.html#how-to-use">HOW TO USE</a>
+    <ul>
+      <li><a href="index.html#quick-start">Quick Start</a>
+        <ul>
+          <li><a href="index.html#use-stone-in-a-gui">Use <code class="language-plaintext highlighter-rouge">stone</code> in a GUI</a></li>
+          <li><a href="index.html#use-stone-in-command-line-interface-cli">Use <code class="language-plaintext highlighter-rouge">stone</code> in command line interface (CLI)</a></li>
+          <li><a href="index.html#interpretation-of-the-table">Interpretation of the table</a></li>
+        </ul>
+      </li>
+      <li><a href="index.html#detailed-usage">Detailed Usage</a>
+        <ul>
+          <li><a href="index.html#use-cases">Use Cases</a>
+            <ul>
+              <li><a href="index.html#1-process-multiple-images">1. Process multiple images</a></li>
+              <li><a href="index.html#2-specify-color-palette">2. Specify color palette</a></li>
+              <li><a href="index.html#3-specify-category-labels">3. Specify category labels</a></li>
+              <li><a href="index.html#4-specify-output-folder">4. Specify output folder</a></li>
+              <li><a href="index.html#5-store-report-images-for-debugging">5. Store report images for debugging</a></li>
+              <li><a href="index.html#6-specify-the-types-of-the-input-images">6. Specify the types of the input image(s)</a></li>
+              <li><a href="index.html#7-convert-the-color-images-to-blackwhite-images">7. Convert the <code class="language-plaintext highlighter-rouge">color</code> images to <code class="language-plaintext highlighter-rouge">black/white</code> images</a></li>
+              <li><a href="index.html#8-tune-parameters-of-face-detection">8. Tune parameters of face detection</a></li>
+              <li><a href="index.html#9-multiprocessing-settings">9. Multiprocessing settings</a></li>
+              <li><a href="index.html#10-used-as-a-library-by-importing-into-other-projects">10. Used as a library by importing into other projects</a></li>
+              <li><a href="index.html#11-used-in-a-fast-api-project">11. Used in a FAST API project</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="index.html#citation">Citation</a></li>
+  <li><a href="index.html#contributing">Contributing</a></li>
+  <li><a href="index.html#disclaimer">Disclaimer</a></li>
+</ul>
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+<h1 id="showcases">Showcases</h1>
+
+<p>The following are some examples of the classification results using different palettes.</p>
+
+<h2 id="perla-palette-default">PERLA Palette (default)</h2>
+
+<p><img src="https://raw.githubusercontent.com/ChenglongMa/SkinToneClassifier/main/docs/palette-perla.svg" alt="PERLA Palette" /></p>
+
+<p><img src="https://raw.githubusercontent.com/ChenglongMa/SkinToneClassifier/main/docs/demo-perla.png" alt="PERLA" /></p>
+
+<h2 id="yadon-ostfeld-palette">YADON-OSTFELD Palette</h2>
+
+<p><img src="https://raw.githubusercontent.com/ChenglongMa/SkinToneClassifier/main/docs/palette-yadon-ostfeld.svg" alt="YADON-OSTFELD Palette" /></p>
+
+<p><img src="https://raw.githubusercontent.com/ChenglongMa/SkinToneClassifier/main/docs/demo-yadon-ostfeld.png" alt="YADON-OSTFELD" /></p>
+
+<h2 id="proder-palette">PRODER Palette</h2>
+
+<p><img src="https://raw.githubusercontent.com/ChenglongMa/SkinToneClassifier/main/docs/palette-proder.svg" alt="PRODER Palette" /></p>
+
+<p><img src="https://raw.githubusercontent.com/ChenglongMa/SkinToneClassifier/main/docs/demo-proder.png" alt="PRODER" /></p>
+
+<h1 id="video-tutorials">Video tutorials</h1>
+
+<p><a href="https://youtube.com/playlist?list=PLYRpHlp-9V_E5ZLhW1hbNaVjS5Zg6b6kQ&amp;si=ezxUR7McUbZa4clT"><img src="https://img.shields.io/badge/YouTube-Skin_Tone_Classifier-FF0000?logo=youtube" alt="youtube" /></a></p>
+
+<p>Please visit the following video tutorials if you have no programming background or are unfamiliar with how to use Python and this library 💖</p>
+
+<h2 id="playlist">Playlist</h2>
+
+<p><a href="https://youtube.com/playlist?list=PLYRpHlp-9V_E5ZLhW1hbNaVjS5Zg6b6kQ&amp;si=ezxUR7McUbZa4clT"><img src="https://img.youtube.com/vi/vu6whI0qcmU/0.jpg" alt="playlist" /></a></p>
+
+<details>
+  <summary><i>Click here to show more.</i></summary>
+
+  <h2 id="how-to-install-python-and-stone">1. How to install Python and <code class="language-plaintext highlighter-rouge">stone</code></h2>
+
+  <p><a href="https://www.youtube.com/watch?v=vu6whI0qcmU&amp;list=PLYRpHlp-9V_E5ZLhW1hbNaVjS5Zg6b6kQ&amp;index=1"><img src="https://img.shields.io/youtube/views/vu6whI0qcmU" alt="YouTube Video Views" /></a></p>
+
+  <p><a href="https://www.youtube.com/watch?v=vu6whI0qcmU&amp;list=PLYRpHlp-9V_E5ZLhW1hbNaVjS5Zg6b6kQ&amp;index=1"><img src="https://img.youtube.com/vi/vu6whI0qcmU/0.jpg" alt="installation" /></a></p>
+
+  <h2 id="use-stone-in-gui-mode">2. Use <code class="language-plaintext highlighter-rouge">stone</code> in GUI mode</h2>
+
+  <p><a href="https://www.youtube.com/watch?v=08apMEogZgs&amp;list=PLYRpHlp-9V_E5ZLhW1hbNaVjS5Zg6b6kQ&amp;index=2"><img src="https://img.shields.io/youtube/views/08apMEogZgs" alt="YouTube Video Views" /></a></p>
+
+  <p><a href="https://www.youtube.com/watch?v=08apMEogZgs&amp;list=PLYRpHlp-9V_E5ZLhW1hbNaVjS5Zg6b6kQ&amp;index=2"><img src="https://img.youtube.com/vi/08apMEogZgs/0.jpg" alt="use gui mode" /></a></p>
+
+  <h2 id="use-stone-in-cli-mode">3. Use <code class="language-plaintext highlighter-rouge">stone</code> in CLI mode</h2>
+
+  <p><a href="https://www.youtube.com/watch?v=rqJ62DijQaw&amp;list=PLYRpHlp-9V_E5ZLhW1hbNaVjS5Zg6b6kQ&amp;index=3"><img src="https://img.shields.io/youtube/views/rqJ62DijQaw" alt="YouTube Video Views" /></a></p>
+
+  <p><a href="https://www.youtube.com/watch?v=rqJ62DijQaw&amp;list=PLYRpHlp-9V_E5ZLhW1hbNaVjS5Zg6b6kQ&amp;index=3"><img src="https://img.youtube.com/vi/rqJ62DijQaw/0.jpg" alt="use cli mode" /></a></p>
+
+  <h2 id="use-stone-in-python-scripts">4. Use <code class="language-plaintext highlighter-rouge">stone</code> in Python scripts</h2>
+
+  <p>Please refer to this notebook <a href="https://colab.research.google.com/drive/1k-cryEZ9PInJRXWIi17ib66ufYV2Ikwe?usp=sharing"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab" /></a> for more information.</p>
+
+  <p><em>More videos are coming soon…</em></p>
+
+</details>
+
+<h1 id="installation">Installation</h1>
+
+<blockquote>
+  <p>[!TIP]</p>
+
+  <p>Since v1.2.3, we have made the GUI mode <strong>optional</strong>.</p>
+
+</blockquote>
+
+<h2 id="install-from-pip">Install from pip</h2>
+
+<h3 id="install-the-cli-mode-only">Install the CLI mode only</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>skin-tone-classifier <span class="nt">--upgrade</span>
+</code></pre></div></div>
+
+<p>It is useful for users who want to use this library in non-GUI environments, e.g., servers or <a href="https://colab.research.google.com/drive/1k-cryEZ9PInJRXWIi17ib66ufYV2Ikwe?usp=sharing"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab" /></a>.</p>
+
+<h3 id="install-the-cli-mode-and-the-gui-mode">Install the CLI mode and the GUI mode</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>skin-tone-classifier[all] <span class="nt">--upgrade</span>
+</code></pre></div></div>
+
+<p>It is useful for users who are not familiar with the command line interface and want to use the GUI mode.</p>
+
+<h2 id="install-from-source">Install from source</h2>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone <a href="https://chenglongma.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="85e2ecf1c5e2ecf1edf0e7abe6eae8">[email&#160;protected]</a>:ChenglongMa/SkinToneClassifier.git
+<span class="nb">cd </span>SkinToneClassifier
+pip <span class="nb">install</span> <span class="nt">-e</span> <span class="nb">.</span> <span class="nt">--verbose</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>[!TIP]</p>
+
+  <p>If you encounter the following problem:</p>
+
+  <p><a href="https://stackoverflow.com/q/52306805/8860079"><code class="language-plaintext highlighter-rouge">ImportError: DLL load failed while importing _core: The specified module could not be found</code></a></p>
+
+  <p>Please download and install <strong>Visual C++ Redistributable</strong> at <a href="https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170#visual-studio-2015-2017-2019-and-2022">here</a>.</p>
+
+  <p>Then this error will be gone.</p>
+</blockquote>
+
+<h1 id="how-to-use">HOW TO USE</h1>
+
+<blockquote>
+  <p>[!TIP]</p>
+
+  <p>You can combine the following documents, <a href="index.html#video-tutorials">the video tutorials above</a>
+and the running examples <a href="https://colab.research.google.com/drive/1k-cryEZ9PInJRXWIi17ib66ufYV2Ikwe?usp=sharing"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab" /></a>
+to understand the usage of this library more intuitively.</p>
+
+</blockquote>
+
+<h2 id="quick-start">Quick Start</h2>
+
+<h3 id="use-stone-in-a-gui">Use <code class="language-plaintext highlighter-rouge">stone</code> in a GUI</h3>
+
+<p>✨ Since v1.2.0, we have provided a GUI version of <code class="language-plaintext highlighter-rouge">stone</code> for users who are not familiar with the command line
+interface.</p>
+
+<p><img src="https://raw.githubusercontent.com/ChenglongMa/SkinToneClassifier/main/docs/gui.png" alt="stone GUI" /></p>
+
+<p>Instead of typing commands in the terminal, you can use the config GUI of <code class="language-plaintext highlighter-rouge">stone</code> to process the images.</p>
+
+<p>Steps:</p>
+
+<ol>
+  <li>Open the terminal that can run <code class="language-plaintext highlighter-rouge">stone</code> (e.g., <code class="language-plaintext highlighter-rouge">PowerShell</code> in Windows or <code class="language-plaintext highlighter-rouge">Terminal</code> in macOS).</li>
+  <li>Type <code class="language-plaintext highlighter-rouge">stone</code> (without any parameters) or <code class="language-plaintext highlighter-rouge">stone --gui</code> and press <kbd>Enter</kbd> to open the GUI.</li>
+  <li>Specify the parameters in each tab.</li>
+  <li>Click the <code class="language-plaintext highlighter-rouge">Start</code> button to start processing the images.</li>
+</ol>
+
+<p>Hopefully, this can make it easier for you to use <code class="language-plaintext highlighter-rouge">stone</code> 🍻!</p>
+
+<blockquote>
+  <p>[!TIP]</p>
+
+  <ol>
+    <li>
+      <p>It is recommended to install v1.2.3+, which supports Python 3.9+.</p>
+
+      <p>If you have installed v1.2.0, please upgrade to v1.2.3+ by running</p>
+
+      <p><code class="language-plaintext highlighter-rouge">pip install skin-tone-classifier[all] --upgrade</code></p>
+    </li>
+    <li>
+      <p>If you encounter the following problem:</p>
+      <blockquote>
+        <p>This program needs access to the screen. Please run with a Framework
+build of python, and only when you are logged in on the main display
+of your Mac.</p>
+      </blockquote>
+
+      <p>Please launch the GUI by running <code class="language-plaintext highlighter-rouge">pythonw -m stone</code> in the terminal.
+References:</p>
+      <ul>
+        <li><a href="https://stackoverflow.com/a/52732858/8860079">stackoverflow</a></li>
+        <li><a href="https://docs.python.org/3/using/mac.html">python-using-mac</a></li>
+      </ul>
+    </li>
+  </ol>
+</blockquote>
+
+<h3 id="use-stone-in-command-line-interface-cli">Use <code class="language-plaintext highlighter-rouge">stone</code> in command line interface (CLI)</h3>
+
+<p>To detect the skin tone in a portrait, e.g.,</p>
+
+<div align="center">
+   <img src="https://raw.githubusercontent.com/ChenglongMa/SkinToneClassifier/main/docs/demo.png" alt="Demo picture" style="display: block; margin: auto" />
+</div>
+
+<p>Just run:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stone <span class="nt">-i</span> /path/to/demo.png <span class="nt">--debug</span>
+</code></pre></div></div>
+
+<p>Then, you can find the processed image in <code class="language-plaintext highlighter-rouge">./debug/color/faces_1</code> folder, e.g.,</p>
+
+<div align="center">
+   <img src="https://raw.githubusercontent.com/ChenglongMa/SkinToneClassifier/main/docs/demo-1.png" alt="processed demo picture" style="display: block; margin: auto" />
+</div>
+
+<p>In this image, from left to right you can find the following information:</p>
+
+<ol>
+  <li>detected face with a label (<em>Face 1</em>) enclosed by a rectangle.</li>
+  <li>dominant colors.
+    <ol>
+      <li><em>The number of colors depends on settings (default is 2), and their sizes depend on their proportion.</em></li>
+    </ol>
+  </li>
+  <li>specified color palette and the target label is enclosed by a rectangle.</li>
+  <li>you can find a summary text at the bottom.</li>
+</ol>
+
+<p>Furthermore, there will be a report file named <code class="language-plaintext highlighter-rouge">result.csv</code> which contains more detailed information, e.g.,</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>file</th>
+      <th>image type</th>
+      <th>face id</th>
+      <th>dominant 1</th>
+      <th>percent 1</th>
+      <th>dominant 2</th>
+      <th>percent 2</th>
+      <th>skin tone</th>
+      <th>tone label</th>
+      <th>accuracy(0-100)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>demo.png</td>
+      <td>color</td>
+      <td>1</td>
+      <td>#C99676</td>
+      <td>0.67</td>
+      <td>#805341</td>
+      <td>0.33</td>
+      <td>#9D7A54</td>
+      <td>CF</td>
+      <td>86.27</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="interpretation-of-the-table">Interpretation of the table</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">file</code>: the filename of the processed image.
+    <ul>
+      <li><strong>NB: The filename pattern of report image is <code class="language-plaintext highlighter-rouge">&lt;file&gt;-&lt;face id&gt;.&lt;extension&gt;</code></strong></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">image type</code>: the type of the processed image, i.e., <code class="language-plaintext highlighter-rouge">color</code> or <code class="language-plaintext highlighter-rouge">bw</code> (black/white).</li>
+  <li><code class="language-plaintext highlighter-rouge">face id</code>: the id of the detected face, which matches the reported image. <code class="language-plaintext highlighter-rouge">NA</code> means no face has been detected.</li>
+  <li><code class="language-plaintext highlighter-rouge">dominant n</code>: the <code class="language-plaintext highlighter-rouge">n</code>-th dominant color of the detected face.</li>
+  <li><code class="language-plaintext highlighter-rouge">percent n</code>: the percentage of the <code class="language-plaintext highlighter-rouge">n</code>-th dominant color, (0~1.0).</li>
+  <li><code class="language-plaintext highlighter-rouge">skin tone</code>: the skin tone category of the detected face.</li>
+  <li><code class="language-plaintext highlighter-rouge">tone label</code>: the <strong>label</strong> of skin tone category of the detected face.</li>
+  <li><code class="language-plaintext highlighter-rouge">accuracy</code>: the accuracy of the skin tone category of the detected face, (0~100). The larger, the better.</li>
+</ol>
+
+<h2 id="detailed-usage">Detailed Usage</h2>
+
+<p>To see the usage and parameters, run:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stone <span class="nt">-h</span> <span class="o">(</span>or <span class="nt">--help</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>Detailed usage:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Short Option</th>
+      <th>Long Option</th>
+      <th>Definition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>-h</td>
+      <td>–help</td>
+      <td>Show this help message and exit.</td>
+    </tr>
+    <tr>
+      <td>-i</td>
+      <td>–images</td>
+      <td>Image filename(s) or URLs to process. <br />Supports multiple values separated by <strong>space</strong>, e.g., <code class="language-plaintext highlighter-rouge">a.jpg b.png</code>. <br />Supports directory or file name(s), e.g., <code class="language-plaintext highlighter-rouge">./path/to/images/ a.jpg</code>. <br />Supports URL(s), e.g., <code class="language-plaintext highlighter-rouge">https://example.com/images/pic.jpg</code> since v1.1.0+. <br />If you don’t specify this option, the app will search all images in the current directory by default.</td>
+    </tr>
+    <tr>
+      <td>-r</td>
+      <td>–recursive</td>
+      <td>Whether to search images <strong>recursively</strong> in the specified directory.</td>
+    </tr>
+    <tr>
+      <td>-t</td>
+      <td>–image_type</td>
+      <td>Specify whether the input image(s) is/are <strong>colored</strong> or <strong>black/white</strong>. <br />Valid choices are: <code class="language-plaintext highlighter-rouge">auto</code>, <code class="language-plaintext highlighter-rouge">color</code>, or <code class="language-plaintext highlighter-rouge">bw</code>. <br />Defaults to <code class="language-plaintext highlighter-rouge">auto</code>, which will be detected <strong>automatically</strong>.</td>
+    </tr>
+    <tr>
+      <td>-p</td>
+      <td>–palette</td>
+      <td>Skin tone palette. <br />Valid choices can be <code class="language-plaintext highlighter-rouge">perla</code>, <code class="language-plaintext highlighter-rouge">yadon-ostfeld</code>, <code class="language-plaintext highlighter-rouge">proder</code>; <br />You can also input RGB <strong>hex</strong> values starting with <code class="language-plaintext highlighter-rouge">#</code> <br />or <strong>RGB</strong> values separated by <strong>commas</strong>, <br />e.g., <code class="language-plaintext highlighter-rouge">-p #373028 #422811</code> or <code class="language-plaintext highlighter-rouge">-p 255,255,255 100,100,100</code>.</td>
+    </tr>
+    <tr>
+      <td>-l</td>
+      <td>–labels</td>
+      <td>Skin tone labels. <br />Default values are the <strong>UPPERCASE</strong> alphabet list leading by the image type <br />(<code class="language-plaintext highlighter-rouge">C</code> for <code class="language-plaintext highlighter-rouge">color</code>; <code class="language-plaintext highlighter-rouge">B</code> for <code class="language-plaintext highlighter-rouge">Black&amp;White</code>), <br />e.g., <code class="language-plaintext highlighter-rouge">['CA', 'CB', ..., 'CZ']</code> or <code class="language-plaintext highlighter-rouge">['BA', 'BB', ..., 'BZ']</code>.</td>
+    </tr>
+    <tr>
+      <td>-d</td>
+      <td>–debug</td>
+      <td>Whether to generate report images, used for debugging and verification. <br />The report images will be saved in the <code class="language-plaintext highlighter-rouge">./debug</code> directory.</td>
+    </tr>
+    <tr>
+      <td>-bw</td>
+      <td>–black_white</td>
+      <td>Whether to convert the input to <strong>black/white</strong> image(s). <br />If <code class="language-plaintext highlighter-rouge">true</code>, the app will use a <strong>black/white palette</strong> to classify the image.</td>
+    </tr>
+    <tr>
+      <td>-o</td>
+      <td>–output</td>
+      <td>The path of the output file, defaults to <strong>the current directory</strong>.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>–n_workers</td>
+      <td>The number of workers to process the images, <br />defaults to <strong>the number of CPUs</strong> in the system.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>–n_colors</td>
+      <td>CONFIG: the number of dominant colors to be extracted, defaults to 2.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>–new_width</td>
+      <td>CONFIG: resize the images with the specified width. <br /><strong>Negative value will be ignored</strong>, defaults to 250.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>–scale</td>
+      <td>CONFIG: how much the image size is reduced at each image scale, defaults to 1.1.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>–min_nbrs</td>
+      <td>CONFIG: how many neighbors each candidate rectangle should have to retain it. <br /><strong>Higher value results in fewer detections but with higher quality</strong>, defaults to 5.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>–min_size</td>
+      <td>CONFIG: minimum possible face size. <strong>Faces smaller than that are ignored</strong>. <br />Valid format: <code class="language-plaintext highlighter-rouge">width height</code>, defaults to <code class="language-plaintext highlighter-rouge">90 90</code>.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>–threshold</td>
+      <td>CONFIG: what percentage of the skin area is required to identify the face, <br />defaults to 0.15.</td>
+    </tr>
+    <tr>
+      <td>-v</td>
+      <td>–version</td>
+      <td>Show the version number and exit.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="use-cases">Use Cases</h3>
+
+<h4 id="1-process-multiple-images">1. Process multiple images</h4>
+
+<p>1.1 Multiple filenames</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stone <span class="nt">-i</span> <span class="o">(</span>or <span class="nt">--images</span><span class="o">)</span> a.jpg b.png https://example.com/images/pic.jpg
+</code></pre></div></div>
+
+<p>1.2 Images in some folder(s)</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stone <span class="nt">-i</span> ./path/to/images/
+</code></pre></div></div>
+
+<p>NB: Supported image formats: <code class="language-plaintext highlighter-rouge">.jpg, .gif, .png, .jpeg, .webp, .tif</code>.</p>
+
+<p>In default (i.e., <code class="language-plaintext highlighter-rouge">stone</code> without <code class="language-plaintext highlighter-rouge">-i</code> option), the app will search images in current folder.</p>
+
+<h4 id="2-specify-color-palette">2. Specify color palette</h4>
+
+<p>2.1 Use the built-in palettes</p>
+
+<p>The built-in palettes are: <code class="language-plaintext highlighter-rouge">perla</code>, <code class="language-plaintext highlighter-rouge">yadon-ostfeld</code>, <code class="language-plaintext highlighter-rouge">proder</code> and <code class="language-plaintext highlighter-rouge">bw</code>.</p>
+
+<p>NB: The <code class="language-plaintext highlighter-rouge">bw</code> palette is used to classify the <strong>black/white</strong> images only.</p>
+
+<p>For example:</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stone <span class="nt">-p</span> <span class="o">(</span>or <span class="nt">--palette</span><span class="o">)</span> perla
+</code></pre></div></div>
+
+<p>The HEX values of each palette are:</p>
+
+<p><img src="https://raw.githubusercontent.com/ChenglongMa/SkinToneClassifier/main/docs/palette-perla.svg" alt="PERLA" /></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">perla</code>:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">#373028</code>, <code class="language-plaintext highlighter-rouge">#422811</code>, <code class="language-plaintext highlighter-rouge">#513B2E</code>, <code class="language-plaintext highlighter-rouge">#6F503C</code>, <code class="language-plaintext highlighter-rouge">#81654F</code>, <code class="language-plaintext highlighter-rouge">#9D7A54</code>, <code class="language-plaintext highlighter-rouge">#BEA07E</code>, <code class="language-plaintext highlighter-rouge">#E5C8A6</code>, <code class="language-plaintext highlighter-rouge">#E7C1B8</code>, <code class="language-plaintext highlighter-rouge">#F3DAD6</code>, <code class="language-plaintext highlighter-rouge">#FBF2F3</code></li>
+      <li>Citation: Rejón Piña, R. A., &amp; Ma, C. (2021). Classification Algorithm for Skin Color (CASCo): A new tool to measure skin color in social science research.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://raw.githubusercontent.com/ChenglongMa/SkinToneClassifier/main/docs/palette-yadon-ostfeld.svg" alt="YADON-OSTFELD" /></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">yadon-ostfeld</code>:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">#36251d</code>, <code class="language-plaintext highlighter-rouge">#48352c</code>, <code class="language-plaintext highlighter-rouge">#614539</code>, <code class="language-plaintext highlighter-rouge">#755848</code>, <code class="language-plaintext highlighter-rouge">#886958</code>, <code class="language-plaintext highlighter-rouge">#9b7966</code>, <code class="language-plaintext highlighter-rouge">#b18972</code>, <code class="language-plaintext highlighter-rouge">#c29c88</code>, <code class="language-plaintext highlighter-rouge">#d4afa3</code>, <code class="language-plaintext highlighter-rouge">#e6c6bf</code></li>
+      <li>Citation: Ostfeld, M. C., &amp; Yadon, N. (2022). Skin color, power, and politics in America. Russell Sage Foundation.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://raw.githubusercontent.com/ChenglongMa/SkinToneClassifier/main/docs/palette-proder.svg" alt="PRODER" /></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">proder</code>:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">#654d3e</code>, <code class="language-plaintext highlighter-rouge">#775741</code>, <code class="language-plaintext highlighter-rouge">#876249</code>, <code class="language-plaintext highlighter-rouge">#946c51</code>, <code class="language-plaintext highlighter-rouge">#a0765a</code>, <code class="language-plaintext highlighter-rouge">#a87f64</code>, <code class="language-plaintext highlighter-rouge">#b1886c</code>, <code class="language-plaintext highlighter-rouge">#b69279</code>, <code class="language-plaintext highlighter-rouge">#be9d86</code>, <code class="language-plaintext highlighter-rouge">#c5a691</code>, <code class="language-plaintext highlighter-rouge">#c8ac99</code></li>
+      <li>Citation: Proyecto sobre discriminación étnico-racial en México (PRODER). El Colegio de México. https://discriminacion.colmex.mx/encuesta-proder/</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://raw.githubusercontent.com/ChenglongMa/SkinToneClassifier/main/docs/palette-bw.svg" alt="BW" /></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">bw</code>:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">#FFFFFF</code>, <code class="language-plaintext highlighter-rouge">#F0F0F0</code>, <code class="language-plaintext highlighter-rouge">#E0E0E0</code>, <code class="language-plaintext highlighter-rouge">#D0D0D0</code>, <code class="language-plaintext highlighter-rouge">#C0C0C0</code>, <code class="language-plaintext highlighter-rouge">#B0B0B0</code>, <code class="language-plaintext highlighter-rouge">#A0A0A0</code>, <code class="language-plaintext highlighter-rouge">#909090</code>, <code class="language-plaintext highlighter-rouge">#808080</code>, <code class="language-plaintext highlighter-rouge">#707070</code>, <code class="language-plaintext highlighter-rouge">#606060</code>, <code class="language-plaintext highlighter-rouge">#505050</code>, <code class="language-plaintext highlighter-rouge">#404040</code>, <code class="language-plaintext highlighter-rouge">#303030</code>, <code class="language-plaintext highlighter-rouge">#202020</code>, <code class="language-plaintext highlighter-rouge">#101010</code>, <code class="language-plaintext highlighter-rouge">#000000</code></li>
+      <li>Citation: Leigh, A., &amp; Susilo, T. (2009). Is voting skin-deep? Estimating the effect of candidate ballot photographs on election outcomes. Journal of Economic Psychology, 30(1), 61-70.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>2.2 Use HEX values</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stone <span class="nt">-p</span> <span class="c">#373028 #422811 #513B2E</span>
+</code></pre></div></div>
+
+<p>NB: Values start with <strong>’#’</strong> and are separated by <strong>space</strong>.</p>
+
+<p>2.3 Use RGB tuple values</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stone <span class="nt">-p</span> 55,48,40 66,40,17 251,242,243
+</code></pre></div></div>
+
+<p>NB: Values split by <strong>comma ‘,’</strong>, multiple values are still separated by <strong>space</strong>.</p>
+
+<h4 id="3-specify-category-labels">3. Specify category labels</h4>
+
+<p>You can assign the labels for the skin tone categories, for example:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"CA": "#373028",
+"CB": "#422811",
+"CC": "#513B2E",
+...
+</code></pre></div></div>
+
+<p>To achieve this, you can use the <code class="language-plaintext highlighter-rouge">-l</code> (or <code class="language-plaintext highlighter-rouge">--labels</code>) option:</p>
+
+<p>3.1 Specify the labels directly using <strong>spaces</strong> as delimiters, e.g.,</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stone <span class="nt">-l</span> A B C D E F G H
+</code></pre></div></div>
+
+<p>3.2 Specify the range of labels based on this pattern: <code class="language-plaintext highlighter-rouge">&lt;start&gt;&lt;sep&gt;&lt;end&gt;&lt;sep&gt;&lt;step&gt;</code>.</p>
+
+<p>Specifically,</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;start&gt;</code>: the <strong>start</strong> label, can be a letter (e.g., <code class="language-plaintext highlighter-rouge">A</code>) or a number (e.g., <code class="language-plaintext highlighter-rouge">1</code>);</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;end&gt;</code>: the <strong>end</strong> label, can be a letter (e.g., <code class="language-plaintext highlighter-rouge">H</code>) or a number (e.g., <code class="language-plaintext highlighter-rouge">8</code>);</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;step&gt;</code>: the <strong>step</strong> to generate the label sequence, can be a number (e.g., <code class="language-plaintext highlighter-rouge">2</code> or <code class="language-plaintext highlighter-rouge">-1</code>), <strong>defaults to <code class="language-plaintext highlighter-rouge">1</code></strong>.</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;sep&gt;</code>: the <strong>separator</strong> between <code class="language-plaintext highlighter-rouge">&lt;start&gt;</code> and <code class="language-plaintext highlighter-rouge">&lt;end&gt;</code>, can be one of these symbols: <code class="language-plaintext highlighter-rouge">-</code>, <code class="language-plaintext highlighter-rouge">,</code>, <code class="language-plaintext highlighter-rouge">~</code>, <code class="language-plaintext highlighter-rouge">:</code>, <code class="language-plaintext highlighter-rouge">;</code>, <code class="language-plaintext highlighter-rouge">_</code>.</li>
+</ul>
+
+<p>Examples:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stone <span class="nt">-l</span> A-H-1
+</code></pre></div></div>
+
+<p>which is equivalent to <code class="language-plaintext highlighter-rouge">stone -l A-H</code> and <code class="language-plaintext highlighter-rouge">stone -l A B C D E F G H</code>.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stone <span class="nt">-l</span> A-H-2
+</code></pre></div></div>
+
+<p>which is equivalent to <code class="language-plaintext highlighter-rouge">stone -l A C E G</code>.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stone <span class="nt">-l</span> 1-8
+</code></pre></div></div>
+
+<p>which is equivalent to <code class="language-plaintext highlighter-rouge">stone -l 1 2 3 4 5 6 7 8</code>.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stone <span class="nt">-l</span> 1-8-3
+</code></pre></div></div>
+
+<p>which is equivalent to <code class="language-plaintext highlighter-rouge">stone -l 1 4 7</code>.</p>
+
+<blockquote>
+  <p>[!IMPORTANT]</p>
+
+  <p>Please make sure the number of labels is equal to the number of colors in the palette.</p>
+</blockquote>
+
+<h4 id="4-specify-output-folder">4. Specify output folder</h4>
+
+<p>The app puts the final report (<code class="language-plaintext highlighter-rouge">result.csv</code>) in current folder in default.</p>
+
+<p>To change the output folder:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stone <span class="nt">-o</span> <span class="o">(</span>or <span class="nt">--output</span><span class="o">)</span> ./path/to/output/
+</code></pre></div></div>
+
+<p>The output folder will be created if it does not exist.</p>
+
+<p>In <code class="language-plaintext highlighter-rouge">result.csv</code>, each row is showing the color information of each detected face.
+If more than one faces are detected, there will be multiple rows for that image.</p>
+
+<h4 id="5-store-report-images-for-debugging">5. Store report images for debugging</h4>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stone <span class="nt">-d</span> <span class="o">(</span>or <span class="nt">--debug</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>This option will store the report image (like the demo portrait above) in
+<code class="language-plaintext highlighter-rouge">./path/to/output/debug/&lt;image type&gt;/faces_&lt;n&gt;</code> folder,
+where <code class="language-plaintext highlighter-rouge">&lt;image type&gt;</code> indicates if the image is <code class="language-plaintext highlighter-rouge">color</code> or <code class="language-plaintext highlighter-rouge">bw</code> (black/white);
+<code class="language-plaintext highlighter-rouge">&lt;n&gt;</code> is the number of faces detected in the image.</p>
+
+<p><strong>By default, to save storage space, the app does not store report images.</strong></p>
+
+<p>Like in the <code class="language-plaintext highlighter-rouge">result.csv</code> file, there will be more than one report images if 2 or more faces were detected.</p>
+
+<h4 id="6-specify-the-types-of-the-input-images">6. Specify the types of the input image(s)</h4>
+
+<p>6.1 The input are color images</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stone <span class="nt">-t</span> <span class="o">(</span>or <span class="nt">--image_type</span><span class="o">)</span> color
+</code></pre></div></div>
+
+<p>6.2 The input are black/white images</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stone <span class="nt">-t</span> <span class="o">(</span>or <span class="nt">--image_type</span><span class="o">)</span> bw
+</code></pre></div></div>
+
+<p>6.3 <strong>In default</strong>, the app will detect the image type automatically, i.e.,</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stone <span class="nt">-t</span> <span class="o">(</span>or <span class="nt">--image_type</span><span class="o">)</span> auto
+</code></pre></div></div>
+
+<h4 id="7-convert-the-color-images-to-blackwhite-images">7. Convert the <code class="language-plaintext highlighter-rouge">color</code> images to <code class="language-plaintext highlighter-rouge">black/white</code> images</h4>
+
+<p>and then do the classification using <code class="language-plaintext highlighter-rouge">bw</code> palette</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stone <span class="nt">-bw</span> <span class="o">(</span>or <span class="nt">--black_white</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>For example:</p>
+
+<div style="display: flex; justify-content: center;align-items:flex-end;">
+    <div style="text-align: center;flex:1; margin:10px;">
+        <img src="https://raw.githubusercontent.com/ChenglongMa/SkinToneClassifier/main/docs/demo.png" alt="Demo picture" />
+        <p>1. Input</p>
+    </div>
+    <div style="text-align: center;flex:1; margin:10px;">
+        <img src="https://raw.githubusercontent.com/ChenglongMa/SkinToneClassifier/main/docs/demo_bw.png" alt="Black/white Demo picture" />
+        <p>2. Convert to black/white image</p>
+    </div>
+    <div style="text-align: center;flex:1; margin:10px;">
+        <img src="https://raw.githubusercontent.com/ChenglongMa/SkinToneClassifier/main/docs/demo_bw-1.png" alt="Report image" />
+        <p>3. The final report image</p>
+    </div>
+</div>
+
+<p>NB: we did not do the opposite, i.e., convert <code class="language-plaintext highlighter-rouge">black/white</code> images to <code class="language-plaintext highlighter-rouge">color</code> images
+because the current AI models cannot accurately “guess” the color of the skin from a <code class="language-plaintext highlighter-rouge">black/white</code> image.
+It can further bias the analysis results.</p>
+
+<h4 id="8-tune-parameters-of-face-detection">8. Tune parameters of face detection</h4>
+
+<p>The rest parameters of <code class="language-plaintext highlighter-rouge">CONFIG</code> are used to detect face.
+Please refer to https://stackoverflow.com/a/20805153/8860079 for detailed information.</p>
+
+<h4 id="9-multiprocessing-settings">9. Multiprocessing settings</h4>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stone <span class="nt">--n_workers</span> &lt;Any Positive Integer&gt;
+</code></pre></div></div>
+
+<p>Use <code class="language-plaintext highlighter-rouge">--n_workers</code> to specify the number of workers to process images in parallel, defaults to the number of CPUs in your
+system.</p>
+
+<h4 id="10-used-as-a-library-by-importing-into-other-projects">10. Used as a library by importing into other projects</h4>
+
+<p>You can refer to <a href="https://colab.research.google.com/drive/1k-cryEZ9PInJRXWIi17ib66ufYV2Ikwe?usp=sharing"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab" /></a> or the following code snippet:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">stone</span>
+<span class="kn">from</span> <span class="nn">json</span> <span class="kn">import</span> <span class="n">dumps</span>
+
+<span class="c1"># process the image
+</span><span class="n">result</span> <span class="o">=</span> <span class="n">stone</span><span class="p">.</span><span class="n">process</span><span class="p">(</span><span class="n">image_path</span><span class="p">,</span> <span class="n">image_type</span><span class="p">,</span> <span class="n">palette</span><span class="p">,</span> <span class="o">*</span><span class="n">other_args</span><span class="p">,</span> <span class="n">return_report_image</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="c1"># show the report image
+</span><span class="n">report_images</span> <span class="o">=</span> <span class="n">result</span><span class="p">.</span><span class="n">pop</span><span class="p">(</span><span class="s">"report_images"</span><span class="p">)</span>  <span class="c1"># obtain and remove the report image from the `result`
+</span><span class="n">face_id</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">stone</span><span class="p">.</span><span class="n">show</span><span class="p">(</span><span class="n">report_images</span><span class="p">[</span><span class="n">face_id</span><span class="p">])</span>
+
+<span class="c1"># convert the result to json
+</span><span class="n">result_json</span> <span class="o">=</span> <span class="n">dumps</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">stone.process</code> is the main function to process the image.
+It has the same parameters as the command line version.</p>
+
+<p>It will return a <code class="language-plaintext highlighter-rouge">dict</code>, which contains the process result and report image(s) (if required,
+i.e., <code class="language-plaintext highlighter-rouge">return_report_image=True</code>).</p>
+
+<p>You can further use <code class="language-plaintext highlighter-rouge">stone.show</code> to show the report image(s).
+And convert the result to <code class="language-plaintext highlighter-rouge">json</code> format.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">result_json</code> will be like:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"basename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demo"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"extension"</span><span class="p">:</span><span class="w"> </span><span class="s2">".png"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"image_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"color"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"faces"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"face_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dominant_colors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#C99676"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"percent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.67"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#805341"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"percent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.33"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"skin_tone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#9D7A54"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tone_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CF"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"accuracy"</span><span class="p">:</span><span class="w"> </span><span class="mf">86.27</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="11-used-in-a-fast-api-project">11. Used in a FAST API project</h4>
+
+<p><code class="language-plaintext highlighter-rouge">stone</code> can be used in a FAST API project to classify the skin tone of the uploaded image(s) via <code class="language-plaintext highlighter-rouge">POST</code> method.</p>
+
+<p>Please refer to the following code snippet:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Description: This is a simple FastAPI server that receives an image file 
+# and processes it using the skin-tone-classifier library.
+</span>
+<span class="c1"># requirements.txt:
+#     fastapi
+#     uvicorn
+#     skin-tone-classifier
+#     python-multipart
+</span>
+<span class="c1"># Run the server:
+#     uvicorn main:app --reload
+</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Literal</span>
+
+<span class="kn">import</span> <span class="nn">stone</span>
+<span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span><span class="p">,</span> <span class="n">UploadFile</span><span class="p">,</span> <span class="n">HTTPException</span>
+<span class="kn">from</span> <span class="nn">fastapi.responses</span> <span class="kn">import</span> <span class="n">JSONResponse</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
+
+
+<span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">"/stone"</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">process_image</span><span class="p">(</span>
+        <span class="n">image_file</span><span class="p">:</span> <span class="n">UploadFile</span><span class="p">,</span>
+        <span class="n">image_type</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s">"auto"</span><span class="p">,</span> <span class="s">"color"</span><span class="p">,</span> <span class="s">"bw"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"auto"</span><span class="p">,</span>
+        <span class="n">tone_palette</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span>
+        <span class="n">tone_labels</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span>
+        <span class="c1"># other parameters...
+</span><span class="p">):</span>
+    <span class="n">image_data</span> <span class="o">=</span> <span class="k">await</span> <span class="n">image_file</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">temp_file_path</span> <span class="o">=</span> <span class="s">"/tmp/temp_image.jpg"</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">temp_file_path</span><span class="p">,</span> <span class="s">"wb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">temp_file</span><span class="p">:</span>
+        <span class="n">temp_file</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">image_data</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">stone</span><span class="p">.</span><span class="n">process</span><span class="p">(</span>
+            <span class="n">temp_file_path</span><span class="p">,</span>
+            <span class="n">image_type</span><span class="o">=</span><span class="n">image_type</span><span class="p">,</span>
+            <span class="n">tone_palette</span><span class="o">=</span><span class="n">tone_palette</span><span class="p">,</span>
+            <span class="n">tone_labels</span><span class="o">=</span><span class="n">tone_labels</span><span class="p">,</span>
+            <span class="c1"># other parameters...
+</span>        <span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">JSONResponse</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">result</span><span class="p">)</span>
+    <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">result</span>
+</code></pre></div></div>
+
+<p>To run the demo, please follow these steps:</p>
+
+<ol>
+  <li>Install required packages:
+    <ul>
+      <li>skin-tone-classifier</li>
+      <li><a href="https://fastapi.tiangolo.com/">fastapi</a></li>
+      <li><a href="https://www.uvicorn.org/">uvicorn</a></li>
+      <li><a href="https://pypi.org/project/python-multipart/">python-multipart</a></li>
+    </ul>
+  </li>
+  <li>Run the server:
+<code class="language-plaintext highlighter-rouge">uvicorn main:app --reload</code></li>
+  <li>You can refine the implementation according to your project requirements.</li>
+  <li>Finally, you can use <a href="https://www.postman.com/">Postman</a> or other HTTP Clients to test the API.</li>
+</ol>
+
+<h1 id="citation">Citation</h1>
+
+<p>If you are interested in our work, please cite:</p>
+
+<div class="language-bibtex highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">@article</span><span class="p">{</span><span class="nl">https://doi.org/10.1111/ssqu.13242</span><span class="p">,</span>
+    <span class="na">author</span> <span class="p">=</span> <span class="s">{Rej\'{o}n Pi\tilde{n}a, Ren\'{e} Alejandro and Ma, Chenglong}</span><span class="p">,</span>
+    <span class="na">title</span> <span class="p">=</span> <span class="s">{Classification Algorithm for Skin Color (CASCo): A new tool to measure skin color in social science research}</span><span class="p">,</span>
+    <span class="na">journal</span> <span class="p">=</span> <span class="s">{Social Science Quarterly}</span><span class="p">,</span>
+    <span class="na">volume</span> <span class="p">=</span> <span class="s">{n/a}</span><span class="p">,</span>
+    <span class="na">number</span> <span class="p">=</span> <span class="s">{n/a}</span><span class="p">,</span>
+    <span class="na">pages</span> <span class="p">=</span> <span class="s">{}</span><span class="p">,</span>
+    <span class="na">keywords</span> <span class="p">=</span> <span class="s">{colorism, measurement, photo elicitation, racism, skin color, spectrometers}</span><span class="p">,</span>
+    <span class="na">doi</span> <span class="p">=</span> <span class="s">{https://doi.org/10.1111/ssqu.13242}</span><span class="p">,</span>
+    <span class="na">url</span> <span class="p">=</span> <span class="s">{https://onlinelibrary.wiley.com/doi/abs/10.1111/ssqu.13242}</span><span class="p">,</span>
+    <span class="na">eprint</span> <span class="p">=</span> <span class="s">{https://onlinelibrary.wiley.com/doi/pdf/10.1111/ssqu.13242}</span><span class="p">,</span>
+    <span class="na">abstract</span> <span class="p">=</span> <span class="s">{Abstract Objective A growing body of literature reveals that skin color has significant effects on people's income, health, education, and employment. However, the ways in which skin color has been measured in empirical research have been criticized for being inaccurate, if not subjective and biased. Objective Introduce an objective, automatic, accessible and customizable Classification Algorithm for Skin Color (CASCo). Methods We review the methods traditionally used to measure skin color (verbal scales, visual aids or color palettes, photo elicitation, spectrometers and image-based algorithms), noting their shortcomings. We highlight the need for a different tool to measure skin color Results We present CASCo, a (social researcher-friendly) Python library that uses face detection, skin segmentation and k-means clustering algorithms to determine the skin tone category of portraits. Conclusion After assessing the merits and shortcomings of all the methods available, we argue CASCo is well equipped to overcome most challenges and objections posed against its alternatives. While acknowledging its limitations, we contend that CASCo should complement researchers. toolkit in this area.}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h1 id="contributing">Contributing</h1>
+
+<p>👋 Welcome to <strong>SkinToneClassifier</strong>! We’re excited to have your contributions. Here’s how you can get involved:</p>
+
+<ol>
+  <li>
+    <p>💡 <strong>Discuss New Ideas</strong>: Have a creative idea or suggestion? Start a discussion in
+the <a href="https://github.com/ChenglongMa/SkinToneClassifier/discussions">Discussions</a> tab to share your thoughts and
+gather feedback from the community.</p>
+  </li>
+  <li>
+    <p>❓ <strong>Ask Questions</strong>: Got questions or need clarification on something in the repository? Feel free to open
+an <a href="https://github.com/ChenglongMa/SkinToneClassifier/issues">Issue</a> labeled as a “question” or participate
+in <a href="https://github.com/ChenglongMa/SkinToneClassifier/discussions">Discussions</a>.</p>
+  </li>
+  <li>
+    <p>🐛 <strong>Issue a Bug</strong>: If you’ve identified a bug or an issue with the code, please open a
+new <a href="https://github.com/ChenglongMa/SkinToneClassifier/issues">Issue</a> with a clear description of the problem, steps
+to reproduce it, and your environment details.</p>
+  </li>
+  <li>
+    <p>✨ <strong>Introduce New Features</strong>: Want to add a new feature or enhancement to the project? Fork the repository, create a
+new branch, and submit a <a href="https://github.com/ChenglongMa/SkinToneClassifier/pulls">Pull Request</a> with your changes.
+Make sure to follow our contribution guidelines.</p>
+  </li>
+  <li>
+    <p>💖 <strong>Funding</strong>: If you’d like to financially support the project, you can do so
+by <a href="https://github.com/sponsors/ChenglongMa">sponsoring the repository on GitHub</a>. Your contributions help us
+maintain and improve the project.</p>
+  </li>
+</ol>
+
+<h1 id="disclaimer">Disclaimer</h1>
+
+<p>The images used in this project are from <a href="https://github.com/NVlabs/ffhq-dataset">Flickr-Faces-HQ Dataset (FFHQ)</a>, 
+which is licensed under the <a href="https://github.com/NVlabs/ffhq-dataset/blob/master/LICENSE.txt">Creative Commons BY-NC-SA 4.0 license</a>.</p>
+
+<p>Thank you for considering contributing to <strong>SkinToneClassifier</strong>. 
+We value your input and look forward to collaborating with you!</p>
+
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><a href="https://github.com/ChenglongMa/SkinToneClassifier">SkinToneClassifier</a> is maintained by <a href="https://github.com/ChenglongMa">ChenglongMa</a>.</span>
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+      </footer>
+    </main>
+  <script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

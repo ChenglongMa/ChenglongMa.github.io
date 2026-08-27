@@ -1,11 +1,17 @@
 # IDEs
 .idea/
 
-# Hugo
+# Hugo (legacy build artefacts)
 resources/
-public/
 jsconfig.json
 node_modules/
+.env
+.astro/
+openalex-discoveries.md
 go.sum
 .hugo_build.lock
 /**/example/
+
+# Astro build artefacts.  `public/` is intentionally tracked as source assets.
+dist/
+*.psd

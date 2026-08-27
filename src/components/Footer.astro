@@ -1,0 +1,17 @@
+---
+import { profile } from '../data/profile';
+---
+
+<footer class="site-footer">
+  <div>
+    <a class="footer-name" href="/">{profile.name}</a>
+    <p>{profile.role} · {profile.affiliation}</p>
+  </div>
+  <div class="footer-links" aria-label="External links">
+    <a href={profile.links.scholar} target="_blank" rel="noreferrer">Google Scholar</a>
+    <a href={profile.links.orcid} target="_blank" rel="noreferrer">ORCID</a>
+    <a href={profile.links.github} target="_blank" rel="noreferrer">GitHub</a>
+    <a href={`mailto:${profile.email}`}>Email</a>
+  </div>
+  <small>© {new Date().getFullYear()} {profile.name}</small>
+</footer>

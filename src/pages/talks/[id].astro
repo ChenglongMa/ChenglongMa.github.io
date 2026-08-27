@@ -1,0 +1,30 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { formatDate } from '../../lib/format';
+
+export async function getStaticPaths() {
+  const talks = await getCollection('talks');
+  return talks.map((talk) => ({ params: { id: talk.id }, props: { talk } }));
+}
+
+const { talk } = Astro.props;
+---
+
+<BaseLayout title={talk.data.title} description={talk.data.summary}>
+  <main class="article-shell">
+    <a class="article-back" href="/talks/">← All talks &amp; posters</a>
+    <p class="article-meta">{formatDate(talk.data.date, { month: 'long', year: 'numeric' })} · {talk.data.event}</p>
+    <h1>{talk.data.title}</h1>
+    <p class="article-authors">{talk.data.location}</p>
+    {talk.data.eventUrl && <p class="article-venue"><a href={talk.data.eventUrl} target="_blank" rel="noreferrer">{talk.data.event}</a></p>}
+    <div class="article-actions">
+      {talk.data.paper && <a class="button-link" href={talk.data.paper} target="_blank" rel="noreferrer">Paper ↗</a>}
+      {talk.data.video && <a class="button-link" href={talk.data.video} target="_blank" rel="noreferrer">Video ↗</a>}
+      {talk.data.slides && <a class="button-link" href={talk.data.slides} target="_blank">Slides ↗</a>}
+      {talk.data.poster && <a class="button-link" href={talk.data.poster} target="_blank">Poster ↗</a>}
+      {talk.data.publicationKey && <a class="button-link" href={`/publication/${talk.data.publicationKey}/`}>Publication</a>}
+    </div>
+    {talk.data.abstract && <section class="article-abstract"><h2>About this presentation</h2><p>{talk.data.abstract}</p></section>}
+  </main>
+</BaseLayout>

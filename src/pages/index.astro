@@ -1,0 +1,110 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HomeNav from '../components/HomeNav.astro';
+import PublicationRow from '../components/PublicationRow.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Footer from '../components/Footer.astro';
+import { profile } from '../data/profile';
+import { getPublications } from '../lib/publications';
+import { getActivities } from '../lib/activity';
+import { formatDate } from '../lib/format';
+
+const [publications, projects, talks, activities] = await Promise.all([
+  getPublications(),
+  getCollection('projects'),
+  getCollection('talks'),
+  getActivities()
+]);
+const selectedPublications = publications.filter((publication) => publication.featured);
+const shownPublications = (selectedPublications.length ? selectedPublications : publications).slice(0, 3);
+const featuredProjects = projects.filter((project) => project.data.featured).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 2);
+const recentTalks = talks.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 2);
+const latest = activities[0];
+---
+
+<BaseLayout header={false} footer={false}>
+  <main>
+    <section class="cover" aria-labelledby="home-title">
+      <div class="cover-portrait">
+        <img src={profile.avatar} alt={`Portrait of ${profile.name}`} />
+        <div class="cover-name">
+          <p>{profile.role}</p>
+          <h1 id="home-title">Chenglong<br />Ma</h1>
+        </div>
+      </div>
+      <div class="cover-main">
+        <HomeNav />
+        <div class="cover-intro">
+          <p class="eyebrow">{profile.affiliation} · {profile.location}</p>
+          <h2>Making recommendation systems better reflect people.</h2>
+          <p>{profile.description}</p>
+          <div class="cover-contact">
+            <a href={`mailto:${profile.email}`}>Email</a>
+            <a href={profile.links.scholar} target="_blank" rel="noreferrer">Google Scholar</a>
+            <a href={profile.links.orcid} target="_blank" rel="noreferrer">ORCID</a>
+            <a href={profile.links.github} target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </div>
+        {latest && <div class="latest-strip">
+          <p class="latest-label">Latest</p>
+          <p><a href={latest.href}>{latest.kind} · {latest.title}</a></p>
+          <p>{formatDate(latest.date, { month: 'short', year: 'numeric' })}</p>
+        </div>}
+      </div>
+    </section>
+
+    <div class="home-content">
+      <section class="home-section" aria-labelledby="news-title">
+        <SectionHeading id="news-title" eyebrow="Automatically assembled" title="News" href="/news/" />
+        <div class="news-list">
+          {activities.slice(0, 3).map((activity) => (
+            <a class="news-item" href={activity.href} target={activity.href.startsWith('http') ? '_blank' : undefined} rel={activity.href.startsWith('http') ? 'noreferrer' : undefined}>
+              <time datetime={activity.date.toISOString()}>{formatDate(activity.date, { month: 'short', year: 'numeric' })}</time>
+              <span><strong>{activity.kind}</strong> — {activity.title}</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section class="home-section" aria-labelledby="publications-title">
+        <SectionHeading id="publications-title" eyebrow="Selected work" title="Publications" href="/publications/" />
+        <div class="publication-list">
+          {shownPublications.map((publication) => <PublicationRow publication={publication} compact />)}
+        </div>
+      </section>
+
+      <section class="home-section" aria-labelledby="projects-title">
+        <SectionHeading id="projects-title" eyebrow="Open tools" title="Featured projects" href="/projects/" />
+        <div class="project-grid">
+          {featuredProjects.map((project) => (
+            <a class="project-card" href={project.data.href} target="_blank" rel="noreferrer">
+              {project.data.image && <div class="project-image"><img src={project.data.image} alt="" /></div>}
+              <p class="project-kicker">{project.data.tags.join(' · ')}</p>
+              <h3>{project.data.title}</h3>
+              <p>{project.data.summary}</p>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section class="home-section" aria-labelledby="talks-title">
+        <SectionHeading id="talks-title" eyebrow="Presentations" title="Recent talks" href="/talks/" />
+        <div class="talk-list">
+          {recentTalks.map((talk) => (
+            <article class="talk-row">
+              <time class="talk-date" datetime={talk.data.date.toISOString()}>{formatDate(talk.data.date, { month: 'short', year: 'numeric' })}</time>
+              <div>
+                <h3><a href={`/talks/${talk.id}/`}>{talk.data.title}</a></h3>
+                <p>{talk.data.event} · {talk.data.location}</p>
+              </div>
+              <a class="talk-arrow" href={`/talks/${talk.id}/`} aria-label={`Read more about ${talk.data.title}`}>↗</a>
+            </article>
+          ))}
+        </div>
+      </section>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

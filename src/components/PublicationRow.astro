@@ -1,0 +1,25 @@
+---
+import type { Publication } from '../lib/publications';
+
+interface Props {
+  publication: Publication;
+  compact?: boolean;
+}
+const { publication, compact = false } = Astro.props;
+---
+
+<article class:list={['publication-row', { compact }] }>
+  <p class="publication-year">{publication.year}</p>
+  <div class="publication-body">
+    <h3><a href={`/publication/${publication.id}/`}>{publication.title}</a></h3>
+    <p class="publication-authors">{publication.authors.join(', ')}</p>
+    <p class="publication-venue"><em>{publication.venue}</em>{publication.venue && ' · '}{publication.type}</p>
+    {!compact && publication.abstract && <p class="publication-abstract">{publication.abstract}</p>}
+    <div class="publication-actions">
+      <a href={`/publication/${publication.id}/`}>Details</a>
+      {publication.url && <a href={publication.url} target="_blank" rel="noreferrer">Publisher</a>}
+      {publication.poster && <a href={publication.poster} target="_blank">Poster</a>}
+      {publication.project && <a href={`/projects/#${publication.project}`}>Project</a>}
+    </div>
+  </div>
+</article>

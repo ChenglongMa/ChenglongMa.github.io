@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getPublications } from '../../lib/publications';
+
+export async function getStaticPaths() {
+  const publications = await getPublications();
+  return publications.map((publication) => ({ params: { id: publication.id }, props: { publication } }));
+}
+
+const { publication } = Astro.props;
+---
+
+<BaseLayout title={publication.title} description={publication.abstract || `Publication by ${publication.authors.join(', ')}`}>
+  <main class="article-shell">
+    <a class="article-back" href="/publications/">← All publications</a>
+    <p class="article-meta">{publication.type} · {publication.year}</p>
+    <h1>{publication.title}</h1>
+    <p class="article-authors">{publication.authors.join(', ')}</p>
+    <p class="article-venue"><em>{publication.venue}</em>{publication.venue && ' · '}{publication.year}</p>
+    <div class="article-actions">
+      {publication.url && <a class="button-link" href={publication.url} target="_blank" rel="noreferrer">Publisher ↗</a>}
+      {publication.doi && <a class="button-link" href={`https://doi.org/${publication.doi}`} target="_blank" rel="noreferrer">DOI ↗</a>}
+      {publication.poster && <a class="button-link" href={publication.poster} target="_blank">Poster ↗</a>}
+      {publication.project && <a class="button-link" href={`/projects/#${publication.project}`}>Project</a>}
+      {publication.video && <a class="button-link" href={publication.video} target="_blank" rel="noreferrer">Video ↗</a>}
+    </div>
+    {publication.abstract && <section class="article-abstract"><h2>Abstract</h2><p>{publication.abstract}</p></section>}
+    {publication.keywords.length > 0 && <section class="article-related"><h2>Keywords</h2><div class="tags">{publication.keywords.map((keyword) => <span class="tag">{keyword}</span>)}</div></section>}
+  </main>
+</BaseLayout>

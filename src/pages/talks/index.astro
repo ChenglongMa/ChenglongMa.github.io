@@ -1,0 +1,29 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { formatDate } from '../../lib/format';
+
+const talks = (await getCollection('talks')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout title="Talks and Posters">
+  <main class="page-shell">
+    <header class="page-intro">
+      <p class="eyebrow">Presentations</p>
+      <h1>Talks &amp; posters</h1>
+      <p class="lede">Conference presentations, posters, and supporting material. Static slides and PDFs committed to the repository appear here as links.</p>
+    </header>
+    <div class="talk-list">
+      {talks.map((talk) => (
+        <article class="talk-row">
+          <time class="talk-date" datetime={talk.data.date.toISOString()}>{formatDate(talk.data.date, { month: 'short', year: 'numeric' })}</time>
+          <div>
+            <h3><a href={`/talks/${talk.id}/`}>{talk.data.title}</a></h3>
+            <p>{talk.data.event} · {talk.data.location}</p>
+          </div>
+          <a class="talk-arrow" href={`/talks/${talk.id}/`} aria-label={`Read more about ${talk.data.title}`}>↗</a>
+        </article>
+      ))}
+    </div>
+  </main>
+</BaseLayout>

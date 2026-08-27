@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Zoplicate | A plugin that does one thing only - Detect and manage duplicate items in Zotero.</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Zoplicate" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A plugin that does one thing only - Detect and manage duplicate items in Zotero." />
+<meta property="og:description" content="A plugin that does one thing only - Detect and manage duplicate items in Zotero." />
+<link rel="canonical" href="index.html" />
+<meta property="og:url" content="http://chenglongma.com/zoplicate/" />
+<meta property="og:site_name" content="Zoplicate" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Zoplicate" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","description":"A plugin that does one thing only - Detect and manage duplicate items in Zotero.","headline":"Zoplicate","name":"Zoplicate","url":"http://chenglongma.com/zoplicate/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style" type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/zoplicate/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <a id="skip-to-content" href="index.html#content">Skip to the content.</a>
+
+    <header class="page-header" role="banner">
+      <h1 class="project-name">Zoplicate</h1>
+      <h2 class="project-tagline">A plugin that does one thing only - Detect and manage duplicate items in Zotero.</h2>
+      
+        <a href="https://github.com/ChenglongMa/zoplicate" class="btn">View on GitHub</a>
+      
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <div align="center">
+    <img src="docs/banner.png" alt="zoplicate banner" />
+</div>
+
+<p>👉
+<a href="https://www.zotero.org"><img src="https://img.shields.io/badge/Zotero-9%20%7C%2010-green?style=flat-square&amp;logo=zotero&amp;logoColor=CC2936" alt="zotero target version" /></a>
+<a href="https://github.com/ChenglongMa/zoplicate/releases/latest"><img src="https://img.shields.io/github/package-json/v/ChenglongMa/zoplicate" alt="Version for Zotero 9 and 10" /></a>
+<a href="https://github.com/ChenglongMa/zoplicate/releases/latest"><img src="https://img.shields.io/github/downloads/ChenglongMa/zoplicate/total" alt="Downloads for Zotero 9 and 10" /></a>👈</p>
+
+<p><img src="https://img.shields.io/github/license/ChenglongMa/zoplicate" alt="GitHub License" />
+<a href="https://github.com/windingwind/zotero-plugin-template"><img src="https://img.shields.io/badge/Using-Zotero%20Plugin%20Template-blue?style=flat-square&amp;logo=github" alt="Using Zotero Plugin Template" /></a>
+<a href="https://github.com/ChenglongMa/zoplicate"><img src="https://img.shields.io/github/stars/ChenglongMa/zoplicate" alt="GitHub Repo stars" /></a>
+<a href="https://doi.org/10.5281/zenodo.16986945"><img src="https://zenodo.org/badge/711394431.svg" alt="DOI" /></a></p>
+
+<hr />
+
+<div align="center" style="margin-bottom: 25px;">
+    English | <a href="README_CN.md">简体中文</a> | <a href="https://citationstyler.com/wissen/zotero-plugin-zoplicate-einfach-duplikate-erkennen/" target="_blank">Deutsch</a>* | <a href="https://docs.zotero-fr.org/kbfr/kbfr_zoplicate/" target="_blank">French</a>**
+</div>
+
+<p>  <em>* Many thanks to <strong>Patrick O’Brien</strong> for the German tutorial.</em></p>
+
+<p>  <em>** Many thanks to <a href="https://github.com/fflamerie"><strong>Frédérique Flamerie</strong></a> for the French tutorial.</em></p>
+
+<p>A plugin that does one thing only: <strong>Detect</strong> and <strong>Manage</strong> duplicate items in <a href="https://www.zotero.org/"><img src="https://www.zotero.org/support/lib/exe/fetch.php?tok=2735f1&amp;media=https%3A%2F%2Fwww.zotero.org%2Fstatic%2Fimages%2Fpromote%2Fzotero-logo-128x31.png" alt="zotero" /></a>.</p>
+
+<h1 id="main-features">Main Features</h1>
+
+<ul>
+  <li><strong>Duplicates Detection</strong>
+    <ul>
+      <li>Detects if newly imported items are duplicates of existing ones in the Zotero library.</li>
+      <li>You can choose which version of duplicate items to use as the <strong>master item</strong> and <strong>merge</strong> them.</li>
+      <li>The actions you can take:
+        <ol>
+          <li><strong>Keep New</strong>: Set the <strong>new item</strong> as the master item and merge the duplicates.</li>
+          <li><strong>Keep Old</strong>: Set the <strong>existing item</strong> as the master item and merge the duplicates.</li>
+          <li><strong>Keep All</strong>: Keep both the new item and the existing item.</li>
+          <li><strong>Merge Manually</strong>: Go to the Duplicate Items Panel and merge the duplicate item manually.</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Auto-Bulk Merge</strong>
+    <ul>
+      <li>Merges all duplicate items in the library automatically.</li>
+      <li>Introduced in Version 2.0.0.</li>
+    </ul>
+  </li>
+  <li><strong>Non-duplicates Management</strong>
+    <ul>
+      <li>Allows marking items as “Non-duplicates” if mistakenly identified as duplicates by Zotero.</li>
+      <li>Supports exporting and importing non-duplicate decisions for cross-device transfer.</li>
+      <li>Introduced in Version 3.0.0.</li>
+    </ul>
+  </li>
+  <li><strong>Show Duplicate Statistics</strong>
+    <ul>
+      <li>Append the duplicate count on the label of Duplicate Items pane.</li>
+      <li>Introduced in Version 2.3.0.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><em>If you find this project helpful, please consider <a href="https://github.com/ChenglongMa/zoplicate">giving it a star</a></em> ⭐. <em>It would be a great encouragement for me!</em></p>
+
+<blockquote>
+  <p>[!IMPORTANT]</p>
+
+  <p>Zoplicate does NOT delete the duplicate items arbitrarily.</p>
+
+  <p>Instead, it extracts the useful information from the duplicate items and merges them into the retained item.</p>
+
+  <p>It makes some improvements based on <a href="https://www.zotero.org/support/duplicate_detection">the official detection and merging methods of Zotero</a>.</p>
+
+</blockquote>
+
+<h1 id="changelog">Changelog</h1>
+
+<h2 id="v501">v5.0.1</h2>
+
+<details open="">
+  <summary><i>Click here to show more.</i></summary>
+
+  <p>This hotfix resolves the Zotero sync error reported as <code class="language-plaintext highlighter-rouge">Invalid setting 'zoplicate-nonDuplicatePairs'</code>:</p>
+
+  <ol>
+    <li>🐛 <strong>FIX!</strong>: Disabled the v5.0.0 non-duplicate-pair sync path that wrote an unsupported custom key to <code class="language-plaintext highlighter-rouge">Zotero.SyncedSettings</code>.</li>
+    <li>🧹 <strong>CLEANUP!</strong>: Zoplicate now removes the legacy <code class="language-plaintext highlighter-rouge">zoplicate-nonDuplicatePairs</code> local synced setting on startup so Zotero stops retrying the invalid upload.</li>
+    <li>🗄️ <strong>NOTE!</strong>: Non-duplicate pairs continue to be stored locally; cross-device syncing for these pairs is disabled until a supported storage path is available.</li>
+  </ol>
+
+</details>
+
+<h2 id="v500">v5.0.0</h2>
+
+<details>
+  <summary><i>Click here to show more.</i></summary>
+
+  <p>This version focuses on Zotero 9–10 compatibility and data integrity work:</p>
+
+  <ol>
+    <li>✨ <strong>NEW!</strong>: Zoplicate now targets <strong>Zotero 9 and 10</strong> (<code class="language-plaintext highlighter-rouge">9.0</code> through <code class="language-plaintext highlighter-rouge">10.0.*</code>) and the release manifest includes Zotero 10.</li>
+    <li>✨ <strong>NEW!</strong>: Non-duplicate pairs can now be synced through <code class="language-plaintext highlighter-rouge">Zotero.SyncedSettings</code> with key-based storage for cross-device portability.</li>
+    <li>🧬 <strong>CHANGE!</strong>: The duplicate detection, dialog rendering, menu registration, window handling, and plugin lifecycle code were reviewed for the Zotero 9 and 10 runtimes.</li>
+    <li>🐛 <strong>FIX!</strong>: Added local DB schema versioning, safer cleanup for merged/deleted items, startup hydration, and conflict-safe union merge for synced non-duplicate pairs.</li>
+    <li>✅ <strong>TEST!</strong>: Expanded the automated test suite for duplicate detection, non-duplicate sync, hydration, cleanup, lifecycle, menus, and bulk merge flows.</li>
+  </ol>
+
+</details>
+
+<h2 id="v400">v4.0.0</h2>
+
+<details>
+  <summary><i>Click here to show more.</i></summary>
+
+  <p>Many thanks to all the contributors and users who liked, reported issues, and provided valuable feedback! ❤️</p>
+
+  <p>We are now supporting <strong>Zotero 8</strong>!</p>
+
+</details>
+
+<h2 id="v308">v3.0.8</h2>
+
+<details>
+  <summary><i>Click here to show more.</i></summary>
+
+  <p>In this version, we have made the following changes:</p>
+
+  <ol>
+    <li>🐛 <strong>FIX!</strong>: We have fixed the bug that caused the dialog not to open again when importing duplicate items.
+      <ul>
+        <li>Thanks to <a href="https://github.com/pascaloettli">pascaloettli</a> for reporting this bug in <a href="https://github.com/ChenglongMa/zoplicate/issues/147">issue #147</a>.</li>
+        <li>Thanks to “如梦江南” for reporting this bug on RedNote.</li>
+      </ul>
+    </li>
+    <li>🐛 <strong>FIX!</strong>: We have fixed the dialog styling issue in dark mode.
+      <ul>
+        <li>Thanks to <a href="https://github.com/pascaloettli">pascaloettli</a> for reporting this bug in <a href="https://github.com/ChenglongMa/zoplicate/issues/146">issue #146</a>.</li>
+      </ul>
+    </li>
+  </ol>
+
+</details>
+
+<h2 id="v306">v3.0.6</h2>
+
+<details>
+  <summary><i>Click here to show more.</i></summary>
+
+  <p>In this version, we have updated the dependencies and adapted to the latest version of Zotero.</p>
+
+  <p>Thanks to <a href="https://github.com/pascaloettli">pascaloettli</a> for the feedback in <a href="https://github.com/ChenglongMa/zoplicate/issues/131">issue #131</a>.</p>
+
+</details>
+
+<h2 id="v305">v3.0.5</h2>
+
+<details>
+  <summary><i>Click here to show more.</i></summary>
+
+  <p>In this version, we have made the following changes:</p>
+
+  <ol>
+    <li>🐛 <strong>FIX!</strong>: We have fixed the bug that caused the sync error.
+      <ul>
+        <li>Thanks to <a href="https://github.com/dstillman">dstillman</a> for reporting this issue in <a href="https://github.com/ChenglongMa/zoplicate/issues/124">issue #124</a>.</li>
+      </ul>
+    </li>
+    <li>🐛 <strong>FIX!</strong>: We have optimized the UI of context menu.
+      <ul>
+        <li>Thanks to <a href="https://github.com/dschaehi">dschaehi</a> for reporting this issue in <a href="https://github.com/ChenglongMa/zoplicate/issues/119">issue #119</a>.</li>
+      </ul>
+    </li>
+    <li>🐛 <strong>FIX!</strong>: We have optimized the UI styling of bulk merge buttons.
+      <ul>
+        <li>Thanks to <a href="https://github.com/vancleve">vancleve</a> for reporting this issue in <a href="https://github.com/ChenglongMa/zoplicate/issues/120">issue #120</a>.</li>
+      </ul>
+    </li>
+  </ol>
+
+</details>
+
+<h2 id="v304">v3.0.4</h2>
+
+<details>
+  <summary><i>Click here to show more.</i></summary>
+
+  <p>In this version, we have made the following changes:</p>
+
+  <ol>
+    <li>🐛 <strong>FIX!</strong>: We have fixed the bug that caused the UI blocked when selecting too many items and opening the context menu.
+      <ul>
+        <li>Thanks to <a href="https://github.com/zzlb0224">zzlb0224</a>, <a href="https://github.com/pencilheart">pencilheart</a> and <a href="https://github.com/dschaehi">dschaehi</a> for reporting this bug in <a href="https://github.com/ChenglongMa/zoplicate/issues/94">issue #94</a> and <a href="https://github.com/ChenglongMa/zoplicate/issues/119">issue #119</a> respectively.</li>
+      </ul>
+    </li>
+    <li>🐛 <strong>FIX!</strong>: We have optimized the plugin lifecycle which may cause the plugin to load multiple preference settings on macOS.
+      <ul>
+        <li>Thanks to <a href="https://github.com/WangYe661">WangYe661</a> and <a href="https://github.com/pencilheart">pencilheart</a> for reporting this bug in <a href="https://github.com/ChenglongMa/zoplicate/issues/81">issue #81</a>.</li>
+      </ul>
+    </li>
+    <li>🐛 <strong>FIX!</strong>: We have optimized database operations to reduce the risk of data loss.</li>
+  </ol>
+
+</details>
+
+<h2 id="v303">v3.0.3</h2>
+
+<details>
+  <summary><i>Click here to show more.</i></summary>
+
+  <p>In this version, we have made the following changes:</p>
+
+  <ol>
+    <li>🐛 <strong>FIX!</strong>: We have fixed the bug that caused the attachment to be lost when merging duplicate items.
+      <ul>
+        <li>Thanks to <a href="https://github.com/tommyhosman">tommyhosman</a> for reporting this bug in <a href="https://github.com/ChenglongMa/zoplicate/issues/43">issue #43</a>.</li>
+        <li>Thanks to <a href="https://github.com/csdaboluo">csdaboluo</a> for reporting this bug in <a href="https://github.com/ChenglongMa/zoplicate/issues/51">issue #51</a>.</li>
+      </ul>
+    </li>
+    <li>🐛 <strong>FIX!</strong>: Zoplicate will now ignore the <strong>Feed</strong> items when detecting duplicates.
+      <ul>
+        <li>Thanks to <a href="https://github.com/Raphael-Hao">Raphael-Hao</a> for reporting this bug in <a href="https://github.com/ChenglongMa/zoplicate/issues/54">issue #54</a>.</li>
+      </ul>
+    </li>
+    <li>🐛 <strong>FIX!</strong>: We have fixed the bug that caused the detection dialog blocking the main thread.</li>
+    <li>🐛 <strong>FIX!</strong>: We have fixed the bug that caused the deleted items to be showing in NonDuplicates panel.</li>
+    <li>🐛 <strong>FIX!</strong>: Now, the NonDuplicates panel won’t show up when clicking attachment items.</li>
+    <li>✨ <strong>NEW!</strong>: We added a prompt to remind the duplicates when Zotero is in background.</li>
+  </ol>
+
+</details>
+
+<details>
+  <summary><i>Click here to show more.</i></summary>
+
+  <h2 id="v302">v3.0.2</h2>
+
+  <details>
+    <summary><i>Click here to show more.</i></summary>
+
+    <p>In this version, we have made the following changes:</p>
+
+    <ol>
+      <li>🐛 <strong>FIX!</strong>: We have fixed the progress window icon bug in Zotero 7.0.0-beta.77.</li>
+      <li>🧬 <strong>CHANGE!</strong>: We have updated the style of duplicate detection dialog.</li>
+      <li>🧬 <strong>CHANGE!</strong>: We have updated the icon style in preference pane.</li>
+      <li>🧬 <strong>CHANGE!</strong>: Items with different <code class="language-plaintext highlighter-rouge">itemType</code> will not be considered as duplicates.</li>
+    </ol>
+
+  </details>
+
+  <h2 id="v301">v3.0.1</h2>
+
+  <details>
+    <summary><i>Click here to show more.</i></summary>
+
+    <p>In this version, we have made the following changes:</p>
+
+    <ol>
+      <li>🧬 <strong>CHANGE!</strong>: We have updated the UI of buttons in the duplicate pane.</li>
+      <li>🐛 <strong>FIX!</strong>: We have optimized the performance of duplicate search and detection.</li>
+    </ol>
+
+  </details>
+
+  <h2 id="v300">v3.0.0</h2>
+
+  <details>
+    <summary><i>Click here to show more.</i></summary>
+
+    <p>In this version, we have made the following changes:</p>
+
+    <ol>
+      <li>🐛 <strong>FIX!</strong>: We have fixed a <strong>memory leak</strong> bug that caused the app to freeze when editing PDF annotations.
+        <ul>
+          <li>Thanks <a href="https://github.com/vancleve">vancleve</a> and <a href="https://github.com/pencilheart">pencilheart</a> for reporting this bug in <a href="https://github.com/ChenglongMa/zoplicate/issues/30">issue #30</a> and <a href="https://github.com/ChenglongMa/zoplicate/issues/31">issue #31</a> respectively.</li>
+        </ul>
+      </li>
+      <li>✨ <strong>NEW!</strong>: We have added the <strong>Non-duplicates</strong> functionality.
+        <ul>
+          <li>You can mark items as <strong>Non-duplicates</strong> when they are mistakenly identified as “duplicates” by Zotero.</li>
+          <li>Selecting two “false duplicates”, you can find the <code class="language-plaintext highlighter-rouge">They are NOT duplicates</code> <strong>menu items</strong> in the context menu.
+            <ul>
+              <li><img src="docs/non_duplicates/menu_not_duplicates.png" alt="menu_not_duplicates" /></li>
+            </ul>
+          </li>
+          <li>You can also find the <code class="language-plaintext highlighter-rouge">They are NOT duplicates</code> button in the <code class="language-plaintext highlighter-rouge">Duplicate Items</code> panel.
+            <ul>
+              <li><img src="docs/non_duplicates/button_not_duplicates.png" alt="button_not_duplicates" /></li>
+            </ul>
+          </li>
+          <li>For more details, please see <a href="index.html#non-duplicates">Non-duplicates</a> section below.</li>
+          <li>Thanks <a href="https://github.com/dschaehi">dschaehi</a> for the discussion in <a href="https://github.com/ChenglongMa/zoplicate/issues/25">issue #25</a>.</li>
+        </ul>
+      </li>
+    </ol>
+
+  </details>
+
+  <h2 id="v230">v2.3.0</h2>
+
+  <details>
+    <summary><i>Click here to show more.</i></summary>
+
+    <p>In this version, we have made the following changes:</p>
+
+    <ol>
+      <li>✨ <strong>NEW!</strong>: We have added an option to show the duplicate count on the left collection pane.
+        <ul>
+          <li>You can find the option in the <code class="language-plaintext highlighter-rouge">Zoplicate</code> tab in the settings.</li>
+          <li>
+            <p>When your mouse hovers over the <kbd>Duplicate Items</kbd> entry, a tooltip will show the duplicate statistics.</p>
+
+            <p><img src="docs/show-duplicate-count.png" alt="Show duplicate count" /></p>
+          </li>
+          <li>
+            <p>The duplicate count will be updated automatically. You can also find the <kbd>Refresh Duplicate Count</kbd> menu to update the count manually.</p>
+
+            <p><img src="docs/refresh-duplicate-count.png" alt="Refresh duplicate count" /></p>
+          </li>
+          <li>Thanks <a href="https://github.com/Apollo7777777">Apollo7777777</a>’s idea mentioned in <a href="https://github.com/ChenglongMa/zoplicate/discussions/18">discussion #18</a></li>
+        </ul>
+      </li>
+      <li>🐛 <strong>FIX!</strong>: We have fixed a bug that caused the dialog to be too narrow when the title is short.</li>
+      <li>🐛 <strong>FIX!</strong>: We have fixed a bug that caused the <code class="language-plaintext highlighter-rouge">Bulk Merge</code> icons to not maintain aspect ratios.</li>
+    </ol>
+
+  </details>
+
+  <h2 id="v220">v2.2.0</h2>
+
+  <details>
+    <summary><i>Click here to show more.</i></summary>
+
+    <p>In this version, we have made the following changes:</p>
+
+    <ol>
+      <li>✨ <strong>NEW!</strong>: We have added <strong>“Smart” Merge</strong> functionality (Only available in Zotero 7 now).
+        <ul>
+          <li>When merging duplicate items, the function will fill in the missing information of the retained item with the duplicates.</li>
+          <li>Thanks <a href="https://github.com/endfreude">endfreude</a>’s idea mentioned in <a href="https://github.com/ChenglongMa/zoplicate/issues/15">issue #15</a>.</li>
+        </ul>
+      </li>
+    </ol>
+
+  </details>
+
+  <h2 id="v210">v2.1.0</h2>
+
+  <details>
+    <summary><i>Click here to show more.</i></summary>
+
+    <p>In this version, we have made the following changes:</p>
+
+    <ol>
+      <li>✨ <strong>NEW!</strong>: We have added the <strong>Suspend</strong> and <strong>Restore</strong> functionality (Only available in Zotero 7 now).
+        <ul>
+          <li>Please see <a href="index.html#bulk-merge">Bulk Merge</a> section below for more details.</li>
+        </ul>
+      </li>
+      <li>🧬 <strong>CHANGE!</strong>: We have changed the behavior of <strong>Keep Others</strong> action.
+        <ul>
+          <li>Previously, the <strong>Keep Others</strong> action will delete the last imported item and save <strong>ALL</strong> the rest existing items.</li>
+          <li>Now, the action will <strong>Merge</strong> the existing items based on the <strong>Master Item</strong> preferences in <a href="index.html#settings">Settings</a>.</li>
+        </ul>
+      </li>
+      <li>🐛 <strong>FIX!</strong>: We have fixed a bug that caused the <strong>tags</strong> could not be loaded correctly in v2.0.0.
+        <ul>
+          <li>Thanks <a href="https://github.com/ChinJCheung">ChinJCheung</a> for reporting this bug in <a href="https://github.com/ChenglongMa/zoplicate/issues/10">issue #10</a>.</li>
+        </ul>
+      </li>
+    </ol>
+
+  </details>
+
+  <h2 id="v200">v2.0.0</h2>
+
+  <details>
+    <summary><i>Click here to show more.</i></summary>
+
+    <p>In this version, we have made the following changes:</p>
+
+    <ol>
+      <li>✨ <strong>NEW!</strong>: We have added the <strong>Bulk Merge</strong> functionality (Only available in Zotero 7 now).
+        <ul>
+          <li><strong>Bulk Merge</strong>: Merge all duplicate items in the library automatically.</li>
+          <li>You can find the <strong>Bulk Merge</strong> button in the <code class="language-plaintext highlighter-rouge">Duplicate Items</code> panel.</li>
+          <li>Please see <a href="index.html#bulk-merge">Bulk Merge</a> section below for more details.</li>
+          <li>Thanks <a href="https://github.com/csdaboluo">csdaboluo</a>’s idea mentioned in <a href="https://github.com/ChenglongMa/zoplicate/issues/8">issue #8</a>.</li>
+        </ul>
+      </li>
+      <li>🐛 <strong>FIX!</strong>: We have fixed a bug that caused the dialog height to be too high when importing duplicate items in bulk.</li>
+      <li>🐛 <strong>FIX!</strong>: Now Zotero will auto-select the remained item after merging duplicate items.
+        <ul>
+          <li>Thanks <a href="https://github.com/pencilheart">pencilheart</a>’s report in <a href="https://github.com/ChenglongMa/zoplicate/issues/7">issue #7</a>.</li>
+        </ul>
+      </li>
+    </ol>
+
+  </details>
+
+  <h2 id="v110">v1.1.0</h2>
+
+  <details>
+    <summary><i>Click here to show more.</i></summary>
+
+    <p>In this version, we have made the following changes:</p>
+
+    <ol>
+      <li>
+        <p>🧬 <strong>CHANGE!</strong>: We have changed the processing method of duplicate items.</p>
+
+        <p>Previously, we use the <code class="language-plaintext highlighter-rouge">Trash</code> method to process duplicate items, i.e., delete the duplicate items.
+However, this method will cause the loss of some information of the duplicate items.</p>
+        <ul>
+          <li>E.g., <strong>notes</strong>, <strong>tags</strong>, <strong>collections</strong>, <strong>attachments</strong>.</li>
+        </ul>
+
+        <p>In this version, we use the <code class="language-plaintext highlighter-rouge">Merge</code> method to process duplicate items.
+This method will copy all the aforementioned information to the retained item, and then delete the duplicate items.</p>
+        <ul>
+          <li><strong>NOTE</strong>: If you are using <a href="http://zotfile.com/">ZotFile</a>, the <code class="language-plaintext highlighter-rouge">Merge</code> method will copy the <strong>file link</strong> of the duplicate items to the retained item.</li>
+          <li>However, users relying on Zotero’s default attachment storage may encounter duplication issues if the newly imported item contains attachments.
+            <ul>
+              <li>This is a known potential problem in Zotero, as detailed in <a href="https://www.zotero.org/support/duplicate_detection">Zotero Documentation - Duplicate Detection</a>.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ol>
+
+    <p>Thanks <a href="https://github.com/ChinJCheung">ChinJCheung</a>’s idea mentioned in <a href="https://github.com/ChenglongMa/zoplicate/issues/5">issue #5</a>.</p>
+
+  </details>
+
+</details>
+
+<h1 id="install">Install</h1>
+
+<h2 id="from-github">From GitHub</h2>
+
+<ol>
+  <li>Zoplicate 5 targets <strong>Zotero 9 and 10</strong> (<code class="language-plaintext highlighter-rouge">9.0</code> through <code class="language-plaintext highlighter-rouge">10.0.*</code>).</li>
+  <li>Visit the <a href="https://github.com/ChenglongMa/zoplicate/releases/latest">latest release page</a> and download <a href="https://github.com/ChenglongMa/zoplicate/releases/latest/download/zoplicate.xpi">the latest <code class="language-plaintext highlighter-rouge">zoplicate.xpi</code> file</a>.
+    <ul>
+      <li>If you are using FireFox, right-click on the link of the XPI file and select “Save As…”.</li>
+    </ul>
+  </li>
+  <li>Then, in Zotero, click <code class="language-plaintext highlighter-rouge">Tools</code> -&gt; <code class="language-plaintext highlighter-rouge">Plugins</code> and drag the <code class="language-plaintext highlighter-rouge">.xpi</code> onto the Plugins window.
+    <ul>
+      <li>See <a href="https://www.zotero.org/support/plugins">how to install a Zotero addon</a>.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="from-add-on-market-plugin-for-zotero">From Add-on Market Plugin for Zotero</h2>
+
+<p><em>Additional third-party plugin is required.</em></p>
+
+<ol>
+  <li>Install Add-on Market for Zotero from <a href="https://github.com/syt2/zotero-addons">here</a>.</li>
+  <li>Search <code class="language-plaintext highlighter-rouge">Zoplicate</code> in the Add-on Market and install it.</li>
+</ol>
+
+<h2 id="通过-zotero-插件商店-安装-for-chinese-users">通过 Zotero 插件商店 安装 (For Chinese Users)</h2>
+
+<ol>
+  <li>前往 <a href="https://zotero-chinese.com/plugins/">Zotero 插件商店</a>.</li>
+  <li>搜索 <code class="language-plaintext highlighter-rouge">Zoplicate</code> 然后单击 <code class="language-plaintext highlighter-rouge">下载</code> 按钮。</li>
+</ol>
+
+<h1 id="usage">Usage</h1>
+
+<h2 id="settings">Settings</h2>
+
+<p>In Zotero, click <code class="language-plaintext highlighter-rouge">Edit</code> -&gt; <code class="language-plaintext highlighter-rouge">Settings</code>, go to <code class="language-plaintext highlighter-rouge">Zoplicate</code> tab, and you will see the settings.</p>
+
+<p><img src="docs/settings_2.3.0.png" alt="zoplicate settings" /></p>
+
+<ol>
+  <li>You can select the actions you want to take when duplicate items are detected.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">Always Ask</code> is the default option if you have not changed the settings.</li>
+    </ul>
+  </li>
+  <li>You can select the version of duplicate items to use as the <strong>master item</strong>.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">Earliest Added</code> is the default option if you have not changed the settings.</li>
+    </ul>
+  </li>
+  <li>You can <strong>export</strong> and <strong>import</strong> non-duplicate decisions in the <strong>Data Management</strong> section.
+    <ul>
+      <li>This is useful for transferring non-duplicate records between devices. See <a href="index.html#importexport-non-duplicates">Import/Export Non-Duplicates</a> for details.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="duplicate-detection">Duplicate Detection</h2>
+
+<p>By default, or you have selected <code class="language-plaintext highlighter-rouge">Always Ask</code> in the settings,
+a dialog will pop up when you import a new item that is a duplicate of an existing item.</p>
+
+<p><img src="docs/dialog.png" alt="zoplicate dialog" /></p>
+
+<p>The dialog will show the duplicate items and the actions you can take.</p>
+
+<ol>
+  <li>Select the action you want to take and click <kbd>Apply</kbd> to process the duplicate items.</li>
+  <li>Click <kbd>Go to Duplicates</kbd> to go to the <code class="language-plaintext highlighter-rouge">Duplicate Items</code> panel and merge the duplicate items manually.</li>
+  <li>Click <kbd>Cancel</kbd> to dismiss the dialog and <strong>save</strong> the import of the new item and the existing items.</li>
+  <li>Check <kbd>Use this action by default</kbd> to remember the selected action in default settings.
+Then the next time you import a duplicate item, the selected action will be applied automatically.</li>
+</ol>
+
+<h3 id="multiple-duplicate-items">Multiple Duplicate Items</h3>
+
+<p>When you import multiple duplicate items,
+or import another duplicate item before you process the previous duplicate items,
+the dialog will show all the duplicate items and the actions you can take.</p>
+
+<p><img src="docs/dialog2.png" alt="zoplicate dialog" /></p>
+
+<ol>
+  <li>You can select different actions for different duplicate items.</li>
+  <li>Click the <em>header</em> of action columns to select the same action for all duplicate items.</li>
+  <li><kbd>Use this action by default</kbd> option will be shown only when you select the same action for all duplicate items.</li>
+</ol>
+
+<h2 id="bulk-merge">Bulk Merge</h2>
+
+<p>Inspired by <a href="https://github.com/csdaboluo">csdaboluo</a>’s idea and <a href="https://github.com/frangoud/ZoteroDuplicatesMerger">ZoteroDuplicatesMerger</a>,
+we have added the <strong>Bulk Merge</strong> functionality in <strong>Version 2.0.0</strong>.</p>
+
+<p>In the <code class="language-plaintext highlighter-rouge">Duplicate Items</code> panel, you can find the <kbd>Bulk Merge All Duplicate Items</kbd> button:</p>
+
+<p><img src="docs/bulk-merge-nonselection.png" alt="zoplicate bulk merge" /></p>
+
+<p>You can also find it when you select one or more duplicate items:</p>
+
+<p><img src="docs/bulk-merge-selection.png" alt="zoplicate bulk merge" /></p>
+
+<blockquote>
+  <p>[!WARNING]</p>
+
+  <ol>
+    <li>Before clicking the button, please make sure you have properly configured the <em>Master Item</em> preferences in <a href="index.html#settings">Settings</a>.</li>
+    <li>The <strong>Bulk Merge</strong> functionality will <strong>take a while</strong> to complete if you have a large number of duplicate items.</li>
+  </ol>
+</blockquote>
+
+<p>You will see the progress of the bulk merge process:
+<img src="docs/bulk-merge-progress.png" alt="zoplicate bulk merge process" /></p>
+
+<h3 id="suspend-bulk-merge">Suspend Bulk Merge</h3>
+
+<p>You can click the <kbd>Suspend</kbd> button to suspend the bulk merge process.</p>
+
+<p>A dialog will pop up to confirm your action:
+<img src="docs/bulk-merge-suspended-dialog.png" alt="zoplicate bulk merge suspend" /></p>
+
+<ol>
+  <li>Click <kbd>Resume</kbd> to <strong>resume</strong> the bulk merge process.</li>
+  <li>Click <kbd>Cancel</kbd> to <strong>cancel</strong> the bulk merge process.
+    <ul>
+      <li>Check <kbd>Restore Deleted Items</kbd> to restore the duplicate items that have been merged.</li>
+      <li>Note that the <strong>Restore</strong> action is only effective if you click <kbd>Cancel</kbd>.</li>
+    </ul>
+  </li>
+</ol>
+
+<blockquote>
+  <p>[!TIP]</p>
+
+  <p>If you want to <strong>Restore</strong> the duplicate items that have been merged, 
+you can go to <code class="language-plaintext highlighter-rouge">Trash</code> panel and restore them.</p>
+
+  <ol>
+    <li>Select the duplicate items you want to restore.</li>
+    <li>Click <kbd>Restore to Library</kbd> button to process.</li>
+  </ol>
+</blockquote>
+
+<h2 id="show-duplicate-statistics">Show Duplicate Statistics</h2>
+
+<p>Starting from <strong>Version 2.3.0</strong>, we have added an option to show the duplicate count on the left collection pane.</p>
+
+<p>You can find the option in the <code class="language-plaintext highlighter-rouge">Zoplicate</code> tab in <a href="index.html#settings">the settings</a>.</p>
+
+<p>When your mouse hovers over the <kbd>Duplicate Items</kbd> entry, a tooltip will show the duplicate statistics.</p>
+
+<p><img src="docs/show-duplicate-count.png" alt="Show duplicate count" /></p>
+
+<p>The duplicate count will be updated automatically. You can also find the <kbd>Refresh</kbd> menu to update the count manually.</p>
+
+<p><img src="docs/refresh-duplicate-count.png" alt="Refresh duplicate count" /></p>
+
+<h2 id="non-duplicates">Non-duplicates</h2>
+
+<p>Starting from <strong>Version 3.0.0</strong>, we have added the <strong>Non-duplicates</strong> functionality.</p>
+
+<p>You can mark items as <strong>Non-duplicates</strong> when they are mistakenly identified as “duplicates” by Zotero.</p>
+
+<p>Selecting an item, you can manage the <strong>Non-duplicates</strong> items in the side panel:
+<img src="docs/non_duplicates/side_panel_non_duplicates.png" alt="side_panel_not_duplicates" /></p>
+
+<ul>
+  <li>Click the <kbd>![non-duplicate button](/zoplicate/addon/chrome/content/icons/non-duplicate.svg)</kbd> button to show the <strong>Non-duplicates</strong> section.</li>
+  <li>Click the <kbd>+</kbd> button to add the selected item to the <strong>Non-duplicates</strong> list.</li>
+  <li>Click the <kbd>-</kbd> button to remove the selected entry from the <strong>Non-duplicates</strong> list.</li>
+</ul>
+
+<p>There are some ways to mark and unmark items as <strong>Non-duplicates</strong>:</p>
+
+<h3 id="mark-as-non-duplicates">Mark as Non-duplicates</h3>
+
+<ol>
+  <li>Click the <kbd>+</kbd> button to add the selected item to the <strong>Non-duplicates</strong> list.</li>
+  <li>Selecting two “false duplicates”, you can find the <code class="language-plaintext highlighter-rouge">They are NOT duplicates</code> <strong>menu items</strong> in the context menu.
+    <ul>
+      <li><img src="docs/non_duplicates/menu_not_duplicates.png" alt="menu_not_duplicates" /></li>
+    </ul>
+  </li>
+  <li>You can also find the <code class="language-plaintext highlighter-rouge">They are NOT duplicates</code> button in the <code class="language-plaintext highlighter-rouge">Duplicate Items</code> panel.
+    <ul>
+      <li><img src="docs/non_duplicates/button_not_duplicates.png" alt="button_not_duplicates" /></li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="unmark-as-non-duplicates">Unmark as Non-duplicates</h3>
+
+<ol>
+  <li>Click the <kbd>-</kbd> button to remove the selected entry from the <strong>Non-duplicates</strong> list.</li>
+  <li>Selecting two “non duplicates”, you can find the <code class="language-plaintext highlighter-rouge">They are duplicates</code> <strong>menu items</strong> in the context menu.
+    <ul>
+      <li><img src="docs/non_duplicates/menu_duplicates.png" alt="menu_not_duplicates" /></li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="importexport-non-duplicates">Import/Export Non-Duplicates</h3>
+
+<p>Non-duplicate decisions are stored locally and do not sync automatically across devices via Zotero sync.
+To transfer your non-duplicate records to another device:</p>
+
+<ol>
+  <li>Go to <code class="language-plaintext highlighter-rouge">Edit</code> -&gt; <code class="language-plaintext highlighter-rouge">Settings</code> -&gt; <code class="language-plaintext highlighter-rouge">Zoplicate</code> -&gt; <strong>Data Management</strong> section.</li>
+  <li>Click <kbd>Export Non-Duplicates…</kbd> to save all non-duplicate records to a JSON file.</li>
+  <li>Copy the exported file to your other device.</li>
+  <li>On the other device, go to the same settings panel and click <kbd>Import Non-Duplicates…</kbd> to load the records.</li>
+</ol>
+
+<blockquote>
+  <p>[!NOTE]</p>
+
+  <ul>
+    <li>The export file uses stable item keys (not local IDs), so it works correctly across different Zotero installations that share the same synced library.</li>
+    <li>Importing is <strong>additive</strong> — it only adds new records and never removes existing ones. You can safely import the same file multiple times.</li>
+    <li>If an item referenced in the export file does not exist on the target device (e.g., not yet synced or deleted), that pair will be skipped.</li>
+  </ul>
+</blockquote>
+
+<h1 id="how-to-cite">How to cite</h1>
+
+<h2 id="plain-citation">Plain citation</h2>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Ma, C. (2026). Zoplicate (v5.0.0) [Software]. Zenodo. https://doi.org/10.5281/zenodo.16986945
+</code></pre></div></div>
+<h2 id="bibtex">BibTeX</h2>
+
+<div class="language-bibtex highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">@software</span><span class="p">{</span><span class="nl">zoplicate_16986945</span><span class="p">,</span>
+  <span class="na">author</span> <span class="p">=</span> <span class="s">{Ma, Chenglong}</span><span class="p">,</span>
+  <span class="na">title</span> <span class="p">=</span> <span class="s">{Zoplicate: Detect and manage duplicate items in Zotero}</span><span class="p">,</span>
+  <span class="na">version</span> <span class="p">=</span> <span class="s">{v5.0.0}</span><span class="p">,</span>
+  <span class="na">date</span> <span class="p">=</span> <span class="s">{2026-04-16}</span><span class="p">,</span>
+  <span class="na">doi</span> <span class="p">=</span> <span class="s">{10.5281/zenodo.16986945}</span><span class="p">,</span>
+  <span class="na">url</span> <span class="p">=</span> <span class="s">{https://github.com/ChenglongMa/zoplicate}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h1 id="contributing">Contributing</h1>
+
+<p>👋 Welcome to <strong>Zoplicate</strong>! We’re excited to have your contributions. Here’s how you can get involved:</p>
+
+<ol>
+  <li>
+    <p>💡 <strong>Discuss New Ideas</strong>: Have a creative idea or suggestion? Start a discussion in
+the <a href="https://github.com/ChenglongMa/zoplicate/discussions">Discussions</a> tab to share your thoughts and
+gather feedback from the community.</p>
+  </li>
+  <li>
+    <p>❓ <strong>Ask Questions</strong>: Got questions or need clarification on something in the repository? Feel free to open
+an <a href="https://github.com/ChenglongMa/zoplicate/issues">Issue</a> labeled as a “question” or participate
+in <a href="https://github.com/ChenglongMa/zoplicate/discussions">Discussions</a>.</p>
+  </li>
+  <li>
+    <p>🐛 <strong>Issue a Bug</strong>: If you’ve identified a bug or an issue with the code, please open a
+new <a href="https://github.com/ChenglongMa/zoplicate/issues">Issue</a> with a clear description of the problem, steps
+to reproduce it, and your environment details.</p>
+  </li>
+  <li>
+    <p>✨ <strong>Introduce New Features</strong>: Want to add a new feature or enhancement to the project? Fork the repository, create a
+new branch, and submit a <a href="https://github.com/ChenglongMa/zoplicate/pulls">Pull Request</a> with your changes.
+Make sure to follow our contribution guidelines.</p>
+  </li>
+  <li>
+    <p>💖 <strong>Funding</strong>: If you’d like to financially support the project, you can do so
+by <a href="https://github.com/sponsors/ChenglongMa">sponsoring the repository on GitHub</a>. Your contributions help us
+maintain and improve the project.</p>
+  </li>
+</ol>
+
+<h1 id="acknowledgements">Acknowledgements</h1>
+
+<p>I would like to express my gratitude to the following individuals and organizations for their generous support and contributions to this project:</p>
+
+<h2 id="sponsors">Sponsors</h2>
+
+<p> 
+    <a href="https://github.com/quinn-p-mchugh" aria-label="Sponsor Quinn McHugh" style="display: inline-block; margin: 10px;"> 
+        <img src="https://avatars.githubusercontent.com/u/40648753?v=4" height="100" alt="Sponsor Quinn McHugh" style="border-radius: 50%;" /> 
+        <br />
+        <span style="display: block; text-align: center;">Quinn McHugh</span>
+    </a>
+    <a href="https://github.com/Mctalos" aria-label="Sponsor Mctalos" style="display: inline-block; margin: 10px;"> 
+        <img src="https://avatars.githubusercontent.com/u/9693755?v=4" height="100" alt="Sponsor Mctalos" style="border-radius: 50%;" />
+        <br />
+        <span style="display: block; text-align: center;">Mctalos</span>
+    </a> 
+</p>
+
+<p>Usually, a ⭐️ is enough to make me happy. Your sponsorship will help me maintain and improve the project. 
+Also, part of the sponsorship will be donated to the open-source community.</p>
+
+<p>Thank you for considering contributing to <strong>Zoplicate</strong>. We value your input and look forward to collaborating
+with you!</p>
+
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><a href="https://github.com/ChenglongMa/zoplicate">zoplicate</a> is maintained by <a href="https://github.com/ChenglongMa">ChenglongMa</a>.</span>
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+      </footer>
+    </main>
+  </body>
+</html>
