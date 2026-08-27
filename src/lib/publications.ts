@@ -49,6 +49,13 @@ function getYear(item: Record<string, unknown>) {
   return issued?.['date-parts']?.[0]?.[0] || published?.['date-parts']?.[0]?.[0] || 0;
 }
 
+function getDate(item: Record<string, unknown>) {
+  const issued = item.issued as { 'date-parts'?: number[][] } | undefined;
+  const [year, month = 1, day = 1] = issued?.['date-parts']?.[0] || [];
+  if (!year) return undefined;
+  return [year, month, day].map((part, index) => (index ? String(part).padStart(2, '0') : String(part))).join('-');
+}
+
 function getKeywords(item: Record<string, unknown>) {
   const keyword = item.keyword;
   if (Array.isArray(keyword)) return keyword.map(String);
@@ -83,7 +90,7 @@ export async function getPublications(): Promise<Publication[]> {
         url,
         abstract: item.abstract ? String(item.abstract) : undefined,
         keywords: getKeywords(item),
-        date: override.date,
+        date: override.date || getDate(item),
         featured: Boolean(override.featured),
         poster: override.poster,
         project: override.project,

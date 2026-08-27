@@ -11,7 +11,7 @@
     "preview": "astro preview",
     "check": "astro check",
     "test:content": "node scripts/validate-content.mjs",
-    "discover:publications": "node scripts/discover-openalex.mjs"
+    "sync:publications": "node scripts/discover-openalex.mjs"
   },
   "dependencies": {
     "@citation-js/core": "^0.8.2",

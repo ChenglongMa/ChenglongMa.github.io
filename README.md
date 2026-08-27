@@ -20,6 +20,6 @@ Use `npm run build` for a production build and `npm run test:content` to validat
 - Put slides, posters, and CVs in `public/files/`, then reference their root-relative path (for example, `/files/posters/example.pdf`) from a content file.
 - `src/data/publication-overrides.ts` associates a publication key with optional site-only material such as posters or project links, without changing the canonical BibTeX.
 
-## Optional OpenAlex discovery
+## Automated OpenAlex publication sync
 
-The weekly discovery workflow never edits `publications.bib`. It checks journal articles and conference papers associated with the configured ORCID and, when it finds a DOI that is not already in the bibliography, opens one review issue. `OPENALEX_API_KEY` is used when configured as a repository Actions secret; a public API request is used for local runs. Review suggestions and add approved entries to `publications.bib` yourself. Run one discovery locally with `npm run discover:publications`.
+On the first day of every month, the OpenAlex workflow adds newly discovered journal articles and conference papers associated with the configured ORCID to `publications.bib`. It creates an auditable PR, automatically squash-merges it, then explicitly dispatches the GitHub Pages workflow so the site refreshes. `OPENALEX_API_KEY` is used when configured as a repository Actions secret; a public API request is used for local runs. If OpenAlex imports an unwanted item, delete its entry from `publications.bib`. Run the same sync locally with `npm run sync:publications`.

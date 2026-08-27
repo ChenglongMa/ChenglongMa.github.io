@@ -1,54 +1,98 @@
 import { readFile, writeFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
 import { Cite } from '@citation-js/core';
 import '@citation-js/plugin-bibtex';
 
-const outputFile = new URL('../openalex-discoveries.md', import.meta.url);
+const bibPath = resolve(process.cwd(), 'publications.bib');
+const outputFile = resolve(process.cwd(), 'openalex-discoveries.md');
 const apiKey = process.env.OPENALEX_API_KEY;
 const orcid = (process.env.ORCID_ID || '0000-0002-6745-4029').replace(/^https?:\/\/orcid\.org\//, '');
 
-if (!orcid) {
-  await writeFile(outputFile, '# OpenAlex discovery\n\nOpenAlex discovery skipped: add an ORCID identifier.\n');
-  console.log('OpenAlex discovery skipped because ORCID_ID is not configured.');
-  process.exit(0);
+const text = (value) => String(value || '').replace(/\s+/g, ' ').trim();
+const decodeEntities = (value) => text(value).replace(/&amp;/gi, '&');
+const escapeBibtex = (value) => decodeEntities(value).replace(/\\/g, '\\\\').replace(/[{}]/g, '\\$&');
+
+function publicationKey(work, existingKeys) {
+  const firstAuthor = text(work.authorships?.[0]?.author?.display_name || 'publication');
+  const familyName = firstAuthor.split(' ').at(-1) || 'publication';
+  const ignoredWords = new Set(['a', 'an', 'and', 'for', 'in', 'of', 'on', 'the', 'to', 'with']);
+  const titleWords = text(work.title)
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, ' ')
+    .split(' ')
+    .filter((word) => word && !ignoredWords.has(word))
+    .slice(0, 3);
+  const stem = [familyName, ...titleWords, work.publication_year].map((part) => text(part).toLowerCase()).join('_');
+  let key = stem || `publication_${work.publication_year || 'undated'}`;
+  let suffix = 2;
+  while (existingKeys.has(key)) key = `${stem}_${suffix++}`;
+  existingKeys.add(key);
+  return key;
 }
 
-const bibtex = await readFile(new URL('../publications.bib', import.meta.url), 'utf8');
+function publicationEntry(work, existingKeys) {
+  const doi = text(work.doi).replace(/^https?:\/\/doi\.org\//i, '');
+  const authors = (work.authorships || []).map((authorship) => text(authorship.author?.display_name)).filter(Boolean).join(' and ');
+  const venue = work.primary_location?.source?.display_name || work.primary_location?.raw_source_name;
+  const biblio = work.biblio || {};
+  const pages = [biblio.first_page, biblio.last_page].filter(Boolean).join('--');
+  const fields = [
+    ['author', authors],
+    ['title', work.title],
+    ['year', work.publication_year],
+    ['date', work.publication_date],
+    ['doi', doi],
+    ['url', `https://doi.org/${doi}`],
+    [work.type === 'article' ? 'journal' : 'booktitle', venue],
+    ['volume', biblio.volume],
+    ['number', biblio.issue],
+    ['pages', pages]
+  ].filter(([, value]) => text(value));
+  const entryType = work.type === 'article' ? 'article' : 'inproceedings';
+  const key = publicationKey(work, existingKeys);
+  return `@${entryType}{${key},\n${fields.map(([name, value]) => `  ${name} = {${escapeBibtex(value)}},`).join('\n')}\n}\n`;
+}
+
+if (!orcid) throw new Error('ORCID_ID must be configured.');
+
+const bibtex = await readFile(bibPath, 'utf8');
+const existing = new Cite(bibtex).data;
 const existingDois = new Set(
-  new Cite(bibtex).data
-    .map((item) => String(item.DOI || '').replace(/^https?:\/\/doi\.org\//, '').toLowerCase())
+  existing
+    .map((item) => text(item.DOI).replace(/^https?:\/\/doi\.org\//i, '').toLowerCase())
     .filter(Boolean)
 );
+const existingKeys = new Set(existing.map((item) => text(item.id)).filter(Boolean));
 
 const endpoint = new URL('https://api.openalex.org/works');
 endpoint.searchParams.set('filter', `author.orcid:${orcid}`);
 endpoint.searchParams.set('per-page', '100');
 if (apiKey) endpoint.searchParams.set('api_key', apiKey);
 
-const response = await fetch(endpoint, { headers: { 'User-Agent': 'chenglongma.github.io publication discovery' } });
+const response = await fetch(endpoint, { headers: { 'User-Agent': 'chenglongma.github.io publication sync' } });
 if (!response.ok) throw new Error(`OpenAlex request failed: ${response.status} ${response.statusText}`);
 const { results = [] } = await response.json();
 
-const candidates = results.filter((work) => {
-  const doi = String(work.doi || '').replace(/^https?:\/\/doi\.org\//, '').toLowerCase();
-  const publicationType = String(work.type || '');
-  return doi && !existingDois.has(doi) && ['article', 'conference-paper'].includes(publicationType);
-});
+const publications = results
+  .filter((work) => {
+    const doi = text(work.doi).replace(/^https?:\/\/doi\.org\//i, '').toLowerCase();
+    return doi && !existingDois.has(doi) && ['article', 'conference-paper'].includes(text(work.type)) && text(work.title) && work.authorships?.length;
+  })
+  .sort((left, right) => text(left.publication_date).localeCompare(text(right.publication_date)) || text(left.title).localeCompare(text(right.title)));
 
-const lines = ['# OpenAlex discovery', ''];
-if (!candidates.length) {
-  lines.push('No potential new publications were found.');
-} else {
-  lines.push('## Candidate publications', '', 'These journal articles and conference papers are suggestions only. Review their authorship and metadata, then add approved entries manually to `publications.bib`.', '');
-  for (const work of candidates) {
-    const authors = (work.authorships || []).map((authorship) => authorship.author?.display_name).filter(Boolean).join(', ');
-    const venue = work.primary_location?.source?.display_name || 'Venue unavailable';
-    const doi = String(work.doi || '').replace(/^https?:\/\/doi\.org\//, '');
-    lines.push(`- **${work.title || 'Untitled'}** (${work.publication_year || 'n.d.'}) — ${venue}`);
-    if (authors) lines.push(`  - Authors: ${authors}`);
-    lines.push(`  - DOI: https://doi.org/${doi}`);
-    lines.push(`  - OpenAlex: ${work.id}`);
-  }
+if (publications.length) {
+  const entries = publications.map((work) => publicationEntry(work, existingKeys)).join('\n');
+  await writeFile(bibPath, `${bibtex.trimEnd()}\n\n${entries}`);
 }
 
+const lines = ['# OpenAlex publication sync', ''];
+if (!publications.length) {
+  lines.push('No new journal articles or conference papers were found.');
+} else {
+  lines.push(`Added ${publications.length} publication${publications.length === 1 ? '' : 's'} to \`publications.bib\`.`, '');
+  for (const work of publications) lines.push(`- ${text(work.title)} (${work.publication_year || 'n.d.'}) — ${text(work.doi)}`);
+}
 await writeFile(outputFile, `${lines.join('\n')}\n`);
-console.log(`OpenAlex discovery completed: ${candidates.length} candidate publication(s).`);
+console.log(`OpenAlex publication sync completed: ${publications.length} new publication(s).`);

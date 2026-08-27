@@ -1,23 +1,24 @@
-name: Discover publications with OpenAlex
+name: Sync publications from OpenAlex
 
 on:
   schedule:
-    - cron: '17 3 * * 1'
+    - cron: '17 3 1 * *'
   workflow_dispatch:
 
 permissions:
-  contents: read
-  issues: write
+  actions: write
+  contents: write
+  pull-requests: write
 
 jobs:
-  discover:
+  sync:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: 22.19.0
           cache: npm
@@ -25,42 +26,34 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Check OpenAlex for possible new works
+      - name: Update publications from OpenAlex
         env:
           OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
           ORCID_ID: 0000-0002-6745-4029
-        run: node scripts/discover-openalex.mjs
+        run: npm run sync:publications
 
-      - name: Check whether candidates were found
-        id: candidates
-        run: |
-          if grep -q '^## Candidate publications' openalex-discoveries.md; then
-            echo "found=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "found=false" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Open a review issue
-        if: steps.candidates.outputs.found == 'true'
-        uses: actions/github-script@v7
+      - name: Create or update publication PR
+        id: publication-pr
+        uses: peter-evans/create-pull-request@v8
         with:
-          script: |
-            const fs = require('fs');
-            const body = fs.readFileSync('openalex-discoveries.md', 'utf8');
-            const title = 'Review possible new publications from OpenAlex';
-            const { data: issues } = await github.rest.issues.listForRepo({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              state: 'open',
-              per_page: 100
-            });
-            if (issues.some((issue) => issue.title === title)) {
-              core.notice('A publication-review issue is already open.');
-              return;
-            }
-            await github.rest.issues.create({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              title,
-              body
-            });
+          add-paths: publications.bib
+          branch: automation/openalex-publications
+          delete-branch: true
+          commit-message: 'chore: sync publications from OpenAlex'
+          title: 'chore: sync publications from OpenAlex'
+          body: |
+            Automated monthly update of `publications.bib` from OpenAlex.
+
+            This PR is automatically merged and then triggers a GitHub Pages deployment.
+
+      - name: Merge publication PR
+        if: steps.publication-pr.outputs.pull-request-number != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh pr merge "${{ steps.publication-pr.outputs.pull-request-number }}" --squash --delete-branch
+
+      - name: Deploy the updated website
+        if: steps.publication-pr.outputs.pull-request-number != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy-pages.yml --ref master
