@@ -4,6 +4,8 @@ Source for [chenglongma.com](https://www.chenglongma.com), built with [Astro](ht
 
 ## Local development
 
+Node.js 22.19 or newer is required.
+
 ```bash
 npm install
 npm run dev
@@ -20,4 +22,4 @@ Use `npm run build` for a production build and `npm run test:content` to validat
 
 ## Optional OpenAlex discovery
 
-The weekly discovery workflow never edits `publications.bib`. It checks works associated with the configured ORCID and, when it finds a DOI that is not already in the bibliography, opens one review issue. To enable it, add `OPENALEX_API_KEY` as a repository Actions secret. Review suggestions and add approved entries to `publications.bib` yourself.
+The weekly discovery workflow never edits `publications.bib`. It checks journal articles and conference papers associated with the configured ORCID and, when it finds a DOI that is not already in the bibliography, opens one review issue. `OPENALEX_API_KEY` is used when configured as a repository Actions secret; a public API request is used for local runs. Review suggestions and add approved entries to `publications.bib` yourself. Run one discovery locally with `npm run discover:publications`.

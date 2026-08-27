@@ -28,7 +28,9 @@ const canonical = new URL(Astro.url.pathname, site.url);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
+    <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#101714" />
     <title>{pageTitle}</title>
     <script is:inline>
       (() => {

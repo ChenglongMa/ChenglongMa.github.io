@@ -2,22 +2,26 @@
   "name": "chenglongma.github.io",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": ">=22.19.0"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "test:content": "node scripts/validate-content.mjs"
+    "test:content": "node scripts/validate-content.mjs",
+    "discover:publications": "node scripts/discover-openalex.mjs"
   },
   "dependencies": {
-    "@citation-js/core": "^0.8.1",
-    "@citation-js/plugin-bibtex": "^0.8.1",
-    "astro": "^5.0.0",
-    "yaml": "^2.6.1"
+    "@citation-js/core": "^0.8.2",
+    "@citation-js/plugin-bibtex": "^0.8.2",
+    "astro": "^7.2.8",
+    "yaml": "^2.9.0"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.4",
+    "@astrojs/check": "^0.9.10",
     "@types/node": "^26.4.0",
-    "typescript": "^5.7.2"
+    "typescript": "^6.0.3"
   }
 }

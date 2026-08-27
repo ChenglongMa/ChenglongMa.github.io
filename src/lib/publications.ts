@@ -1,5 +1,5 @@
 import { readFile } from 'node:fs/promises';
-import { fileURLToPath } from 'node:url';
+import { resolve } from 'node:path';
 import { Cite } from '@citation-js/core';
 import '@citation-js/plugin-bibtex';
 import { publicationOverrides } from '../data/publication-overrides';
@@ -22,7 +22,9 @@ export type Publication = {
   video?: string;
 };
 
-const bibPath = fileURLToPath(new URL('../../publications.bib', import.meta.url));
+// Astro 7 evaluates prerendered modules from `dist`, so this must resolve from
+// the repository root rather than from this compiled module's location.
+const bibPath = resolve(process.cwd(), 'publications.bib');
 
 function normalizeName(author: { family?: string; given?: string; literal?: string }) {
   if (author.literal) return author.literal;
