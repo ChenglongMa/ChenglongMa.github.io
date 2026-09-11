@@ -1,11 +1,11 @@
 ---
 title: Information retrieval and user modelling
-summary: Modelling dynamic user interests to improve retrieval and recommendation in evolving information environments.
+summary: Modelling heterogeneous and evolving user behaviour across search and recommendation, from query formulation to long-term preferences.
 keywords:
   - information retrieval
   - user modeling
-  - user interest
-  - temporal
-  - hawkes process
-order: 4
+  - search behavior
+  - query simulation
+  - dynamic interests
+order: 2
 ---

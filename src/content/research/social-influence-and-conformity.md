@@ -1,11 +1,11 @@
 ---
 title: Social influence and conformity
-summary: Understanding how collective behaviour, popularity, and social signals shape individual decisions and system outcomes.
+summary: Studying how population-level changes, conformity, herd behaviour, and popularity shape user decisions and recommender-system outcomes.
 keywords:
   - conformity
   - herd behavior
   - herding behavior
   - social influence
   - popularity bias
-order: 3
+order: 4
 ---

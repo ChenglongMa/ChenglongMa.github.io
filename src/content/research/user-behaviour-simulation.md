@@ -1,11 +1,11 @@
 ---
 title: User behaviour simulation
-summary: Building simulations that make changing needs and population-level behaviour visible before they affect recommender systems.
+summary: Developing LLM-based user simulators for evaluating search and recommendation systems, including dynamic user modelling, automated profile generation, and verifiable simulation.
 keywords:
-  - simulation
-  - user needs
-  - concept drift
-  - pandemic-like events
-  - macro-trends
-order: 2
+  - user simulation
+  - large language models
+  - evaluation
+  - user profiles
+  - verification
+order: 1
 ---

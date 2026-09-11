@@ -7,6 +7,17 @@ export type PublicationOverride = {
 };
 
 export const publicationOverrides: Record<string, PublicationOverride> = {
+  ma_verifiable_user_simulation_2026: {
+    featured: true,
+    date: '2026-07-01'
+  },
+  ma_curse_knowledge_2026: {
+    featured: true,
+    date: '2026-08-26'
+  },
+  ma_pub_llm_enhanced_2025: {
+    featured: true
+  },
   ma_www_2024: {
     featured: true,
     date: '2024-03-31',

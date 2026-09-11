@@ -3,10 +3,10 @@ export const profile = {
   givenName: 'Chenglong',
   familyName: 'Ma',
   role: 'Research Fellow',
-  affiliation: 'ADM+S Centre · RMIT University',
+  affiliation: 'School of Computing Technologies · RMIT University',
   location: 'Melbourne, Australia',
   description:
-    'Researching responsible recommender systems, user behaviour simulation, and social influence.',
+    'I am a Research Fellow in the School of Computing Technologies at RMIT University. My research spans recommender systems, information retrieval, user modelling, simulation, and responsible AI. Building on earlier work on population-level changes, conformity, and herd behaviour in recommender systems, I now develop LLM-based user simulations for evaluating search and recommendation systems, focusing on dynamic user modelling, automated user profile generation, and verifiable simulation.',
   email: 'chenglong.m@outlook.com',
   avatar: '/media/avatar.jpg',
   links: {
@@ -21,5 +21,5 @@ export const site = {
   url: 'https://chenglongma.com',
   title: 'Chenglong Ma',
   description:
-    'Chenglong Ma is a Research Fellow at ADM+S and RMIT University, researching responsible recommender systems, user behaviour simulation, and social influence.'
+    'Chenglong Ma is an RMIT Research Fellow working on recommender systems, information retrieval, user modelling, LLM-based simulation, and responsible AI.'
 } as const;

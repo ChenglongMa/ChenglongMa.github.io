@@ -17,7 +17,7 @@ const { publication, compact = false } = Astro.props;
     {!compact && publication.abstract && <p class="publication-abstract">{publication.abstract}</p>}
     <div class="publication-actions">
       <a href={`/publication/${publication.id}/`}>Details</a>
-      {publication.url && <a href={publication.url} target="_blank" rel="noreferrer">Publisher</a>}
+      {publication.url && <a href={publication.url} target="_blank" rel="noreferrer">Paper</a>}
       {publication.poster && <a href={publication.poster} target="_blank">Poster</a>}
       {publication.project && <a href={`/projects/#${publication.project}`}>Project</a>}
     </div>

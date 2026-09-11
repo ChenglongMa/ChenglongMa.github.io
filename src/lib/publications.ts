@@ -26,9 +26,9 @@ export type Publication = {
 // the repository root rather than from this compiled module's location.
 const bibPath = resolve(process.cwd(), 'publications.bib');
 
-function normalizeName(author: { family?: string; given?: string; literal?: string }) {
+function normalizeName(author: { family?: string; given?: string; literal?: string; 'non-dropping-particle'?: string }) {
   if (author.literal) return author.literal;
-  return [author.given, author.family].filter(Boolean).join(' ');
+  return [author.given, author['non-dropping-particle'], author.family].filter(Boolean).join(' ');
 }
 
 function getVenue(item: Record<string, unknown>) {

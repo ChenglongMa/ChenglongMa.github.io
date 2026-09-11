@@ -1,11 +1,11 @@
 ---
-title: Responsible recommender systems
-summary: Designing and evaluating recommendation methods that are useful, robust, and mindful of distributional effects.
+title: Responsible AI for search and recommendation
+summary: Evaluating fairness, bias, validity, and transparency in AI-mediated search, recommendation, and user simulation.
 keywords:
-  - recommender systems
-  - collaborative filtering
-  - recommendations
+  - responsible AI
   - fairness
-  - popularity bias
-order: 1
+  - bias
+  - evaluation
+  - transparency
+order: 3
 ---
