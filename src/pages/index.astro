@@ -28,7 +28,9 @@ const recentTalks = talks.sort((a, b) => b.data.date.valueOf() - a.data.date.val
       <HomeNav />
       <header class="terminal-hero" aria-labelledby="home-title">
         <p class="prompt-line"><span>$</span> whoami --academic</p>
-        <h1 id="home-title">Chenglong Ma <span class="terminal-role">// research fellow</span><span class="caret" aria-hidden="true"></span></h1>
+        <h1 id="home-title" aria-label="Chenglong Ma — research fellow and open-source developer">
+          Chenglong Ma <span class="terminal-role" aria-hidden="true">// <span data-role-text>research fellow</span><span class="caret"></span></span>
+        </h1>
         <p class="terminal-lede">{profile.description} I study how systems can distinguish enduring interests from social influence and rapid changes in behaviour.</p>
         <div class="terminal-actions">
           <a class="terminal-button primary" href="/publications/">view publications</a>
@@ -89,3 +91,43 @@ const recentTalks = talks.sort((a, b) => b.data.date.valueOf() - a.data.date.val
   </main>
   <div class="terminal-wrap"><Footer /></div>
 </BaseLayout>
+
+<script>
+  const roles = ['research fellow', 'open-source developer'];
+
+  const sleep = (milliseconds: number) =>
+    new Promise((resolve) => window.setTimeout(resolve, milliseconds));
+
+  async function animateRoles(target: HTMLElement) {
+    let roleIndex = 0;
+
+    while (true) {
+      const role = roles[roleIndex];
+      target.textContent = '';
+
+      await sleep(300);
+
+      for (const character of role) {
+        target.textContent += character;
+        await sleep(90);
+      }
+
+      await sleep(1600);
+
+      while (target.textContent) {
+        target.textContent = Array.from(target.textContent).slice(0, -1).join('');
+        await sleep(45);
+      }
+
+      await sleep(350);
+      roleIndex = (roleIndex + 1) % roles.length;
+    }
+  }
+
+  const roleText = document.querySelector<HTMLElement>('[data-role-text]');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (roleText && !reducedMotion) {
+    void animateRoles(roleText);
+  }
+</script>
