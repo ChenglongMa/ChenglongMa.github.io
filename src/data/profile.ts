@@ -7,7 +7,6 @@ export const profile = {
   location: 'Melbourne, Australia',
   description:
     'I am a Research Fellow in the School of Computing Technologies at RMIT University. My research spans recommender systems, information retrieval, user modelling, simulation, and responsible AI. Building on earlier work on population-level changes, conformity, and herd behaviour in recommender systems, I now develop LLM-based user simulations for evaluating search and recommendation systems, focusing on dynamic user modelling, automated user profile generation, and verifiable simulation.',
-  email: 'chenglong.m@outlook.com',
   avatar: '/media/avatar.jpg',
   links: {
     scholar: 'https://scholar.google.com.au/citations?user=cUwRjTQAAAAJ',
