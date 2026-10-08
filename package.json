@@ -11,6 +11,7 @@
     "preview": "astro preview",
     "check": "astro check",
     "test:content": "node scripts/validate-content.mjs",
+    "test:publications": "node --test scripts/publication-identity.test.mjs scripts/discover-openalex.test.mjs scripts/validate-content.test.mjs",
     "sync:publications": "node scripts/discover-openalex.mjs"
   },
   "dependencies": {

@@ -6,9 +6,12 @@ on:
   workflow_dispatch:
 
 permissions:
-  actions: write
   contents: write
   pull-requests: write
+
+concurrency:
+  group: openalex-publications
+  cancel-in-progress: false
 
 jobs:
   sync:
@@ -26,14 +29,23 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Test publication discovery
+        run: npm run test:publications
+
       - name: Update publications from OpenAlex
         env:
           OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
           ORCID_ID: 0000-0002-6745-4029
+          OPENALEX_AUTHOR_ID: A5038674041
         run: npm run sync:publications
 
+      - name: Validate publications
+        run: npm run test:content
+
+      - name: Summarize publication discovery
+        run: cat openalex-discoveries.md >> "$GITHUB_STEP_SUMMARY"
+
       - name: Create or update publication PR
-        id: publication-pr
         uses: peter-evans/create-pull-request@v8
         with:
           add-paths: publications.bib
@@ -41,19 +53,4 @@ jobs:
           delete-branch: true
           commit-message: 'chore: sync publications from OpenAlex'
           title: 'chore: sync publications from OpenAlex'
-          body: |
-            Automated monthly update of `publications.bib` from OpenAlex.
-
-            This PR is automatically merged and then triggers a GitHub Pages deployment.
-
-      - name: Merge publication PR
-        if: steps.publication-pr.outputs.pull-request-number != ''
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: gh pr merge "${{ steps.publication-pr.outputs.pull-request-number }}" --squash --delete-branch
-
-      - name: Deploy the updated website
-        if: steps.publication-pr.outputs.pull-request-number != ''
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: gh workflow run deploy-pages.yml --ref master
+          body-path: openalex-discoveries.md
