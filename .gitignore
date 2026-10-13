@@ -15,3 +15,4 @@ go.sum
 # Astro build artefacts.  `public/` is intentionally tracked as source assets.
 dist/
 *.psd
+.tmp/
