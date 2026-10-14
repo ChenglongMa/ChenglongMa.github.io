@@ -9,8 +9,8 @@ const projects = (await getCollection('projects')).sort((a, b) => b.data.date.va
   <main class="page-shell">
     <header class="page-intro">
       <p class="eyebrow">Projects</p>
-      <h1>Useful things made alongside research.</h1>
-      <p class="lede">Open tools and research software that make ideas easier to inspect, use, or build upon.</p>
+      <h1>Open-source tools</h1>
+      <p class="lede">Tools for research workflows and applied analysis, with links to their project pages and available implementations.</p>
     </header>
     <div class="project-index">
       {projects.map((project) => (

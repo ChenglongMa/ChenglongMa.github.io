@@ -7,7 +7,8 @@ import { profile } from '../data/profile';
     <a class="footer-name" href="/">{profile.name}</a>
     <p>{profile.role} · {profile.affiliation}</p>
   </div>
-  <div class="footer-links" aria-label="External links">
+  <div class="footer-links" aria-label="Profile links">
+    <a href="/about/">About</a>
     <a href={profile.links.scholar} target="_blank" rel="noreferrer">Google Scholar</a>
     <a href={profile.links.orcid} target="_blank" rel="noreferrer">ORCID</a>
     <a href={profile.links.github} target="_blank" rel="noreferrer">GitHub</a>

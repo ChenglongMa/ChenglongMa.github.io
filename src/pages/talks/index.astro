@@ -11,7 +11,7 @@ const talks = (await getCollection('talks')).sort((a, b) => b.data.date.valueOf(
     <header class="page-intro">
       <p class="eyebrow">Presentations</p>
       <h1>Talks &amp; posters</h1>
-      <p class="lede">Conference presentations, posters, and supporting material. Static slides and PDFs committed to the repository appear here as links.</p>
+      <p class="lede">Conference presentations, posters, and supporting materials.</p>
     </header>
     <div class="talk-list">
       {talks.map((talk) => (

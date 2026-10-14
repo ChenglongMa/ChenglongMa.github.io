@@ -1,23 +1,49 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getPublications } from '../../lib/publications';
 
 const areas = (await getCollection('research')).sort((a, b) => a.data.order - b.data.order);
+const publications = await getPublications();
+const renderedAreas = await Promise.all(areas.map(async (area) => {
+  const { Content } = await render(area);
+  const papers = area.data.publicationKeys.map((key) => {
+    const paper = publications.find((publication) => publication.id === key);
+    if (!paper) throw new Error(`Research area ${area.id} references unknown publication ${key}`);
+    return paper;
+  });
+  return { area, Content, papers };
+}));
 ---
 
 <BaseLayout title="Research">
   <main class="page-shell">
     <header class="page-intro">
       <p class="eyebrow">Research</p>
-      <h1>Questions about people, systems, and change.</h1>
-      <p class="lede">My work examines how people interact with search and recommendation systems, from population-level change and social influence to LLM-based user simulation for rigorous, responsible evaluation.</p>
+      <h1>Human behaviour and simulation validity</h1>
+      <p class="lede">I investigate how people form decisions and adapt their behaviour in changing information environments, and what evidence is needed to use simulation in the study and evaluation of these interactions.</p>
     </header>
+    <section class="research-statement" aria-labelledby="research-approach">
+      <h2 id="research-approach">Research approach</h2>
+      <p>My research examines the roles of needs, personality, knowledge, and social influence in human behaviour. These factors interact with the constraints and opportunities created by an environment: what information is available, what choices are possible, and how systems and other people respond. Behavioural records provide evidence about these relationships, while their interpretation depends on the context in which they were produced.</p>
+      <p>Simulation makes hypotheses about behaviour executable. My earlier work modelled how changing needs and social influence affect user decisions and recommender systems. More recent work connects observed behavioural signatures with personality-related representations and uses language models to generate differentiated interactions. This approach allows selected behavioural relationships to be examined under explicit assumptions, tasks, and environmental conditions.</p>
+      <p>A central question in my current work is when simulated behaviour can support conclusions about real users. I develop auditable simulation protocols and investigate validity across information access, acquisition, action sequences, final choices, and responses to interface changes. Each use requires a defined target, appropriate human evidence, and a statement of the conditions under which the model is being evaluated.</p>
+      <p>I also study the predictive value of process information. Improving the fit of measured interaction processes does not by itself establish better prediction of the outcome of interest. The relationship depends on what is measured, how processes connect to decisions, and whether that relationship applies to the target setting. My aim is to identify useful information, applicable conditions, and remaining uncertainty.</p>
+    </section>
     <div class="research-list">
-      {areas.map((area) => (
-        <article class="research-item">
-          <h2>{area.data.title}</h2>
-          <div>
-            <p>{area.data.summary}</p>
+      {renderedAreas.map(({ area, Content, papers }) => (
+        <article class="research-item" id={area.id} aria-labelledby={`${area.id}-title`}>
+          <div class="research-heading">
+            {area.id === 'responsible-recommender-systems' && <p class="eyebrow">Cross-cutting commitments</p>}
+            {area.data.developing && <p class="eyebrow">Developing direction</p>}
+            <h2 id={`${area.id}-title`}>{area.data.title}</h2>
+          </div>
+          <div class="research-body">
+            <Content />
+            {papers.length > 0 && <div class="research-papers">
+              <h3>Representative papers</h3>
+              <ul>{papers.map((paper) => <li><a href={`/publication/${paper.id}/`}>{paper.title}</a>{paper.format && <span> · {paper.format}</span>}</li>)}</ul>
+            </div>}
             <div class="tags">{area.data.keywords.map((keyword) => <span class="tag">{keyword}</span>)}</div>
           </div>
         </article>

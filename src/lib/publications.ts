@@ -2,7 +2,7 @@ import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { Cite } from '@citation-js/core';
 import '@citation-js/plugin-bibtex';
-import { publicationOverrides } from '../data/publication-overrides';
+import { publicationOverrides, type PublicationOverride } from '../data/publication-overrides';
 
 export type Publication = {
   id: string;
@@ -20,6 +20,9 @@ export type Publication = {
   poster?: string;
   project?: string;
   video?: string;
+  context?: string;
+  format?: PublicationOverride['format'];
+  status?: PublicationOverride['status'];
 };
 
 // Astro 7 evaluates prerendered modules from `dist`, so this must resolve from
@@ -94,7 +97,10 @@ export async function getPublications(): Promise<Publication[]> {
         featured: Boolean(override.featured),
         poster: override.poster,
         project: override.project,
-        video: override.video
+        video: override.video,
+        context: override.context,
+        format: override.format,
+        status: override.status
       } satisfies Publication;
     })
     .sort((left, right) => right.year - left.year || left.title.localeCompare(right.title));

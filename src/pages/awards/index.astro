@@ -1,9 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { formatYear } from '../../lib/format';
 
-const awards = (await getCollection('awards')).filter((award) => !award.data.hidden).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const awards = (await getCollection('awards')).filter((award) => !award.data.hidden).sort((a, b) => b.data.year - a.data.year);
 ---
 
 <BaseLayout title="Awards">
@@ -11,15 +10,15 @@ const awards = (await getCollection('awards')).filter((award) => !award.data.hid
     <header class="page-intro">
       <p class="eyebrow">Recognition</p>
       <h1>Awards</h1>
-      <p class="lede">Selected recognition and research awards.</p>
+      <p class="lede">Academic recognition.</p>
     </header>
     {awards.length ? <div class="award-list">
       {awards.map((award) => (
         <article class="award-row">
-          <p class="award-date">{formatYear(award.data.date)}</p>
+          <p class="award-date">{award.data.year}</p>
           <div><h2>{award.data.title}</h2><p>{award.data.issuer}</p>{award.data.summary && <p>{award.data.summary}</p>}</div>
         </article>
       ))}
-    </div> : <p class="empty-message">Awards can be added as a small Markdown file in <code>src/content/awards/</code>; they will then appear here automatically.</p>}
+    </div> : <p class="empty-message">No awards are currently listed.</p>}
   </main>
 </BaseLayout>

@@ -10,16 +10,18 @@ import { getPublications } from '../lib/publications';
 import { getActivities } from '../lib/activity';
 import { formatDate } from '../lib/format';
 
-const [publications, projects, talks, activities] = await Promise.all([
+const [publications, projects, talks, activities, researchAreas] = await Promise.all([
   getPublications(),
   getCollection('projects'),
   getCollection('talks'),
-  getActivities()
+  getActivities(),
+  getCollection('research')
 ]);
 const selectedPublications = publications.filter((publication) => publication.featured);
 const shownPublications = (selectedPublications.length ? selectedPublications : publications).slice(0, 3);
 const featuredProjects = projects.filter((project) => project.data.featured).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 2);
 const recentTalks = talks.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 2);
+const researchDirections = researchAreas.filter((area) => area.id !== 'responsible-recommender-systems').sort((a, b) => a.data.order - b.data.order);
 ---
 
 <BaseLayout header={false} footer={false}>
@@ -31,15 +33,31 @@ const recentTalks = talks.sort((a, b) => b.data.date.valueOf() - a.data.date.val
         <h1 id="home-title" aria-label="Chenglong Ma — research fellow and open-source developer">
           Chenglong Ma <span class="terminal-role" aria-hidden="true">// <span data-role-text>research fellow</span><span class="caret"></span></span>
         </h1>
+        <p class="terminal-affiliation">{profile.role} · {profile.affiliation}</p>
         <p class="terminal-lede">{profile.description}</p>
         <div class="terminal-actions">
-          <a class="terminal-button primary" href="/publications/">view publications</a>
-          <a class="terminal-button" href="/research/">read the research</a>
+          <a class="terminal-button primary" href="/research/">Explore research</a>
+          <a class="terminal-button" href="/publications/">View publications</a>
+          <a class="terminal-button" href="/about/">About</a>
         </div>
       </header>
 
+      <section class="terminal-block" aria-labelledby="research-title">
+        <SectionHeading id="research-title" eyebrow="00 // research" title="Research questions" href="/research/" linkLabel="explore research" />
+        <p class="research-preview-intro">How do people adapt their decisions as their needs, information, and social environment change? What evidence allows a simulator to represent those decisions for a particular purpose? These questions connect my work on behavioural modelling, simulation, and evaluation.</p>
+        <div class="research-preview-list">
+          {researchDirections.map((area) => (
+            <a class="research-preview" href={`/research/#${area.id}`}>
+              {area.data.developing && <span class="eyebrow">Developing direction</span>}
+              <h3>{area.data.title}</h3>
+              <p>{area.data.summary}</p>
+            </a>
+          ))}
+        </div>
+      </section>
+
       <section class="terminal-block" aria-labelledby="news-title">
-        <SectionHeading id="news-title" eyebrow="00 // latest" title="Recent updates" href="/news/" />
+        <SectionHeading id="news-title" eyebrow="01 // latest" title="Recent updates" href="/news/" />
         <div class="news-list">
           {activities.slice(0, 3).map((activity) => (
             <a class="news-item" href={activity.href} target={activity.href.startsWith('http') ? '_blank' : undefined} rel={activity.href.startsWith('http') ? 'noreferrer' : undefined}>
@@ -52,14 +70,14 @@ const recentTalks = talks.sort((a, b) => b.data.date.valueOf() - a.data.date.val
       </section>
 
       <section class="terminal-block" aria-labelledby="publications-title">
-        <SectionHeading id="publications-title" eyebrow="01 // selected publications" title="Research output" href="/publications/" linkLabel="see all publications" />
+        <SectionHeading id="publications-title" eyebrow="02 // publications" title="Selected publications" href="/publications/" linkLabel="see all publications" />
         <div class="publication-list">
           {shownPublications.map((publication) => <PublicationRow publication={publication} compact />)}
         </div>
       </section>
 
       <section class="terminal-block" aria-labelledby="projects-title">
-        <SectionHeading id="projects-title" eyebrow="02 // selected projects" title="Tools built alongside research" href="/projects/" linkLabel="see all projects" />
+        <SectionHeading id="projects-title" eyebrow="03 // projects" title="Open-source tools" href="/projects/" linkLabel="see all projects" />
         <div class="project-grid">
           {featuredProjects.map((project, index) => (
             <a class="project-card" href={project.data.href} target="_blank" rel="noreferrer">
@@ -76,7 +94,7 @@ const recentTalks = talks.sort((a, b) => b.data.date.valueOf() - a.data.date.val
       </section>
 
       <section class="terminal-block" aria-labelledby="talks-title">
-        <SectionHeading id="talks-title" eyebrow="03 // presentations" title="Talks &amp; posters" href="/talks/" linkLabel="see all talks" />
+        <SectionHeading id="talks-title" eyebrow="04 // presentations" title="Talks and posters" href="/talks/" linkLabel="see all talks" />
         <div class="talk-list">
           {recentTalks.map((talk) => (
             <article class="talk-row">

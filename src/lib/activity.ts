@@ -35,11 +35,10 @@ export async function getActivities(): Promise<Activity[]> {
       title: talk.data.title,
       href: `/talks/${talk.id}/`
     })),
-    ...awards.filter((award) => !award.data.hidden).map((award) => ({
-      date: award.data.date,
-      kind: 'Award' as const,
-      title: award.data.title,
-      href: '/awards/'
-    }))
+    ...awards.flatMap((award) => {
+      const { date, hidden, title } = award.data;
+      if (hidden || !date) return [];
+      return [{ date, kind: 'Award' as const, title, href: '/awards/' }];
+    })
   ].sort((left, right) => right.date.valueOf() - left.date.valueOf());
 }

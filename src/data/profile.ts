@@ -6,7 +6,7 @@ export const profile = {
   affiliation: 'School of Computing Technologies · RMIT University',
   location: 'Melbourne, Australia',
   description:
-    'I am a Research Fellow in the School of Computing Technologies at RMIT University. My research spans recommender systems, information retrieval, user modelling, simulation, and responsible AI. Building on earlier work on population-level changes, conformity, and herd behaviour in recommender systems, I now develop LLM-based user simulations for evaluating search and recommendation systems, focusing on dynamic user modelling, automated user profile generation, and verifiable simulation.',
+    'I study how people’s needs, personality, and social context shape behaviour in changing information environments. My work combines user modelling with simulation to investigate search and recommendation, and examines when simulated behaviour can support conclusions about real users. Building on research into needs evolution and social influence, I now focus on auditable LLM-based simulation, process validation, and the conditions under which process information supports prediction.',
   avatar: '/media/avatar.jpg',
   links: {
     scholar: 'https://scholar.google.com.au/citations?user=cUwRjTQAAAAJ',
@@ -20,5 +20,5 @@ export const site = {
   url: 'https://chenglongma.com',
   title: 'Chenglong Ma',
   description:
-    'Chenglong Ma is an RMIT Research Fellow working on recommender systems, information retrieval, user modelling, LLM-based simulation, and responsible AI.'
+    'Chenglong Ma studies human behaviour, user modelling, and verifiable simulation for search and recommendation at RMIT University.'
 } as const;

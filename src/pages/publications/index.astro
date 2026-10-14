@@ -11,7 +11,7 @@ const publications = await getPublications();
     <header class="page-intro">
       <p class="eyebrow">Research output</p>
       <h1>Publications</h1>
-      <p class="lede">This list is rendered from the repository’s <code>publications.bib</code>. Links, posters, and related work are added automatically when available.</p>
+      <p class="lede">Research on user behaviour, simulation, search, recommendation, and responsible AI.</p>
     </header>
     <div class="publication-list">
       {publications.map((publication) => <PublicationRow publication={publication} compact />)}

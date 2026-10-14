@@ -8,7 +8,9 @@ const research = defineCollection({
     title: z.string(),
     summary: z.string(),
     keywords: z.array(z.string()),
-    order: z.number()
+    order: z.number(),
+    publicationKeys: z.array(z.string()).default([]),
+    developing: z.boolean().default(false)
   })
 });
 
@@ -63,7 +65,8 @@ const awards = defineCollection({
   schema: z.object({
     title: z.string(),
     issuer: z.string(),
-    date: z.coerce.date(),
+    year: z.number().int(),
+    date: z.coerce.date().optional(),
     summary: z.string().optional(),
     hidden: z.boolean().default(false)
   })

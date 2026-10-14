@@ -13,7 +13,7 @@ const { publication } = Astro.props;
 <BaseLayout title={publication.title} description={publication.abstract || `Publication by ${publication.authors.join(', ')}`}>
   <main class="article-shell">
     <a class="article-back" href="/publications/">← All publications</a>
-    <p class="article-meta">{publication.type} · {publication.year}</p>
+    <p class="article-meta">{publication.format || publication.type} · {publication.year}{publication.status && <span> · {publication.status}</span>}</p>
     <h1>{publication.title}</h1>
     <p class="article-authors">{publication.authors.join(', ')}</p>
     <p class="article-venue"><em>{publication.venue}</em>{publication.venue && ' · '}{publication.year}</p>
@@ -24,6 +24,7 @@ const { publication } = Astro.props;
       {publication.project && <a class="button-link" href={`/projects/#${publication.project}`}>Project</a>}
       {publication.video && <a class="button-link" href={publication.video} target="_blank" rel="noreferrer">Video ↗</a>}
     </div>
+    {publication.context && <section class="article-context"><h2>Research context</h2><p>{publication.context}</p></section>}
     {publication.abstract && <section class="article-abstract"><h2>Abstract</h2><p>{publication.abstract}</p></section>}
     {publication.keywords.length > 0 && <section class="article-related"><h2>Keywords</h2><div class="tags">{publication.keywords.map((keyword) => <span class="tag">{keyword}</span>)}</div></section>}
   </main>

@@ -16,9 +16,11 @@ Use `npm run build` for a production build, `npm run test:content` to validate t
 ## Maintaining content
 
 - `publications.bib` is the canonical publication source. Commit an updated BibTeX file and the deployment workflow will validate it and render the updated list.
-- `src/content/projects/`, `talks/`, `teaching/`, and `awards/` contain small Markdown files for the remaining sections.
+- `src/content/research/`, `projects/`, `talks/`, `teaching/`, and `awards/` contain Markdown content. Research entries can reference canonical publication keys and mark a developing direction; their bodies are rendered on the Research page.
+- Award records require `year`; add `date` only when the actual date is known. Year-only awards appear on Awards and are omitted from the dated News feed.
+- `src/pages/about/index.astro` contains current academic background, service, and funding/computing support. The CV download is maintained separately.
 - Put slides, posters, and CVs in `public/files/`, then reference their root-relative path (for example, `/files/posters/example.pdf`) from a content file.
-- `src/data/publication-overrides.ts` associates a publication key with optional site-only material such as posters or project links, without changing the canonical BibTeX.
+- `src/data/publication-overrides.ts` associates a publication key with site-only material, including posters, project links, author-written research context, and format/status labels. Official abstracts remain in the canonical BibTeX, separate from research context.
 
 ## Automated OpenAlex publication sync
 

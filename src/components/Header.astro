@@ -12,8 +12,9 @@ const isActive = (href: string) => path === href || path.startsWith(`${href}`);
     <a class:list={{ active: isActive('/publications/') || path.startsWith('/publication/') }} href="/publications/">/publications</a>
     <a class:list={{ active: isActive('/projects/') || path.startsWith('/project/') }} href="/projects/">/projects</a>
     <details class="nav-more">
-      <summary class:list={{ active: isActive('/teaching/') || isActive('/talks/') || isActive('/awards/') }}>more <span aria-hidden="true">+</span></summary>
+      <summary class:list={{ active: isActive('/about/') || isActive('/teaching/') || isActive('/talks/') || isActive('/awards/') }}>more <span aria-hidden="true">+</span></summary>
       <div class="more-menu">
+        <a href="/about/">/about</a>
         <a href="/news/">/news</a>
         <a href="/teaching/">/teaching</a>
         <a href="/talks/">/talks</a>

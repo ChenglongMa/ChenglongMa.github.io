@@ -13,7 +13,7 @@ const { publication, compact = false } = Astro.props;
   <div class="publication-body">
     <h3><a href={`/publication/${publication.id}/`}>{publication.title}</a></h3>
     <p class="publication-authors">{publication.authors.join(', ')}</p>
-    <p class="publication-venue"><em>{publication.venue}</em>{publication.venue && ' · '}{publication.type}</p>
+    <p class="publication-venue"><em>{publication.venue}</em>{publication.venue && ' · '}{publication.format || publication.type}{publication.status && <span> · {publication.status}</span>}</p>
     {!compact && publication.abstract && <p class="publication-abstract">{publication.abstract}</p>}
     <div class="publication-actions">
       <a href={`/publication/${publication.id}/`}>Details</a>
