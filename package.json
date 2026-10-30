@@ -17,7 +17,7 @@
   "dependencies": {
     "@citation-js/core": "^0.8.2",
     "@citation-js/plugin-bibtex": "^0.8.2",
-    "astro": "^7.2.8",
+    "astro": "^7.3.3",
     "yaml": "^2.9.0"
   },
   "devDependencies": {
